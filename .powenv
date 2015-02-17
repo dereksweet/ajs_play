@@ -1,0 +1,8 @@
+export PATH="/Users/dereksweet/.rvm/gems/ruby-2.1.2/bin:/Users/dereksweet/.rvm/gems/ruby-2.1.2@global/bin:/Users/dereksweet/.rvm/rubies/ruby-2.1.2/bin:$PATH"
+export GEM_HOME='/Users/dereksweet/.rvm/gems/ruby-2.1.2'
+export GEM_PATH='/Users/dereksweet/.rvm/gems/ruby-2.1.2:/Users/dereksweet/.rvm/gems/ruby-2.1.2@global'
+export MY_RUBY_HOME='/Users/dereksweet/.rvm/rubies/ruby-2.1.2'
+export IRBRC='/Users/dereksweet/.rvm/rubies/ruby-2.1.2/.irbrc'
+unset MAGLEV_HOME
+unset RBXOPT
+export RUBY_VERSION='ruby-2.1.2'
