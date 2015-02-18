@@ -1,16 +1,78 @@
 <% content_for :title do %>AngularJS Playground<% end %>
 
 <div class="row left">
-  <div class="small-12 columns"><h3>Bound Input</h3></div>
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-12 columns"><h3>Bound Input</h3></div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns left">
+        Simple bound input that repeats whatever you type inside it in the div below it.
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+
+    <div class="row collapse">
+      <div class="small-2 columns left">Enter Something: </div>
+      <div class="small-2 columns left"><input ng-model="boundinput" type="text"></div>
+    </div>
+    <div class="row">
+      <div class="small-2 columns left">You Entered: </div>
+      <div class="small-2 columns left">{{ boundinput }}</div>
+    </div>
+  </div>
 </div>
 
 <div class="row left">
-  <div class="small-2 columns left">Enter Something: </div>
-  <div class="small-2 columns left"><input ng-model="boundinput" type="text"></div>
+  <div class="small-12 columns"><hr></div>
 </div>
+
 <div class="row left">
-  <div class="small-2 columns left">You Entered: </div>
-  <div class="small-2 columns left">{{ boundinput }}</div>
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-12 columns"><h3>ngShow Directive</h3></div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns left">
+        Slightly more complex bound input that will evaluate whatever mathmatical expression is passed in. If it sums to 10 then a message will appear!
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+
+    <div class="row">
+      <div class="small-3 columns left">Enter Mathmatical Expression: </div>
+      <div class="small-2 columns left"><input ng-model="mathexpression" type="text"></div>
+    </div>
+    <div class="row">
+      <div ng-show="$eval(mathexpression) == 10" class="small-12 columns left">I appear when the expression is equal to 10!</div>
+    </div>
+  </div>
 </div>
-<div class="row">&nbsp;</div>
-<hr>
+
+<div class="row left">
+  <div class="small-12 columns"><hr></div>
+</div>
+
+<div class="row left">
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-12 columns"><h3>ngClick Directive</h3></div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns left">
+        Buttons that add and subtract one to or from the counter each time you click them. Simple as pie!
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+
+    <div class="row" ng-init="count = 0">
+      <div class="small-2 columns left"><button ng-click="count = count + 1">Add 1</button></div>
+      <div class="small-2 columns left"><big>Count = {{ count }}</big></div>
+      <div class="small-2 columns left"><button ng-click="count = count - 1">Take 1</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="row left">
+  <div class="small-12 columns"><hr></div>
+</div>
