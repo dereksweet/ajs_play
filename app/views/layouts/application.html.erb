@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Ajs Play" %></title>
@@ -14,7 +14,7 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main" ng-app>
+    <main role="main">
        <%= render 'layouts/messages' %>
         <br>
        <%= yield %>
