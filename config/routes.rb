@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'pages#directives'
 
-  get '/home', to: 'pages#home'
+  get '/directives', to: 'pages#directives'
 end
