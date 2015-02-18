@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
-
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Ajs Play" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ajs Play" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%# Modernizr is required for Zurb Foundation %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-
   <body>
-
-    <%= yield %>
-
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main" ng-app>
+       <%= render 'layouts/messages' %>
+        <br>
+       <%= yield %>
+    </main>
   </body>
 </html>
