@@ -1,1 +1,46 @@
-Uppercase: {{ "Derek Sweet" | uppercase }}
+<script>
+  var myApp = angular.module("myApp", []);
+
+  myApp.controller('MyFiltersDataCtrl', function ($scope) {
+    var myData = {
+      currentDate: new Date(2010, 2, 23)
+    };
+
+    $scope.data = myData;
+  })
+</script>
+
+<div class="row left" ng-app="myApp" ng-controller="MyFiltersDataCtrl">
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="row">
+          <div class="small-12 columns"><h3>Simple Filters</h3></div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns left">
+            A series of simple filters that come pre-built with AngularJS
+          </div>
+        </div>
+        <div class="row">&nbsp;</div>
+
+        <div class="row">
+          <div class="small-3 columns text-right">Uppercase: </div>
+          <div class="small-3 columns left">{{ "Derek Sweet" | uppercase }}</div>
+        </div>
+        <div class="row">
+          <div class="small-3 columns text-right">Number (2 precision): </div>
+          <div class="small-3 columns left">{{ 1.23456 | number: 2 }}</div>
+        </div>
+        <div class="row">
+          <div class="small-3 columns text-right">Date (medium): </div>
+          <div class="small-3 columns left">{{ data.currentDate | date:'medium' }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns"><hr></div>
+    </div>
+  </div>
+</div>
