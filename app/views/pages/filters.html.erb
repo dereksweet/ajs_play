@@ -49,13 +49,40 @@
           <div class="small-3 columns left">{{ 1.23456 | number: 2 }}</div>
         </div>
         <div class="row">
+          <div class="small-3 columns text-right">Currency: </div>
+          <div class="small-3 columns left">{{ 5.56 | currency }}</div>
+        </div>
+        <div class="row">
           <div class="small-3 columns text-right">Date (medium): </div>
           <div class="small-3 columns left">{{ data.currentDate | date:'medium' }}</div>
         </div>
+        <div class="row">&nbsp;</div>
         <div class="row">
           <div class="small-3 columns text-right">limitTo (3 entries): </div>
           <div class="small-3 columns left">
             <span ng-repeat="datum in data.sampleData | limitTo:3" ng-class="{active: $last}" ng-switch="$last">{{ datum | number:2 }}<br ng-switch-when="false"></span>
+          </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+          <div class="small-3 columns text-right">Filter: </div>
+          <div class="small-6 columns left">
+            <input ng-model="searchText"><br>
+            <span ng-repeat="datum in data.sampleData | filter:searchText" ng-class="{active: $last}" ng-switch="$last">{{ datum }}<br ng-switch-when="false"></span>
+          </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+          <div class="small-3 columns text-right">Order by (toString): </div>
+          <div class="small-6 columns left">
+            <span ng-repeat="datum in data.sampleData | orderBy: 'toString()'" ng-class="{active: $last}" ng-switch="$last">{{ datum }}<br ng-switch-when="false"></span>
+          </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+          <div class="small-3 columns text-right">json: </div>
+          <div class="small-6 columns left">
+            {{ data | json }}
           </div>
         </div>
       </div>
