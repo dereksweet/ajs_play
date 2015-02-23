@@ -1,13 +1,21 @@
 var filtersApp = angular.module("filtersApp", []);
 
-filtersApp.controller('MyFiltersDataCtrl', function ($scope) {
+filtersApp.controller('MyFiltersDataCtrl', function ($scope, $timeout) {
     var myData = {
-        currentDate: new Date(2010, 2, 23),
+        currentDate: new Date(),
         sampleData:
             [123.65,89.325,23.453,45.66,67.80,23.454]
     };
 
     $scope.data = myData;
+    $scope.myString = 'TestString';
+
+    var updateTime = function() {
+        $scope.data.currentDate = new Date();
+        $timeout(updateTime, 1000);
+    }
+
+    $timeout(updateTime, 100);
 });
 
 filtersApp.filter('stripDashes', function () {
