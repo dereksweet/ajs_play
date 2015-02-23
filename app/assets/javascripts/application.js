@@ -16,6 +16,9 @@
 //= require foundation
 //= require angular
 //= require_tree .
+
+//= require_tree ./pages
+
 $(function() {
   $(document).foundation();
 });

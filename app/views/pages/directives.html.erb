@@ -1,6 +1,6 @@
 <% content_for :title do %>AngularJS Playground<% end %>
 
-<div class="row left" ng-app>
+<div class="row left" ng-app="directivesApp" ng-controller="MyDirectivesCtrl">
   <div class="small-12 columns">
     <div class="row">
       <div class="small-12 columns">
@@ -102,6 +102,37 @@
             <div class="row" ng-repeat="item in my_array">
               <div class="small-12 columns">{{item}}</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns"><hr></div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="row">
+          <div class="small-12 columns"><h3>Custom Directive</h3></div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns left">
+            <i>A custom directive, ng-showHide, has been defined in the controller script. It can be included as it's own tag like &lt;ng-showHide&gt; or as an attributes like &lt;div ng-showHide&gt;</i>
+          </div>
+        </div>
+        <div class="row">&nbsp;</div>
+
+        <div class="row">
+          <div class="small-3 columns left">Attribute (<b>&lt;div ng-show-hide&gt;</b>):</div>
+          <div class="small-9 columns left">
+            <div ng-show-hide></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-3 columns left">Tag (<b>&lt;ng-show-hide&gt;</b>):</div>
+          <div class="small-9 columns left">
+            <ng-show-hide />
           </div>
         </div>
       </div>
