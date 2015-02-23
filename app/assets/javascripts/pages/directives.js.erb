@@ -1,0 +1,31 @@
+//= depend_on_asset "pages/directives/showHide.html"
+
+var directivesApp = angular.module("directivesApp", []);
+
+directivesApp.controller('MyDirectivesCtrl', function ($scope) {
+    var myData = {
+        //Page specific data goes here
+        myString: "Test String",
+        showHideCount: 0
+    };
+
+    $scope.data = myData;
+});
+
+directivesApp.directive('ngShowHide', function ($compile) {
+    return {
+        scope: {},
+        restrict: 'AE',
+        templateUrl: '<%= asset_path('pages/directives/showHide.html') %>',
+        link: function ($scope, $element) {
+            $scope.showMessage = false;
+
+            $scope.toggleMessage = function () {
+                $scope.showMessage = !$scope.showMessage;
+
+                var myContainer = $element.find('div');
+                myContainer.html('My local instance variable is: ' + $scope.showMessage);
+            }
+        }
+    };
+});
