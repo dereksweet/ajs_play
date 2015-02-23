@@ -37,7 +37,7 @@
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
-          <div class="small-3 columns text-right">Filter: </div>
+          <div class="small-3 columns text-right">Search Filter: </div>
           <div class="small-6 columns left">
             <input ng-model="searchText"><br>
             <span ng-repeat="datum in data.sampleData | filter:searchText">{{ datum }}<br ng-hide="$last"></span>
@@ -77,12 +77,13 @@
         <div class="row">&nbsp;</div>
 
         <div class="row">
-          <div class="small-3 columns text-right">stripDashes: </div>
-          <div class="small-3 columns left">{{ "Derek--Sweet------------is-cool!" | stripDashes }}</div>
+          <div class="small-2 columns text-right">stripDashes:</div>
+          <div class="small-3 columns left">{{ "Derek--Sweet--------is-cool!" | stripDashes }}<br><small><i>"Derek--Sweet--------is-cool!"</i></small></div>
         </div>
+        <div class="row">&nbsp;</div>
         <div class="row">
-          <div class="small-3 columns text-right">titleCase: </div>
-          <div class="small-3 columns left">{{ "DeReK sweet IS cOOl" | titleCase }}</div>
+          <div class="small-2 columns text-right">titleCase:</div>
+          <div class="small-3 columns left">{{ "DeReK sweet IS cOOl" | titleCase }}<br><small><i>"DeReK sweet IS cOOl"</i></small></div>
         </div>
       </div>
     </div>
