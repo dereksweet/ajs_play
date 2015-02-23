@@ -13,7 +13,7 @@ filtersApp.controller('MyFiltersDataCtrl', function ($scope, $timeout) {
     var updateTime = function() {
         $scope.data.currentDate = new Date();
         $timeout(updateTime, 1000);
-    }
+    };
 
     $timeout(updateTime, 100);
 });
