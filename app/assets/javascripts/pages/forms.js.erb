@@ -1,0 +1,18 @@
+var directivesApp = angular.module("formsApp", []);
+
+directivesApp.controller('MyFormsCtrl', function ($scope) {
+    var myData = {
+        is_cool: true
+    };
+    $scope.data = myData;
+
+    $scope.colors = [
+        { value: "red", label: "Red" },
+        { value: "blue", label: "Blue" },
+        { value: "yellow", label: "Yellow" }
+    ];
+
+    $scope.submit_form = function() {
+        // Fill in submit code here
+    }
+});
