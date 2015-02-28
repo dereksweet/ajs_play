@@ -13,6 +13,25 @@ directivesApp.controller('MyFormsCtrl', function ($scope) {
     ];
 
     $scope.submit_form = function() {
-        // Fill in submit code here
+        $scope.firstNameInvalid = false;
+        $scope.emailInvalid = false;
+        $scope.colorInvalid = false;
+
+        if ($scope.sampleForm.firstName.$invalid){
+            $scope.firstNameInvalid = true;
+        }
+
+        if ($scope.sampleForm.email.$invalid){
+            $scope.emailInvalid = true;
+        }
+
+        if ($scope.sampleForm.color.$invalid){
+            $scope.colorInvalid = true;
+        }
+
+        if ($scope.sampleForm.$valid) {
+            $scope.doShow = true;
+            // Pending Implmentation
+        }
     }
 });

@@ -7,13 +7,20 @@
     </div>
     <div class="row">
       <div class="small-12 columns left">
-        A sample of what can be done with Angular Forms
+        A sample of what can be done with Angular Forms. There is some validation on each of the fields and a conditional span that shows if a submit is attempted and they are invalid.
       </div>
     </div>
     <div class="row">&nbsp;</div>
     <div class="row">
       <div class="small-12 columns">
-        <form name="sampleForm">
+        <div ng-show="sampleForm.$pristine">Form input has not yet started</div>
+        <div ng-show="sampleForm.$dirty">Form input has started</div>
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="small-12 columns">
+        <form name="sampleForm" ng-submit="submit_form()" novalidate>
           <div class="row">
             <div class="small-12 columns">
               <i>The following is an input for first name, does not have much validation on it.</i>
@@ -21,7 +28,10 @@
           </div>
           <div class="row">
             <div class="small-2 columns">First Name:</div>
-            <div class="small-5 columns left"><input type="text" ng-model="data.firstName" placeholder="First Name" required></div>
+            <div class="small-5 columns left">
+              <input type="text" ng-model="data.firstName" name="firstName" placeholder="First Name" required>
+              <span ng-show="firstNameInvalid">Please enter a value for First Name</span>
+            </div>
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
@@ -31,7 +41,10 @@
           </div>
           <div class="row">
             <div class="small-2 columns">Email:</div>
-            <div class="small-5 columns left"><input type="email" ng-model="data.email" placeholder="Email" required></div>
+            <div class="small-5 columns left">
+              <input type="email" ng-model="data.email" name="email" placeholder="Email" required>
+              <span ng-show="emailInvalid">Please enter a proper email address</span>
+            </div>
           </div>
           <div class="row">&nbsp;</div>
           <div class="row">
@@ -42,9 +55,10 @@
           <div class="row">
             <div class="small-2 columns">Colors:</div>
             <div class="small-5 columns left">
-              <select name="colors" ng-model="data.colors" ng-options="obj.value as obj.label for obj in colors" required>
+              <select name="color" ng-model="data.colors" ng-options="obj.value as obj.label for obj in colors" required>
                 <option value="">Choose a color...</option>
               </select>
+              <span ng-show="colorInvalid">Please select a color</span>
             </div>
           </div>
           <div class="row">&nbsp;</div>
@@ -64,6 +78,12 @@
           <div class="row">
             <div class="small-12 columns">
               <input type="submit" value="Submit" ng-click="submit_form()">
+            </div>
+          </div>
+          <div class="row">&nbsp;</div>
+          <div class="row">
+            <div class="small-12 columns">
+              <div ng-show="doShow">Thank you for submitting the form!</div>
             </div>
           </div>
         </form>
