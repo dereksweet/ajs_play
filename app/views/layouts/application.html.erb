@@ -15,9 +15,11 @@
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-       <%= render 'layouts/messages' %>
+        <%= render 'layouts/messages' %>
         <br>
-       <%= yield %>
+        <div class="<%= params[:controller] %>__<%= params[:action] %>">
+          <%= yield %>
+        </div>
     </main>
   </body>
 </html>

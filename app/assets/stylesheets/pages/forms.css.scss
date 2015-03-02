@@ -1,0 +1,8 @@
+.pages__forms {
+  input[name='email'].ng-dirty.ng-invalid {
+    color: red;
+  }
+  input[name='email'].ng-dirty.ng-valid {
+    color: green;
+  }
+}
