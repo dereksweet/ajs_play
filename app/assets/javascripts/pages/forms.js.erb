@@ -1,7 +1,24 @@
-var directivesApp = angular.module("formsApp", []);
+var formsApp = angular.module("formsApp", []);
 
-directivesApp.controller('MyFormsCtrl', function ($scope) {
+formsApp.factory('dataStoreService', function ($http) {
+    var dataStore = {};
+
+    dataStore.doSubmit = function (theData) {
+        return $http({ method: 'POST', url: 'api/save_data', data: theData });
+    };
+
+    dataStore.loadData = function (first_name) {
+        return $http({ method: 'GET', url: 'api/get_data?first_name=' + first_name })
+    };
+
+    return dataStore;
+});
+
+formsApp.controller('MyFormsCtrl', function ($scope, dataStoreService) {
     var myData = {
+        first_name: "",
+        email: "",
+        color: "",
         is_cool: true
     };
     $scope.data = myData;
@@ -12,12 +29,49 @@ directivesApp.controller('MyFormsCtrl', function ($scope) {
         { value: "yellow", label: "Yellow" }
     ];
 
+    reset_messages = function() {
+        $scope.showSubmitSuccessMessage = false;
+        $scope.showSubmitErrorMessage = false;
+        $scope.showLoadSuccessMessage = false;
+        $scope.showLoadErrorMessage = false;
+    }
+
+    $scope.get_data = function() {
+        reset_messages();
+
+        var promise = dataStoreService.loadData($scope.data.first_name);
+
+        promise.success(function (data, status) {
+            if (data) {
+                $scope.data.email = data.email;
+                $scope.data.color = data.color;
+                $scope.data.is_cool = data.is_cool;
+
+                $scope.sampleForm.email.$setDirty();
+                $scope.sampleForm.color.$setDirty();
+                $scope.sampleForm.is_cool.$setDirty();
+
+                $scope.showLoadSuccessMessage = true;
+            }
+            else {
+                $scope.showLoadErrorMessage = true;
+            }
+        });
+
+        promise.error(function (data, status) {
+            $scope.showLoadErrorMessage = true;
+            $('#load_error_message').html('(' + status + ')');
+        });
+    }
+
     $scope.submit_form = function() {
+        reset_messages();
+
         $scope.firstNameInvalid = false;
         $scope.emailInvalid = false;
         $scope.colorInvalid = false;
 
-        if ($scope.sampleForm.firstName.$invalid){
+        if ($scope.sampleForm.first_name.$invalid){
             $scope.firstNameInvalid = true;
         }
 
@@ -30,8 +84,16 @@ directivesApp.controller('MyFormsCtrl', function ($scope) {
         }
 
         if ($scope.sampleForm.$valid) {
-            $scope.doShow = true;
-            // Pending Implmentation
+            var promise = dataStoreService.doSubmit($scope.data);
+
+            promise.success(function (data, status) {
+                $scope.showSubmitSuccessMessage = true;
+            });
+
+            promise.error(function (data, status) {
+                $scope.showSubmitErrorMessage = true;
+                $('#submit_error_message').html('(' + status + ')');
+            });
         }
     }
 });

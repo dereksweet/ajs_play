@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  email: MyString
+  color: MyString
+  is_cool: false
+
+two:
+  first_name: MyString
+  email: MyString
+  color: MyString
+  is_cool: false
