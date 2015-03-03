@@ -27,10 +27,10 @@
             </div>
           </div>
           <div class="row">
-            <div class="small-2 columns">First Name:</div>
+            <div class="small-2 columns text-right">First Name:</div>
             <div class="small-5 columns left">
-              <input type="text" ng-model="data.firstName" name="firstName" placeholder="First Name" required>
-              <span ng-show="firstNameInvalid">Please enter a value for First Name</span>
+              <input class="no-bottom" type="text" ng-model="data.firstName" name="firstName" placeholder="First Name" required>
+              <span class="error" ng-show="firstNameInvalid">Please enter a value for First Name</span>
             </div>
           </div>
           <div class="row">&nbsp;</div>
@@ -40,10 +40,10 @@
             </div>
           </div>
           <div class="row">
-            <div class="small-2 columns">Email:</div>
+            <div class="small-2 columns text-right">Email:</div>
             <div class="small-5 columns left">
-              <input type="email" ng-model="data.email" name="email" placeholder="Email" required>
-              <span ng-show="emailInvalid">Please enter a proper email address</span>
+              <input class="no-bottom" type="email" ng-model="data.email" name="email" placeholder="Email" required>
+              <span class="error" ng-show="emailInvalid">Please enter a proper email address</span>
             </div>
           </div>
           <div class="row">&nbsp;</div>
@@ -53,12 +53,12 @@
             </div>
           </div>
           <div class="row">
-            <div class="small-2 columns">Colors:</div>
+            <div class="small-2 columns text-right">Colors:</div>
             <div class="small-5 columns left">
-              <select name="color" ng-model="data.colors" ng-options="obj.value as obj.label for obj in colors" required>
+              <select class="no-bottom" name="color" ng-model="data.colors" ng-options="obj.value as obj.label for obj in colors" required>
                 <option value="">Choose a color...</option>
               </select>
-              <span ng-show="colorInvalid">Please select a color</span>
+              <span class="error" ng-show="colorInvalid">Please select a color</span>
             </div>
           </div>
           <div class="row">&nbsp;</div>

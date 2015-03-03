@@ -5,4 +5,12 @@
   input[name='email'].ng-dirty.ng-valid {
     color: green;
   }
+
+  .no-bottom {
+    margin-bottom: 0px;
+  }
+
+  .error {
+    background-color: red;
+  }
 }
