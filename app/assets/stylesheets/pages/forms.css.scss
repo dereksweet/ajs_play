@@ -10,7 +10,13 @@
     margin-bottom: 0px;
   }
 
-  .error {
-    background-color: red;
+  .load_error, .submit_error {
+    color: red;
+    font-style: italic;
+  }
+
+  .load_success, .submit_success {
+    color: green;
+    font-style: italic;
   }
 }

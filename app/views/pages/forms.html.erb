@@ -13,8 +13,8 @@
     <div class="row">&nbsp;</div>
     <div class="row">
       <div class="small-12 columns">
-        <div ng-show="sampleForm.$pristine">Form input has not yet started</div>
-        <div ng-show="sampleForm.$dirty">Form input has started</div>
+        <div ng-show="sampleForm.$pristine"><b>Form input has not yet started</b></div>
+        <div ng-show="sampleForm.$dirty" class="submit_success"><b>Form input has started</b></div>
       </div>
     </div>
     <div class="row">&nbsp;</div>
@@ -29,8 +29,11 @@
           <div class="row">
             <div class="small-2 columns text-right">First Name:</div>
             <div class="small-5 columns left">
-              <input class="no-bottom" type="text" ng-model="data.firstName" name="firstName" placeholder="First Name" required>
+              <input class="no-bottom" type="text" ng-model="data.first_name" name="first_name" placeholder="First Name" required>
               <span class="error" ng-show="firstNameInvalid">Please enter a value for First Name</span>
+            </div>
+            <div class="small-2 columns left">
+              <input type="button" value="Load by First Name" ng-click="get_data()">
             </div>
           </div>
           <div class="row">&nbsp;</div>
@@ -55,7 +58,7 @@
           <div class="row">
             <div class="small-2 columns text-right">Colors:</div>
             <div class="small-5 columns left">
-              <select class="no-bottom" name="color" ng-model="data.colors" ng-options="obj.value as obj.label for obj in colors" required>
+              <select class="no-bottom" name="color" ng-model="data.color" ng-options="obj.value as obj.label for obj in colors" required>
                 <option value="">Choose a color...</option>
               </select>
               <span class="error" ng-show="colorInvalid">Please select a color</span>
@@ -77,13 +80,11 @@
           <div class="row">&nbsp;</div>
           <div class="row">
             <div class="small-12 columns">
-              <input type="submit" value="Submit" ng-click="submit_form()">
-            </div>
-          </div>
-          <div class="row">&nbsp;</div>
-          <div class="row">
-            <div class="small-12 columns">
-              <div ng-show="doShow">Thank you for submitting the form!</div>
+              <input type="submit" value="Submit"><br><br>
+              <div class="load_success" ng-show="showLoadSuccessMessage">Data Load completed succesfully!</div>
+              <div class="load_error" ng-show="showLoadErrorMessage">There was an error loading the data! <span id="load_error_message"></span></div>
+              <div class="submit_success" ng-show="showSubmitSuccessMessage">Form submitted succesfully!</div>
+              <div class="submit_error" ng-show="showSubmitErrorMessage">There was an error submitting the form! <span id="submit_error_message"></span></div>
             </div>
           </div>
         </form>
