@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require foundation
 //= require angular
+//= require angular-route
 //= require_tree .
 
 //= require_tree ./pages

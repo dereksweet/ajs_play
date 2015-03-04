@@ -1,0 +1,30 @@
+<% content_for :title do %>AngularJS Playground - Forms<% end %>
+
+<div class="row left" ng-app="routesApp" ng-controller="homeController">
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-12 columns"><h3>Routes</h3></div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns left">
+        Angular Routes allow us to do things like create Single Page Applications. Below is a view that can have its contents loaded from a template by clicking the links below. Note that the URL in your browser address bar is changing:
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="small-12 columns">
+        <a href="/routes#/">Home</a> &nbsp; | &nbsp;
+        <a href="/routes#/about">About</a> &nbsp; | &nbsp;
+        <a href="/routes#/contact/learn">Contact - Learn</a> &nbsp; | &nbsp;
+        <a href="/routes#/contact/complain">Contact - Complain</a> &nbsp; | &nbsp;
+        <a href="/routes#/blah">Undefined Route</a>
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="small-12 columns dynamic_view">
+        <div ng-view></div>
+      </div>
+    </div>
+  </div>
+</div>

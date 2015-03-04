@@ -12,4 +12,8 @@ class PagesController < ApplicationController
 
   end
 
+  def routes
+
+  end
+
 end
