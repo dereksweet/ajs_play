@@ -27,13 +27,13 @@
               <i>The following is an input for first name, does not have much validation on it.</i>
             </div>
           </div>
-          <div class="row">
-            <div class="small-2 columns text-right">First Name:</div>
+          <div class="row collapse">
+            <div class="small-1 columns inline right-margin text-right">First Name:</div>
             <div class="small-5 columns left">
               <input class="no-bottom" type="text" ng-model="data.first_name" name="first_name" placeholder="First Name" required>
               <span class="error" ng-show="firstNameInvalid">Please enter a value for First Name</span>
             </div>
-            <div class="small-2 columns left">
+            <div class="small-5 columns left left-margin">
               <input type="button" value="Load by First Name" ng-click="get_data()">
             </div>
           </div>
@@ -43,8 +43,8 @@
               <i>Here is an input for email, contains some validation on it.</i>
             </div>
           </div>
-          <div class="row">
-            <div class="small-2 columns text-right">Email:</div>
+          <div class="row collapse">
+            <div class="small-1 columns inline right-margin text-right">Email:</div>
             <div class="small-5 columns left">
               <input class="no-bottom" type="email" ng-model="data.email" name="email" placeholder="Email" required>
               <span class="error" ng-show="emailInvalid">Please enter a proper email address</span>
@@ -56,8 +56,8 @@
               <i>Here is a select dropdown, values populated from within the controller</i>
             </div>
           </div>
-          <div class="row">
-            <div class="small-2 columns text-right">Colors:</div>
+          <div class="row collapse">
+            <div class="small-1 columns inline right-margin text-right">Color:</div>
             <div class="small-5 columns left">
               <select class="no-bottom" name="color" ng-model="data.color" ng-options="obj.value as obj.label for obj in colors" required>
                 <option value="">Choose a color...</option>
@@ -72,7 +72,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="small-2 columns">&nbsp;</div>
+            <div class="small-1 columns inline right-margin">&nbsp;</div>
             <div class="small-5 columns left">
               <input type="checkbox" ng-model="data.is_cool" name="is_cool" id="is_cool" value="is_cool">
               <label for="is_cool">Check here if you are cool..</label>
