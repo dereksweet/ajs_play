@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/directives', to: 'pages#directives'
   get '/filters', to: 'pages#filters'
   get '/forms', to: 'pages#forms'
+  get '/routes', to: 'pages#routes'
 end
