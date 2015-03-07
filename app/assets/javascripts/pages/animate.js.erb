@@ -1,8 +1,8 @@
-var formsApp = angular.module("animateApp", []);
+var formsApp = angular.module("animateApp", ['ngAnimate']);
 
 formsApp.controller('MyAnimateCtrl', function ($scope) {
     var myData = {
-
+        on: false
     };
     $scope.data = myData;
 });

@@ -1,6 +1,6 @@
 <% content_for :title do %>AngularJS Playground - Animate<% end %>
 
-<div class="row left" ng-app="formsApp" ng-controller="MyFormsCtrl">
+<div class="row left" ng-app="animateApp" ng-controller="MyAnimateCtrl">
   <div class="small-12 columns">
     <div class="row">
       <div class="small-12 columns"><h3>Animation</h3></div>
@@ -8,6 +8,36 @@
     <div class="row">
       <div class="small-12 columns left">
         A sample of what can be done with Angular Animation.
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="small-12 columns left">
+        <div class="row">
+          <div class="small-1 columns left">&nbsp;</div>
+          <div class="small-11 columns left">
+            <div class="row">
+              <div class="small-12 columns">
+                <h3>Simple Fade-In-Out</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                This is about as simple as ngAnimate gets. Click the button to make the content fade in and out.
+              </div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+              <div class="small-12 columns">
+                <button ng-click="data.on=!data.on">Toggle Content</button>
+                <div class="simple-fade-in-out" ng-if="data.on">
+                  Look at me fade in and out. Isn't that cool!
+                </div>
+              </div>
+            </div>
+            <div class="row"><hr></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
