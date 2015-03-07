@@ -20,4 +20,8 @@ class PagesController < ApplicationController
 
   end
 
+  def references
+
+  end
+
 end

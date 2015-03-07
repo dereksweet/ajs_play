@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/forms', to: 'pages#forms'
   get '/routes', to: 'pages#routes'
   get '/animate', to: 'pages#animate'
+
+  get '/references', to: 'pages#references'
 end
