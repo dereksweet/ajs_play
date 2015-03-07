@@ -6,6 +6,16 @@ A simple set of AngularJS demonstrations that will be updated and added to over 
 
 To install simply download the repository into a folder on your machine, then from console type: 
 
-```
-bundle install
-```
+    bundle install
+
+That will install all the gems needed for the application. Then type the following: 
+
+    rake db:migrate
+
+That will migrate your local sqlite database and populate it with the tables necessary to run. 
+
+Then run a rails console by simply typing:
+
+    rails server
+  
+and visit your local copy of the application by opening a browser and visiting http://localhost:3000
