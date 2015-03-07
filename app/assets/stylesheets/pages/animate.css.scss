@@ -1,0 +1,64 @@
+.pages__animate {
+  label {
+    font-weight: bold;
+    display: inline;
+    padding-right: 10px;
+  }
+  .person-dropdown {
+    width: 250px;
+  }
+
+  // Simple Fade-In-Out Starting classes
+  .simple-fade-in-out.ng-enter {
+    -webkit-transition:0.5s linear all;
+    transition:0.5s linear all;
+    opacity: 0;
+  }
+  .simple-fade-in-out.ng-leave {
+    -webkit-transition:0.5s linear all;
+    transition:0.5s linear all;
+    opacity: 1;
+  }
+  // Simple Fade-In-Out Ending classes
+  .simple-fade-in-out.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
+  .simple-fade-in-out.ng-leave.ng-leave-active {
+    opacity: 0;
+  }
+
+
+  // Simple Slide classes
+  .simple-slide-container {
+    position: relative;
+    border: 1px solid black;
+    height: 120px;
+    overflow: hidden;
+  }
+  .simple-slide {
+    padding-left: 5px;
+  }
+  .simple-slide.ng-enter, .simple-slide.ng-leave {
+    transition: all ease-in 0.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  // Enter Event - start class
+  .simple-slide.ng-enter {
+    top: -50px;
+  }
+
+  // Enter Event - end class, Leave Event - start class
+  .simple-slide.ng-enter.ng-enter-active, .simple-slide.ng-leave {
+    top: 0px;
+  }
+
+  // Leave Event - end class
+  .simple-slide.ng-leave.ng-leave-active {
+    top: 100px;
+  }
+
+}

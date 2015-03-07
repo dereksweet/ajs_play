@@ -1,0 +1,14 @@
+var formsApp = angular.module("animateApp", ['ngAnimate']);
+
+formsApp.controller('MyAnimateCtrl', function ($scope) {
+    var myData = {
+        on: false
+    };
+    $scope.data = myData;
+
+    $scope.people = [
+        { name: 'Derek Sweet', url: '<%= asset_path('pages/animate/derek-sweet.html') %>' },
+        { name: 'Kelsey Sweet', url: '<%= asset_path('pages/animate/kelsey-sweet.html') %>' }
+    ];
+    $scope.selected_person = "";
+});

@@ -16,4 +16,8 @@ class PagesController < ApplicationController
 
   end
 
+  def animate
+
+  end
+
 end

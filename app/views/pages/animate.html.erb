@@ -1,0 +1,68 @@
+<% content_for :title do %>AngularJS Playground - Animate<% end %>
+
+<div class="row left" ng-app="animateApp" ng-controller="MyAnimateCtrl">
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-12 columns"><h3>Animation</h3></div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns left">
+        A sample of what can be done with Angular Animation.
+        You don't interact directly with ngAnimate, instead you just define your styles like you would for CSS3 animation and use ngAnimate directives to control the addition and removal of those styles.
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="small-12 columns left">
+        <div class="row">
+          <div class="small-1 columns left">&nbsp;</div>
+          <div class="small-11 columns left">
+            <div class="row">
+              <div class="small-12 columns">
+                <h3>Simple Fade-In-Out</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                This is about as simple as ngAnimate gets. Click the button to make the content fade in and out.
+              </div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+              <div class="small-12 columns">
+                <button ng-click="data.on=!data.on">Toggle Content</button>
+                <div class="simple-fade-in-out" ng-if="data.on">
+                  Look at me fade in and out. Isn't that cool!
+                </div>
+              </div>
+            </div>
+            <div class="row"><hr></div>
+            <div class="row">
+              <div class="small-12 columns">
+                <h3>Slide Animation</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                Slide content loaded from a template in and out when you change the selection in the dropdown.
+              </div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+              <div class="small-12 columns">
+                <label for="selected_person">Person:</label>
+                <select class="person-dropdown" id="selected_person" ng-model="selected_person" ng-options="p.name for p in people">
+                    <option value="">Please select a person..</option>
+                </select>
+                <div class="simple-slide-container">
+                  <div class="simple-slide" ng-include="selected_person.url"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row"><hr></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/filters', to: 'pages#filters'
   get '/forms', to: 'pages#forms'
   get '/routes', to: 'pages#routes'
+  get '/animate', to: 'pages#animate'
 end
