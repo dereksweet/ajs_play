@@ -1,0 +1,40 @@
+var paginationApp = angular.module("paginationApp", ['angularUtils.directives.dirPagination']);
+
+paginationApp.factory('dataStoreService', function ($http) {
+    var dataStore = {};
+
+    dataStore.loadData = function (page) {
+        return $http({ method: 'GET', url: '/api/countries?page=' + page })
+    };
+
+    return dataStore;
+});
+
+paginationApp.controller('MyPaginationCtrl', function ($scope, dataStoreService) {
+    var myData = {
+
+    };
+    $scope.data = myData;
+
+    $scope.currentPage = 1;
+
+    $scope.loadCountries = function(newPageNumber) {
+        newPageNumber = newPageNumber || $scope.currentPage;
+
+        var promise = dataStoreService.loadData(newPageNumber);
+
+        promise.success(function (data, status) {
+            if (data) {
+                $scope.countryCount = data.total_entries;
+                $scope.countries = data.models;
+            }
+            else {
+                alert('error - no data');
+            }
+        });
+
+        promise.error(function (data, status) {
+            alert('error - communication issue (' + status + ')');
+        });
+    };
+});

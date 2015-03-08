@@ -21,4 +21,12 @@ class ApiController < ApplicationController
     render json: { result: 'success' }
   end
 
+  def countries
+    page = params[:page] || 1
+
+    lower = (page.to_i-1)*15
+    upper = (page.to_i-1)*15+14
+    render json: { total_entries: Country.all.count, models: Country.all[lower..upper] }
+  end
+
 end

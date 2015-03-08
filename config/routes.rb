@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#directives'
 
+  get '/api/countries', to: 'api#countries'
   get '/api/get_data', to: 'api#get_data'
   post '/api/save_data', to: 'api#save_data'
 
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   get '/forms', to: 'pages#forms'
   get '/routes', to: 'pages#routes'
   get '/animate', to: 'pages#animate'
+  get '/pagination', to: 'pages#pagination'
 
   get '/references', to: 'pages#references'
 end
