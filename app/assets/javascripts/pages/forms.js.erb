@@ -3,12 +3,20 @@ var formsApp = angular.module("formsApp", []);
 formsApp.factory('dataStoreService', function ($http) {
     var dataStore = {};
 
-    dataStore.doSubmit = function (theData) {
-        return $http({ method: 'POST', url: 'api/save_data', data: theData });
+    dataStore.saveDatum = function (theData) {
+        return $http({ method: 'POST', url: 'api/save_datum', data: theData });
     };
 
-    dataStore.loadData = function (first_name) {
-        return $http({ method: 'GET', url: 'api/get_data?first_name=' + first_name })
+    dataStore.getDatum = function (first_name) {
+        return $http({ method: 'GET', url: 'api/get_datum?first_name=' + first_name });
+    };
+
+    dataStore.deleteDatum = function (first_name) {
+        return $http({ method: 'DELETE', url: 'api/delete_datum?first_name=' + first_name });
+    };
+
+    dataStore.getAllData = function () {
+        return $http({ method: 'GET', url: 'api/get_all_data' });
     };
 
     return dataStore;
@@ -29,6 +37,10 @@ formsApp.controller('MyFormsCtrl', function ($scope, dataStoreService) {
         { value: "yellow", label: "Yellow" }
     ];
 
+    $scope.datum_form = {};
+    $scope.form_template = '<%= asset_path('pages/forms/form.html') %>';
+    modal = $('#modal__form');
+
     reset_messages = function() {
         $scope.showSubmitSuccessMessage = false;
         $scope.showSubmitErrorMessage = false;
@@ -39,7 +51,7 @@ formsApp.controller('MyFormsCtrl', function ($scope, dataStoreService) {
     $scope.get_data = function() {
         reset_messages();
 
-        var promise = dataStoreService.loadData($scope.data.first_name);
+        var promise = dataStoreService.getDatum($scope.data.first_name);
 
         promise.success(function (data, status) {
             if (data) {
@@ -62,7 +74,93 @@ formsApp.controller('MyFormsCtrl', function ($scope, dataStoreService) {
             $scope.showLoadErrorMessage = true;
             $('#load_error_message').html('(' + status + ')');
         });
-    }
+    };
+
+    $scope.get_all_data = function () {
+        var promise = dataStoreService.getAllData();
+
+        promise.success(function (data, status) {
+            if (data) {
+                $scope.sample_data = data;
+            }
+            else {
+                alert('Error')
+            }
+
+        });
+
+        promise.error(function (data, status) {
+            alert('Error Communicating');
+        });
+    };
+
+    $scope.openModal = function() {
+        modal.foundation('reveal', 'open');
+    };
+
+    $scope.closeModal = function() {
+        modal.foundation('reveal', 'close');
+    };
+
+    $scope.edit_datum = function(first_name) {
+        var promise = dataStoreService.getDatum(first_name);
+
+        promise.success(function (data, status) {
+            if (data) {
+                $scope.datum_form.first_name = first_name;
+                $scope.datum_form.email = data.email;
+                $scope.datum_form.color = data.color;
+                $scope.datum_form.is_cool = data.is_cool;
+                $scope.openModal();
+            }
+            else {
+                alert('Error - no Data')
+            }
+
+        });
+
+        promise.error(function (data, status) {
+            alert('Error Communicating - ' + status);
+        });
+    };
+
+    $scope.update_datum = function() {
+        var theData = {
+            first_name: $scope.datum_form.first_name,
+            email: $scope.datum_form.email,
+            color: $scope.datum_form.color,
+            is_cool: $scope.datum_form.is_cool
+        };
+        var promise = dataStoreService.saveDatum(theData);
+
+        promise.success(function (data, status) {
+            if (data) {
+                $scope.closeModal();
+                $scope.get_all_data();
+            }
+            else {
+                alert('Error - no Data')
+            }
+
+        });
+
+        promise.error(function (data, status) {
+            alert('Error Communicating - ' + status);
+        });
+    };
+
+    $scope.delete_datum = function() {
+        var promise = dataStoreService.deleteDatum($scope.datum_form.first_name);
+
+        promise.success(function (data, status) {
+            $scope.closeModal();
+            $scope.get_all_data();
+        });
+
+        promise.error(function (data, status) {
+            alert('Error Communicating - ' + status);
+        });
+    };
 
     $scope.submit_form = function() {
         reset_messages();
@@ -84,10 +182,11 @@ formsApp.controller('MyFormsCtrl', function ($scope, dataStoreService) {
         }
 
         if ($scope.sampleForm.$valid) {
-            var promise = dataStoreService.doSubmit($scope.data);
+            var promise = dataStoreService.saveDatum($scope.data);
 
             promise.success(function (data, status) {
                 $scope.showSubmitSuccessMessage = true;
+                $scope.get_all_data();
             });
 
             promise.error(function (data, status) {

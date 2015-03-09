@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   root 'pages#directives'
 
   get '/api/countries', to: 'api#countries'
-  get '/api/get_data', to: 'api#get_data'
-  post '/api/save_data', to: 'api#save_data'
+  get '/api/get_datum', to: 'api#get_datum'
+  post '/api/save_datum', to: 'api#save_datum'
+  get '/api/get_all_data', to: 'api#get_all_data'
+  delete '/api/delete_datum', to: 'api#delete_datum'
 
   get '/directives', to: 'pages#directives'
   get '/filters', to: 'pages#filters'
