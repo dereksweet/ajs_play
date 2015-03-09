@@ -13,6 +13,12 @@
     </div>
     <div class="row">&nbsp;</div>
     <div class="row">
+      <div class="small-12 columns left">
+        <i>TODO: Clean these forms up, especially the backend functions..</i>
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
       <div class="small-12 columns">
         <div ng-show="sampleForm.$pristine"><b>Form input has not yet started</b></div>
         <div ng-show="sampleForm.$dirty" class="submit_success"><b>Form input has started</b></div>
@@ -91,5 +97,42 @@
         </form>
       </div>
     </div>
+    <div class="row"><hr></div>
+    <div class="row">
+      <div class="small-12 columns">
+        <h3>Modal Forms</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns left">
+        Combining the $http directive with reveal modal divs from Foundation5, we can make some pretty slick forms. Use the interface below to modify any of the datum from the section above.
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="small-12 columns">
+        <table ng-init="get_all_data()">
+          <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Email</th>
+            <th>Color</th>
+            <th>Is Cool?</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="datum in sample_data">
+              <td><a href="#" ng-click="edit_datum(datum.first_name)">{{ datum.first_name }}</a></td>
+              <td>{{ datum.email }}</td>
+              <td>{{ datum.color }}</td>
+              <td>{{ datum.is_cool }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div id="modal__form" class="reveal-modal form-modal small" data-reveal>
+    <div ng-include="form_template"></div>
   </div>
 </div>
