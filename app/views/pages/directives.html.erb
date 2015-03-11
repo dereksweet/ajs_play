@@ -17,7 +17,7 @@
         <div class="row">
           <div class="small-12 columns">
             <div class="row">
-              <div class="small-12 columns"><h4>Bound Input</h4></div>
+              <div class="small-12 columns"><h4>ngModel Directive</h4></div>
             </div>
             <div class="row">
               <div class="small-12 columns left">
@@ -48,7 +48,7 @@
             </div>
             <div class="row">
               <div class="small-12 columns left">
-                <i>Slightly more complex bound input that will evaluate whatever mathmatical expression is passed in. If it sums to 10 then a message will appear!</i>
+                <i>Slightly more complex bound input that will evaluate whatever mathmatical expression is passed in.<br>If it sums to 10 then a message will appear!</i>
               </div>
             </div>
             <div class="row">&nbsp;</div>
@@ -80,9 +80,9 @@
             <div class="row">&nbsp;</div>
 
             <div class="row" ng-init="count = 0">
-              <div class="small-2 columns left"><button ng-click="count = count + 1">Add 1</button></div>
-              <div class="small-2 columns left"><big>Count = {{ count }}</big></div>
               <div class="small-2 columns left"><button ng-click="count = count - 1">Take 1</button></div>
+              <div class="small-2 columns left"><big>Count = {{ count }}</big></div>
+              <div class="small-2 columns left"><button ng-click="count = count + 1">Add 1</button></div>
             </div>
           </div>
         </div>
