@@ -1,138 +1,141 @@
 <% content_for :title do %>AngularJS Playground - Forms<% end %>
 
-<div class="row left" ng-app="formsApp" ng-controller="MyFormsCtrl">
+<div ng-app="formsApp" class="row left">
   <div class="small-12 columns">
-    <div class="row">
-      <div class="small-12 columns"><h3>Forms</h3></div>
-    </div>
-    <div class="row">
-      <div class="small-12 columns left">
-        A sample of what can be done with Angular Forms. There is some validation on each of the fields and a conditional span that shows if a submit is attempted and they are invalid.
-        If all fields are valid then the data inputted will be stored in the database. You can type something into the First Name field and load previously saved data under that first name as well.
-      </div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-      <div class="small-12 columns left">
-        <i>TODO: Clean these forms up, especially the backend functions..</i>
-      </div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
+    <div class="row" ng-controller="MySimpleFormsCtrl">
       <div class="small-12 columns">
-        <div ng-show="sampleForm.$pristine"><b>Form input has not yet started</b></div>
-        <div ng-show="sampleForm.$dirty" class="submit_success"><b>Form input has started</b></div>
+        <div class="row">
+          <div class="small-12 columns"><h3>Forms</h3></div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns">
+            A sample of what can be done with Angular Forms. There is some validation on each of the fields and a conditional span that shows if a submit is attempted and they are invalid.
+            If all fields are valid then the data inputted will be stored in the database. You can type something into the First Name field and load previously saved data under that first name as well.
+            Also demonstrates the use of a sharedService to communicate events between controllers. A dataStoreService is shared between the controllers as well.
+          </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+          <div class="small-12 columns">
+            <div ng-show="sampleForm.$pristine"><b>Form input has not yet started</b></div>
+            <div ng-show="sampleForm.$dirty" class="submit_success"><b>Form input has started</b></div>
+          </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+          <div class="small-12 columns">
+            <form name="sampleForm" ng-submit="submit_form()" novalidate>
+              <div class="row">
+                <div class="small-12 columns">
+                  <i>The following is an input for first name, does not have much validation on it.</i>
+                </div>
+              </div>
+              <div class="row collapse">
+                <div class="small-1 columns inline right-margin text-right">First Name:</div>
+                <div class="small-5 columns left">
+                  <input class="no-bottom" type="text" ng-model="data.first_name" name="first_name" placeholder="First Name" required>
+                  <span class="error" ng-show="firstNameInvalid">Please enter a value for First Name</span>
+                </div>
+                <div class="small-5 columns left left-margin">
+                  <input type="button" value="Load by First Name" ng-click="get_data()">
+                </div>
+              </div>
+              <div class="row">&nbsp;</div>
+              <div class="row">
+                <div class="small-12 columns">
+                  <i>Here is an input for email, contains some validation on it.</i>
+                </div>
+              </div>
+              <div class="row collapse">
+                <div class="small-1 columns inline right-margin text-right">Email:</div>
+                <div class="small-5 columns left">
+                  <input class="no-bottom" type="email" ng-model="data.email" name="email" placeholder="Email" required>
+                  <span class="error" ng-show="emailInvalid">Please enter a proper email address</span>
+                </div>
+              </div>
+              <div class="row">&nbsp;</div>
+              <div class="row">
+                <div class="small-12 columns">
+                  <i>Here is a select dropdown, values populated from within the controller</i>
+                </div>
+              </div>
+              <div class="row collapse">
+                <div class="small-1 columns inline right-margin text-right">Color:</div>
+                <div class="small-5 columns left">
+                  <select class="no-bottom" name="color" ng-model="data.color" ng-options="obj.value as obj.label for obj in colors" required>
+                    <option value="">Choose a color...</option>
+                  </select>
+                  <span class="error" ng-show="colorInvalid">Please select a color</span>
+                </div>
+              </div>
+              <div class="row">&nbsp;</div>
+              <div class="row">
+                <div class="small-12 columns">
+                  <i>Here is a checkbox, default value comes from the controller.</i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-1 columns inline right-margin">&nbsp;</div>
+                <div class="small-5 columns left">
+                  <input type="checkbox" ng-model="data.is_cool" name="is_cool" id="is_cool" value="is_cool">
+                  <label for="is_cool">Check here if you are cool..</label>
+                </div>
+              </div>
+              <div class="row">&nbsp;</div>
+              <div class="row">
+                <div class="small-12 columns">
+                  <input type="submit" value="Submit"><br><br>
+                  <div class="load_success" ng-show="showLoadSuccessMessage">Data Load completed succesfully!</div>
+                  <div class="load_error" ng-show="showLoadErrorMessage">There was an error loading the data! <span id="load_error_message"></span></div>
+                  <div class="submit_success" ng-show="showSubmitSuccessMessage">Form submitted succesfully!</div>
+                  <div class="submit_error" ng-show="showSubmitErrorMessage">There was an error submitting the form! <span id="submit_error_message"></span></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
+    <div class="row left" ng-controller="MyModalFormsCtrl">
       <div class="small-12 columns">
-        <form name="sampleForm" ng-submit="submit_form()" novalidate>
-          <div class="row">
-            <div class="small-12 columns">
-              <i>The following is an input for first name, does not have much validation on it.</i>
-            </div>
+        <div class="row"><hr></div>
+        <div class="row">
+          <div class="small-12 columns">
+            <h3>Modal Forms</h3>
           </div>
-          <div class="row collapse">
-            <div class="small-1 columns inline right-margin text-right">First Name:</div>
-            <div class="small-5 columns left">
-              <input class="no-bottom" type="text" ng-model="data.first_name" name="first_name" placeholder="First Name" required>
-              <span class="error" ng-show="firstNameInvalid">Please enter a value for First Name</span>
-            </div>
-            <div class="small-5 columns left left-margin">
-              <input type="button" value="Load by First Name" ng-click="get_data()">
-            </div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns">
+            Combining the $http directive with reveal modal divs from Foundation5, we can make some pretty slick forms. Use the interface below to modify any of the datum from the section above.
           </div>
-          <div class="row">&nbsp;</div>
-          <div class="row">
-            <div class="small-12 columns">
-              <i>Here is an input for email, contains some validation on it.</i>
-            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+          <div class="small-12 columns">
+            <table ng-init="get_all_data()">
+              <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>Color</th>
+                <th>Is Cool?</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="datum in sample_data">
+                  <td><a href="#" ng-click="edit_datum(datum.first_name)">{{ datum.first_name }}</a></td>
+                  <td>{{ datum.email }}</td>
+                  <td>{{ datum.color }}</td>
+                  <td>{{ datum.is_cool }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="row collapse">
-            <div class="small-1 columns inline right-margin text-right">Email:</div>
-            <div class="small-5 columns left">
-              <input class="no-bottom" type="email" ng-model="data.email" name="email" placeholder="Email" required>
-              <span class="error" ng-show="emailInvalid">Please enter a proper email address</span>
-            </div>
-          </div>
-          <div class="row">&nbsp;</div>
-          <div class="row">
-            <div class="small-12 columns">
-              <i>Here is a select dropdown, values populated from within the controller</i>
-            </div>
-          </div>
-          <div class="row collapse">
-            <div class="small-1 columns inline right-margin text-right">Color:</div>
-            <div class="small-5 columns left">
-              <select class="no-bottom" name="color" ng-model="data.color" ng-options="obj.value as obj.label for obj in colors" required>
-                <option value="">Choose a color...</option>
-              </select>
-              <span class="error" ng-show="colorInvalid">Please select a color</span>
-            </div>
-          </div>
-          <div class="row">&nbsp;</div>
-          <div class="row">
-            <div class="small-12 columns">
-              <i>Here is a checkbox, default value comes from the controller.</i>
-            </div>
-          </div>
-          <div class="row">
-            <div class="small-1 columns inline right-margin">&nbsp;</div>
-            <div class="small-5 columns left">
-              <input type="checkbox" ng-model="data.is_cool" name="is_cool" id="is_cool" value="is_cool">
-              <label for="is_cool">Check here if you are cool..</label>
-            </div>
-          </div>
-          <div class="row">&nbsp;</div>
-          <div class="row">
-            <div class="small-12 columns">
-              <input type="submit" value="Submit"><br><br>
-              <div class="load_success" ng-show="showLoadSuccessMessage">Data Load completed succesfully!</div>
-              <div class="load_error" ng-show="showLoadErrorMessage">There was an error loading the data! <span id="load_error_message"></span></div>
-              <div class="submit_success" ng-show="showSubmitSuccessMessage">Form submitted succesfully!</div>
-              <div class="submit_error" ng-show="showSubmitErrorMessage">There was an error submitting the form! <span id="submit_error_message"></span></div>
-            </div>
-          </div>
-        </form>
+        </div>
+      </div>
+      <div id="modal__form" class="reveal-modal form-modal small" data-reveal>
+        <div ng-include="form_template"></div>
       </div>
     </div>
-    <div class="row"><hr></div>
-    <div class="row">
-      <div class="small-12 columns">
-        <h3>Modal Forms</h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 columns left">
-        Combining the $http directive with reveal modal divs from Foundation5, we can make some pretty slick forms. Use the interface below to modify any of the datum from the section above.
-      </div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-      <div class="small-12 columns">
-        <table ng-init="get_all_data()">
-          <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Email</th>
-            <th>Color</th>
-            <th>Is Cool?</th>
-          </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="datum in sample_data">
-              <td><a href="#" ng-click="edit_datum(datum.first_name)">{{ datum.first_name }}</a></td>
-              <td>{{ datum.email }}</td>
-              <td>{{ datum.color }}</td>
-              <td>{{ datum.is_cool }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div id="modal__form" class="reveal-modal form-modal small" data-reveal>
-    <div ng-include="form_template"></div>
   </div>
 </div>
