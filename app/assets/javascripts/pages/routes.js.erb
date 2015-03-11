@@ -22,6 +22,11 @@ routesApp.config(function ($routeProvider) {
                 controller: 'contactController'
             })
 
+            .when('/eager/:extra*', {
+                templateUrl: '<%= asset_path('pages/routes/eager.html') %>',
+                controller: 'eagerController'
+            })
+
             .otherwise({
                 templateUrl: '<%= asset_path('pages/routes/routeNotFound.html') %>',
                 controller: 'notFoundController'
@@ -53,6 +58,15 @@ routesApp.controller('contactController', function ($scope, $routeParams) {
     } else if ($routeParams['subject'] == 'complain') {
         $scope.showComplain = true;
     }
+});
+
+routesApp.controller('eagerController', function ($scope, $routeParams) {
+    var myData = {
+
+    };
+    $scope.data = myData;
+
+    $scope.extra = $routeParams['extra'];
 });
 
 routesApp.controller('notFoundController', function ($scope, $location) {
