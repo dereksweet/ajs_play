@@ -19,3 +19,5 @@ Then run a rails console by simply typing:
     rails server
   
 and visit your local copy of the application by opening a browser and visiting http://localhost:3000
+
+(or you could not be a noob and use .pow [http://pow.cx/]
