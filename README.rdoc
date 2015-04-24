@@ -1,6 +1,8 @@
 == AngularJS Playground
 
-A simple set of AngularJS demonstrations that will be updated and added to over time.
+A simple set of AngularJS demonstrations that will be updated and added to over time, please feel free to
+add your own demonstrations and submit a pull request. Also intended to serve as a template for integrating 
+AngularJS with Ruby on Rails, so any comments or modifications in that regard are welcome! 
 
 === Installation Instructions
 
