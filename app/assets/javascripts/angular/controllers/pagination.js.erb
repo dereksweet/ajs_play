@@ -1,0 +1,34 @@
+var moduleName = "paginationApp";
+var controllerName = "paginationCtrl";
+
+var paginationApp = angular.module(moduleName, ['angularUtils.directives.dirPagination']);
+
+paginationCtrl = function ($scope, dataStoreService) {
+  $scope.data = {
+
+  };
+
+  $scope.currentPage = 1;
+
+  $scope.loadCountries = function(newPageNumber) {
+    newPageNumber = newPageNumber || $scope.currentPage;
+
+    var promise = dataStoreService.loadCountries(newPageNumber);
+
+    promise.success(function (data, status) {
+      if (data) {
+        $scope.countryCount = data.total_entries;
+        $scope.countries = data.models;
+      }
+      else {
+        alert('error - no data');
+      }
+    });
+
+    promise.error(function (data, status) {
+      alert('error - communication issue (' + status + ')');
+    });
+  };
+};
+paginationCtrl.$inject = ['$scope', 'dataStoreService'];
+paginationApp.controller(controllerName, paginationCtrl);

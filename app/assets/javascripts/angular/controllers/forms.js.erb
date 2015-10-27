@@ -1,0 +1,184 @@
+var moduleName = "formsApp";
+
+var formsApp = angular.module(moduleName, []);
+
+var mySimpleFormsCtrl = function ($scope, dataStoreService, dataShareService) {
+    $scope.data = {
+        first_name: "",
+        email: "",
+        color: "",
+        is_cool: true
+    };
+    $scope.colors = dataShareService.colors;
+
+    reset_messages = function () {
+        $scope.showSubmitSuccessMessage = false;
+        $scope.showSubmitErrorMessage = false;
+        $scope.showLoadSuccessMessage = false;
+        $scope.showLoadErrorMessage = false;
+    };
+
+    $scope.get_data = function () {
+        reset_messages();
+
+        var promise = dataStoreService.getDatum($scope.data.first_name);
+
+        promise.success(function (data, status) {
+            if (data) {
+                $scope.data.email = data.email;
+                $scope.data.color = data.color;
+                $scope.data.is_cool = data.is_cool;
+
+                $scope.sampleForm.email.$setDirty();
+                $scope.sampleForm.color.$setDirty();
+                $scope.sampleForm.is_cool.$setDirty();
+
+                $scope.showLoadSuccessMessage = true;
+            }
+            else {
+                $scope.showLoadErrorMessage = true;
+            }
+        });
+
+        promise.error(function (data, status) {
+            $scope.showLoadErrorMessage = true;
+            $('#load_error_message').html('(' + status + ')');
+        });
+    };
+
+    $scope.submit_form = function() {
+        reset_messages();
+
+        $scope.firstNameInvalid = false;
+        $scope.emailInvalid = false;
+        $scope.colorInvalid = false;
+
+        if ($scope.sampleForm.first_name.$invalid){
+            $scope.firstNameInvalid = true;
+        }
+
+        if ($scope.sampleForm.email.$invalid){
+            $scope.emailInvalid = true;
+        }
+
+        if ($scope.sampleForm.color.$invalid){
+            $scope.colorInvalid = true;
+        }
+
+        if ($scope.sampleForm.$valid) {
+            var promise = dataStoreService.saveDatum($scope.data);
+
+            promise.success(function (data, status) {
+                $scope.showSubmitSuccessMessage = true;
+                //$scope.get_all_data();
+                dataShareService.get_all_data();
+            });
+
+            promise.error(function (data, status) {
+                $scope.showSubmitErrorMessage = true;
+                $('#submit_error_message').html('(' + status + ')');
+            });
+        }
+    }
+};
+mySimpleFormsCtrl.$inject = ['$scope', 'dataStoreService', 'dataShareService'];
+formsApp.controller('mySimpleFormsCtrl', mySimpleFormsCtrl);
+
+myModalFormsCtrl = function ($scope, dataStoreService, dataShareService) {
+  $scope.datum_form = {};
+  $scope.form_template = '<%= asset_path('pages/forms/form.html') %>';
+  $scope.colors = dataShareService.colors;
+  modal = $('#modal__form');
+
+  $scope.$on('get_all_data', function() {
+      $scope.get_all_data();
+  });
+
+  $scope.get_all_data = function () {
+      var promise = dataStoreService.getAllData();
+
+      promise.success(function (data, status) {
+          if (data) {
+              $scope.sample_data = data;
+          }
+          else {
+              alert('Error')
+          }
+
+      });
+
+      promise.error(function (data, status) {
+          alert('Error Communicating');
+      });
+  };
+
+  $scope.openModal = function() {
+      modal.foundation('reveal', 'open');
+  };
+
+  $scope.closeModal = function() {
+      modal.foundation('reveal', 'close');
+  };
+
+  $scope.edit_datum = function(first_name) {
+      var promise = dataStoreService.getDatum(first_name);
+
+      promise.success(function (data, status) {
+          if (data) {
+              $scope.datum_form.first_name = first_name;
+              $scope.datum_form.email = data.email;
+              $scope.datum_form.color = data.color;
+              $scope.datum_form.is_cool = data.is_cool;
+              $scope.openModal();
+          }
+          else {
+              alert('Error - no Data')
+          }
+
+      });
+
+      promise.error(function (data, status) {
+          alert('Error Communicating - ' + status);
+      });
+  };
+
+  $scope.update_datum = function() {
+      var theData = {
+          first_name: $scope.datum_form.first_name,
+          email: $scope.datum_form.email,
+          color: $scope.datum_form.color,
+          is_cool: $scope.datum_form.is_cool
+      };
+      var promise = dataStoreService.saveDatum(theData);
+
+      promise.success(function (data, status) {
+          if (data) {
+              $scope.closeModal();
+              $scope.get_all_data();
+          }
+          else {
+              alert('Error - no Data')
+          }
+
+      });
+
+      promise.error(function (data, status) {
+          alert('Error Communicating - ' + status);
+      });
+  };
+
+  $scope.delete_datum = function() {
+      var promise = dataStoreService.deleteDatum($scope.datum_form.first_name);
+
+      promise.success(function (data, status) {
+          $scope.closeModal();
+          $scope.get_all_data();
+      });
+
+      promise.error(function (data, status) {
+          alert('Error Communicating - ' + status);
+      });
+  };
+};
+myModalFormsCtrl.$inject = ['$scope', 'dataStoreService', 'dataShareService'];
+formsApp.controller('myModalFormsCtrl', myModalFormsCtrl);

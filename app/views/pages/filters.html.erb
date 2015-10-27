@@ -1,6 +1,13 @@
+<!-- Reference controller for this page --->
+<%= javascript_include_tag asset_path('angular/controllers/filters.js') %>
+
+<!-- Reference any filters to be employed -->
+<%= javascript_include_tag asset_path('angular/filters/strip-dashes.js') %>
+<%= javascript_include_tag asset_path('angular/filters/title-case.js') %>
+
 <% content_for :title do %>AngularJS Playground - Filters<% end %>
 
-<div class="row left" ng-app="filtersApp" ng-controller="MyFiltersDataCtrl">
+<div class="row left" ng-app="filtersApp" ng-controller="filtersCtrl">
   <div class="small-12 columns">
     <div class="row">
       <div class="small-12 columns">

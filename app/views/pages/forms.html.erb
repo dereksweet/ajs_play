@@ -1,8 +1,15 @@
+<!-- Reference controller for this page --->
+<%= javascript_include_tag asset_path('angular/controllers/forms.js') %>
+
+<!-- Reference services for this page --->
+<%= javascript_include_tag asset_path('angular/services/data-share.js') %>
+<%= javascript_include_tag asset_path('angular/services/data-store.js') %>
+
 <% content_for :title do %>AngularJS Playground - Forms<% end %>
 
 <div ng-app="formsApp" class="row left">
   <div class="small-12 columns">
-    <div class="row" ng-controller="MySimpleFormsCtrl">
+    <div class="row" ng-controller="mySimpleFormsCtrl">
       <div class="small-12 columns">
         <div class="row">
           <div class="small-12 columns"><h3>Forms</h3></div>
@@ -96,7 +103,7 @@
         </div>
       </div>
     </div>
-    <div class="row left" ng-controller="MyModalFormsCtrl">
+    <div class="row left" ng-controller="myModalFormsCtrl">
       <div class="small-12 columns">
         <div class="row"><hr></div>
         <div class="row">

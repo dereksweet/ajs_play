@@ -1,6 +1,12 @@
+<!-- Reference controller for this page --->
+<%= javascript_include_tag asset_path('angular/controllers/pagination.js') %>
+
+<!-- Reference services for this page --->
+<%= javascript_include_tag asset_path('angular/services/data-store.js') %>
+
 <% content_for :title do %>AngularJS Playground - Pagination<% end %>
 
-<div class="row left" ng-app="paginationApp" ng-controller="MyPaginationCtrl" ng-init="loadCountries()">
+<div class="row left" ng-app="paginationApp" ng-controller="paginationCtrl" ng-init="loadCountries()">
   <div class="small-12 columns">
     <div class="row">
       <div class="small-12 columns"><h3>Pagination</h3></div>

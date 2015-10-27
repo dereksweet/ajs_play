@@ -1,6 +1,13 @@
+<!-- Reference controller for this page --->
+<%= javascript_include_tag asset_path('angular/controllers/directives.js') %>
+
+<!-- Reference any directives to be employed -->
+<%= javascript_include_tag asset_path('angular/directives/ng-show-hide.js') %>
+<%= javascript_include_tag asset_path('angular/directives/ng-current-time.js') %>
+
 <% content_for :title do %>AngularJS Playground - Directives<% end %>
 
-<div class="row left" ng-app="directivesApp" ng-controller="MyDirectivesCtrl">
+<div class="row left" ng-app="directivesApp" ng-controller="directivesCtrl">
   <div class="small-12 columns">
     <div class="row">
       <div class="small-12 columns"><h3>Simple Directives</h3></div>

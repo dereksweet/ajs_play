@@ -1,6 +1,9 @@
+<!-- Reference controller for this page --->
+<%= javascript_include_tag asset_path('angular/controllers/animate.js') %>
+
 <% content_for :title do %>AngularJS Playground - Animate<% end %>
 
-<div class="row left" ng-app="animateApp" ng-controller="MyAnimateCtrl">
+<div class="row left" ng-app="animateApp" ng-controller="animateCtrl">
   <div class="small-12 columns">
     <div class="row">
       <div class="small-12 columns"><h3>Animation</h3></div>

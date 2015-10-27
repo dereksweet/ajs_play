@@ -18,9 +18,8 @@
 //= require angular-route
 //= require angular-animate
 //= require dirPagination
-//= require_tree .
 
-//= require_tree ./pages
+// require_tree ./pages
 
 $(function() {
   $(document).foundation();

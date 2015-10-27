@@ -23,6 +23,25 @@ module AjsPlay
     # For Foundation 5
     config.assets.precompile += %w( vendor/modernizr )
 
+    # Angular Controllers
+    config.assets.precompile += %w( angular/controllers/directives.js
+                                    angular/controllers/filters.js
+                                    angular/controllers/forms.js
+                                    angular/controllers/routes.js
+                                    angular/controllers/animate.js
+                                    angular/controllers/pagination.js )
+
+    # Angular Directives
+    config.assets.precompile += %w( angular/directives/ng-current-time.js
+                                    angular/directives/ng-show-hide.js )
+
+    # Angular Filters
+    config.assets.precompile += %w( angular/filters/strip-dashes.js
+                                    angular/filters/title-case.js )
+
+    # Angular Services
+    config.assets.precompile += %w( angular/services/data-share.js
+                                    angular/services/data-store.js )
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
