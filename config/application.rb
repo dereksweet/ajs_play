@@ -24,12 +24,12 @@ module AjsPlay
     config.assets.precompile += %w( vendor/modernizr )
 
     # Angular Controllers
-    config.assets.precompile += %w( angular/controllers/directives.js
-                                    angular/controllers/filters.js
-                                    angular/controllers/forms.js
-                                    angular/controllers/routes.js
-                                    angular/controllers/animate.js
-                                    angular/controllers/pagination.js )
+    config.assets.precompile += %w( angular/controllers/pages/directives.js
+                                    angular/controllers/pages/filters.js
+                                    angular/controllers/pages/forms.js
+                                    angular/controllers/pages/routes.js
+                                    angular/controllers/pages/animate.js
+                                    angular/controllers/pages/pagination.js )
 
     # Angular Directives
     config.assets.precompile += %w( angular/directives/ng-current-time.js
