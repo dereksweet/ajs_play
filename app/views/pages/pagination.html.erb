@@ -29,8 +29,8 @@
           </thead>
           <tbody>
             <tr dir-paginate="country in countries | itemsPerPage: 15" total-items="countryCount" current-page="currentPage">
-              <td>{{ country[0] }}</td>
-              <td>{{ country[1] }}</td>
+              <td>{{ country.data.name }}</td>
+              <td>{{ country.data.alpha3 }}</td>
             </tr>
           </tbody>
         </table>

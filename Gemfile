@@ -18,7 +18,7 @@ gem 'foundation-rails'
 gem 'rails_layout'
 gem 'angularjs-rails'
 
-gem 'countries'
+gem 'countries', :require => 'global'
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
