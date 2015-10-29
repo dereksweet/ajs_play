@@ -7,121 +7,131 @@
 
 <% content_for :title do %>AngularJS Playground - Directives<% end %>
 
-<div class="section-header">
-  <div class="section-title">Simple Directives</div>
-  <div class="section-description">A series of simple directives that come pre-built with AngularJS</div>
-</div>
+<div ng-app="directivesApp" ng-controller="directivesCtrl">
+  <div class="section-header">
+    <div class="section-title">Simple Directives</div>
+    <div class="section-description">A series of simple directives that come pre-built with AngularJS</div>
+  </div>
 
-<div class="row left" ng-app="directivesApp" ng-controller="directivesCtrl">
-  <div class="small-12 columns">
-    <div class="row">
-      <div class="small-12 columns left">
-
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="example">
+        <div class="example-header">
+          <span class="example-title">ngModel Directive</span><br>
+          <span class="example-description">Simple bound input that repeats whatever you type inside it in the div below it.</span>
+        </div>
+        <div class="example-body">
+          <div class="row">
+            <div class="small-2 columns text-right">Enter Something:</div>
+            <div class="small-10 columns"><input ng-model="boundinput" type="text" class="simple-input" style="width: 200px;"></div>
+          </div>
+          <div class="row">
+            <div class="small-2 columns text-right">You Entered:</div>
+            <div class="small-10 columns">{{ boundinput }}</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-      <div class="small-1 columns">&nbsp;</div>
-      <div class="small-11 columns">
-        <div class="row">
-          <div class="small-12 columns">
-            <div class="row">
-              <div class="small-12 columns"><h4>ngModel Directive</h4></div>
-            </div>
-            <div class="row">
-              <div class="small-12 columns left">
-                Simple bound input that repeats whatever you type inside it in the div below it.
-              </div>
-            </div>
-            <div class="row">&nbsp;</div>
-
-            <div class="row">
-              <div class="small-2 columns left">Enter Something: </div>
-              <div class="small-2 columns left"><input ng-model="boundinput" type="text"></div>
-            </div>
-            <div class="row">
-              <div class="small-2 columns left">You Entered: </div>
-              <div class="small-2 columns left">{{ boundinput }}</div>
-            </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="example">
+        <div class="example-header">
+          <span class="example-title">ngShow Directive</span><br>
+          <span class="example-description">Slightly more complex bound input that will evaluate whatever mathmatical expression is passed in. If it sums to 10 then a message will appear!</span>
+        </div>
+        <div class="example-body">
+          <div class="row">
+            <div class="small-3 columns text-right">Enter Mathmatical Expression:</div>
+            <div class="small-9 columns"><input ng-model="mathexpression" type="text" style="width: 200px;"></div>
+          </div>
+          <div class="row">
+            <div ng-show="$eval(mathexpression) == 10" class="small-12 columns">I appear when the expression is equal to 10!</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="row">
-          <div class="small-12 columns"><hr></div>
-        </div>
-
-        <div class="row">
-          <div class="small-12 columns">
-            <div class="row">
-              <div class="small-12 columns"><h4>ngShow Directive</h4></div>
-            </div>
-            <div class="row">
-              <div class="small-12 columns left">
-                <i>Slightly more complex bound input that will evaluate whatever mathmatical expression is passed in.<br>If it sums to 10 then a message will appear!</i>
+  
+  <div class="row left">
+    <div class="small-12 columns">
+      <div class="row">
+        <div class="small-1 columns">&nbsp;</div>
+        <div class="small-11 columns">
+          <div class="row">
+            <div class="small-12 columns">
+              <div class="row">
+                <div class="small-12 columns"><h4></h4></div>
               </div>
-            </div>
-            <div class="row">&nbsp;</div>
+              <div class="row">
+                <div class="small-12 columns left">
+                  <i></i>
+                </div>
+              </div>
+              <div class="row">&nbsp;</div>
 
-            <div class="row">
-              <div class="small-3 columns left">Enter Mathmatical Expression: </div>
-              <div class="small-2 columns left"><input ng-model="mathexpression" type="text"></div>
-            </div>
-            <div class="row">
-              <div ng-show="$eval(mathexpression) == 10" class="small-12 columns left">I appear when the expression is equal to 10!</div>
+              <div class="row">
+                <div class="small-3 columns left"></div>
+                <div class="small-2 columns left"></div>
+              </div>
+              <div class="row">
+
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="small-12 columns"><hr></div>
-        </div>
+          <div class="row">
+            <div class="small-12 columns"><hr></div>
+          </div>
 
-        <div class="row">
-          <div class="small-12 columns">
-            <div class="row">
-              <div class="small-12 columns"><h4>ngClick Directive</h4></div>
-            </div>
-            <div class="row">
-              <div class="small-12 columns left">
-                <i>Buttons that add and subtract one to or from the counter each time you click them. Simple as pie!</i>
+          <div class="row">
+            <div class="small-12 columns">
+              <div class="row">
+                <div class="small-12 columns"><h4>ngClick Directive</h4></div>
               </div>
-            </div>
-            <div class="row">&nbsp;</div>
+              <div class="row">
+                <div class="small-12 columns left">
+                  <i>Buttons that add and subtract one to or from the counter each time you click them. Simple as pie!</i>
+                </div>
+              </div>
+              <div class="row">&nbsp;</div>
 
-            <div class="row" ng-init="count = 0">
-              <div class="small-2 columns left"><button ng-click="count = count - 1">Take 1</button></div>
-              <div class="small-2 columns left"><big>Count = {{ count }}</big></div>
-              <div class="small-2 columns left"><button ng-click="count = count + 1">Add 1</button></div>
+              <div class="row" ng-init="count = 0">
+                <div class="small-2 columns left"><button ng-click="count = count - 1">Take 1</button></div>
+                <div class="small-2 columns left"><big>Count = {{ count }}</big></div>
+                <div class="small-2 columns left"><button ng-click="count = count + 1">Add 1</button></div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="small-12 columns"><hr></div>
-        </div>
+          <div class="row">
+            <div class="small-12 columns"><hr></div>
+          </div>
 
-        <div class="row">
-          <div class="small-12 columns">
-            <div class="row">
-              <div class="small-12 columns"><h4>ngRepeat Directive</h4></div>
-            </div>
-            <div class="row">
-              <div class="small-12 columns left">
-                <i>Defines the following array: ['Item 1', 'Item 2', 'Item 3'], and then repeats &lt;p&gt; tags displaying the contents.<br>
-                  Click the button below to add an item to the array.</i>
+          <div class="row">
+            <div class="small-12 columns">
+              <div class="row">
+                <div class="small-12 columns"><h4>ngRepeat Directive</h4></div>
               </div>
-            </div>
-            <div class="row">&nbsp;</div>
-
-            <div class="row">
-              <div class="small-12 columns left">
-                <button ng-click="my_count = my_count + 1;my_array.push('Item ' + my_count)">Add an Item</button>
+              <div class="row">
+                <div class="small-12 columns left">
+                  <i>Defines the following array: ['Item 1', 'Item 2', 'Item 3'], and then repeats &lt;p&gt; tags displaying the contents.<br>
+                    Click the button below to add an item to the array.</i>
+                </div>
               </div>
-            </div>
-            <div class="row" ng-init="my_array = ['Item 1', 'Item 2', 'Item 3']; my_count = 3">
-              <div class="small-5 columns left">
-                <div class="row" ng-repeat="item in my_array">
-                  <div class="small-12 columns">{{item}}</div>
+              <div class="row">&nbsp;</div>
+
+              <div class="row">
+                <div class="small-12 columns left">
+                  <button ng-click="my_count = my_count + 1;my_array.push('Item ' + my_count)">Add an Item</button>
+                </div>
+              </div>
+              <div class="row" ng-init="my_array = ['Item 1', 'Item 2', 'Item 3']; my_count = 3">
+                <div class="small-5 columns left">
+                  <div class="row" ng-repeat="item in my_array">
+                    <div class="small-12 columns">{{item}}</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -129,73 +139,74 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="small-12 columns"><hr></div>
-  </div>
-
-  <div class="row">
-    <div class="small-12 columns">
-      <div class="row">
-        <div class="small-12 columns"><h3>Custom Directives</h3></div>
-      </div>
-      <div class="row">
-        <div class="small-12 columns left">
-          Custom directives that have been defined for this playground specifically
-        </div>
-      </div>
-      <div class="row">&nbsp;</div>
-      <div class="row">
-        <div class="small-1 columns">&nbsp;</div>
-        <div class="small-11 columns">
-          <div class="row">
-            <div class="small-12 columns">
-              <h4>ngShowHide</h4>
-            </div>
-          </div>
-          <div class="row">
-            <div class="small-12 columns left">
-              <i>A custom directive, ngShowHide, has been defined in the controller script. It can be included as it's own tag like &lt;ng-showHide&gt; or as an attributes like &lt;div ng-showHide&gt;.
-              A 'scope: {}' param has been added as well to make all scope variables local per the instance.</i><br>
-            </div>
-          </div>
-          <div class="row">&nbsp;</div>
-
-          <div class="row">
-            <div class="small-4 columns left">Attribute (<b>&lt;div ng-show-hide&gt;</b>):</div>
-            <div class="small-8 columns left">
-              <div ng-show-hide></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="small-4 columns left">Tag (<b>&lt;ng-show-hide&gt;</b>):</div>
-            <div class="small-8 columns left">
-              <ng-show-hide />
-            </div>
-          </div>
-          <div class="row">
-            <div class="small-12 columns">
-              <h4>ngCurrentTime</h4>
-            </div>
-          </div>
-          <div class="row">
-            <div class="small-12 columns left">
-              <i>Another custom directive, ngCurrentTime, has been defined that simply shows the current time and keeps it updated.</i><br>
-            </div>
-          </div>
-          <div class="row">&nbsp;</div>
-          <div class="row">
-            <div class="small-3 columns left">CurrentTime:</div>
-            <div class="small-9 columns left">
-              <ng-current-time />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="row">
       <div class="small-12 columns"><hr></div>
     </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="row">
+          <div class="small-12 columns"><h3>Custom Directives</h3></div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns left">
+            Custom directives that have been defined for this playground specifically
+          </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+          <div class="small-1 columns">&nbsp;</div>
+          <div class="small-11 columns">
+            <div class="row">
+              <div class="small-12 columns">
+                <h4>ngShowHide</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns left">
+                <i>A custom directive, ngShowHide, has been defined in the controller script. It can be included as it's own tag like &lt;ng-showHide&gt; or as an attributes like &lt;div ng-showHide&gt;.
+                  A 'scope: {}' param has been added as well to make all scope variables local per the instance.</i><br>
+              </div>
+            </div>
+            <div class="row">&nbsp;</div>
+
+            <div class="row">
+              <div class="small-4 columns left">Attribute (<b>&lt;div ng-show-hide&gt;</b>):</div>
+              <div class="small-8 columns left">
+                <div ng-show-hide></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-4 columns left">Tag (<b>&lt;ng-show-hide&gt;</b>):</div>
+              <div class="small-8 columns left">
+                <ng-show-hide />
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                <h4>ngCurrentTime</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns left">
+                <i>Another custom directive, ngCurrentTime, has been defined that simply shows the current time and keeps it updated.</i><br>
+              </div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+              <div class="small-3 columns left">CurrentTime:</div>
+              <div class="small-9 columns left">
+                <ng-current-time />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns"><hr></div>
+      </div>
+    </div>
   </div>
+
 </div>
