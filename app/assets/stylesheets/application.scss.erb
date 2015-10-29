@@ -12,7 +12,6 @@
  *
  * require_tree .
  *= require_self
- *= require framework_and_overrides
  *= require foundation_and_overrides
 
  *= require pages.scss.erb
@@ -26,6 +25,9 @@
   font-style: normal;
 }
 
+.top-bar {
+    padding-top: 10px;
+}
 
 header {
   border-bottom: 2px solid gray;
@@ -33,6 +35,14 @@ header {
 
   span {
     display: inline-block;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
   }
 }
 

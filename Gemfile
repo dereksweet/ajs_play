@@ -15,7 +15,6 @@ gem 'jbuilder'
 gem 'sdoc', group: :doc
 
 gem 'foundation-rails'
-gem 'rails_layout'
 gem 'angularjs-rails'
 
 gem 'countries', :require => 'global'
