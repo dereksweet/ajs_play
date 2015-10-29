@@ -1,15 +1,15 @@
 <%# navigation styled for Zurb Foundation 5 %>
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
-    <li class="name"><%= link_to 'AngularJS Playground', root_path %></li>
+    <li class="name">
+      <span class="logo"><%= link_to 'TheSweet', references_path %></span>
+      <%= link_to 'Angular1.X Playground', references_path %>
+    </li>
     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
   <div class="top-bar-section">
-    <ul class="navigation_links">
+    <ul class="navigation_links right">
       <%= render 'layouts/navigation_links' %>
     </ul>
-    <div class="navigation_links right" style="padding-right: 25px">
-      <a href="/references" data-method="get">References</a>
-    </div>
   </div>
 </nav>

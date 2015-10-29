@@ -8,7 +8,8 @@
 .top-bar .name a {
   font-weight: normal;
   color: white;
-  padding: 0 15px; }
+  padding: 0 15px;
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
@@ -41,6 +42,7 @@
 main {
   @include twelve-columns;
   background-color: #fff;
+  padding: 0px;
   }
 section {
   @extend .row;
