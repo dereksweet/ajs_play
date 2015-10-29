@@ -7,7 +7,7 @@
 
 <% content_for :title do %>AngularJS Playground - Directives<% end %>
 
-<div ng-app="directivesApp" ng-controller="directivesCtrl">
+<div ng-app="directivesApp" ng-controller="directivesCtrl" ng-cloak>
   <div class="section-header">
     <div class="section-title">Simple Directives</div>
     <div class="section-description">A series of simple directives that come pre-built with AngularJS</div>
@@ -23,7 +23,7 @@
         <div class="example-body">
           <div class="row">
             <div class="small-2 columns text-right">Enter Something:</div>
-            <div class="small-10 columns"><input ng-model="boundinput" type="text" class="simple-input" style="width: 200px;"></div>
+            <div class="small-10 columns"><input ng-model="boundinput" type="text" style="width: 200px;"></div>
           </div>
           <div class="row">
             <div class="small-2 columns text-right">You Entered:</div>
@@ -43,17 +43,17 @@
         <div class="example-body">
           <div class="row">
             <div class="small-3 columns text-right">Enter Mathmatical Expression:</div>
-            <div class="small-9 columns"><input ng-model="mathexpression" type="text" style="width: 200px;"></div>
-          </div>
-          <div class="row">
-            <div ng-show="$eval(mathexpression) == 10" class="small-12 columns">I appear when the expression is equal to 10!</div>
+            <div class="small-9 columns">
+              <input ng-model="mathexpression" type="text" style="width: 200px; display: inline-block">
+              <span ng-show="$eval(mathexpression) == 10" style="padding-left: 25px;">I appear when the expression is equal to 10!</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  
+
   <div class="row left">
     <div class="small-12 columns">
       <div class="row">
