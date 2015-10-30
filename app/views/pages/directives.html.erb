@@ -27,7 +27,7 @@
           </div>
           <div class="row">
             <div class="small-12 medium-2 columns medium-text-right">You Entered:</div>
-            <div class="small-12 medium-10 columns">{{ boundinput }}</div>
+            <div class="small-12 medium-10 columns">&nbsp;{{ boundinput }}&nbsp;</div>
           </div>
         </div>
       </div>
@@ -42,10 +42,58 @@
         </div>
         <div class="example-body">
           <div class="row">
-            <div class="small-3 columns text-right">Enter Mathmatical Expression:</div>
-            <div class="small-9 columns">
-              <input ng-model="mathexpression" type="text" style="width: 200px; display: inline-block">
-              <span ng-show="$eval(mathexpression) == 10" style="padding-left: 25px;">I appear when the expression is equal to 10!</span>
+            <div class="small-12 medium-3 columns medium-text-right">Enter Mathmatical Expression:</div>
+            <div class="small-12 medium-9 columns">
+              <input ng-model="mathexpression" type="text" style="width: 200px; display: inline-block"><br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 medium-9 columns right">
+              &nbsp;<span ng-show="$eval(mathexpression) == 10">I appear when the expression is equal to 10!</span>&nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="example">
+        <div class="example-header">
+          <span class="example-title">ngClick Directive</span><br>
+          <span class="example-description">Buttons that add and subtract one to or from the counter each time you click them. Simple as pie!</span>
+        </div>
+        <div class="example-body">
+          <div class="row" ng-init="count = 0">
+            <div class="small-3 medium-1 columns"><button class="button tiny radius" ng-click="count = count - 1">-1</button></div>
+            <div class="small-3 medium-1 columns end text-right"><button class="button tiny radius" ng-click="count = count + 1">+1</button></div>
+          </div>
+          <div class="row">
+            <div class="small-6 medium-2 columns text-center">Count = {{ count }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="example">
+        <div class="example-header">
+          <span class="example-title">ngRepeat Directive</span><br>
+          <span class="example-description">
+            Defines the following array: ['1', '2', '3'], and then repeats &lt;p&gt; tags displaying the contents.
+            Click the button below to add an item to the array.
+          </span>
+        </div>
+        <div class="example-body">
+          <div class="row">
+            <div class="small-12 columns left">
+              <button class="button tiny radius" ng-click="my_count = my_count + 1;my_array.push(my_count)">Add an Item</button>
+            </div>
+          </div>
+          <div class="row" ng-init="my_array = ['1', '2', '3']; my_count = 3">
+            <div class="small-12 medium-6 columns left">
+              <span ng-repeat="item in my_array">{{item}}<span ng-if="!$last">, </span></span>
             </div>
           </div>
         </div>
@@ -54,96 +102,12 @@
   </div>
 
 
-  <div class="row left">
-    <div class="small-12 columns">
-      <div class="row">
-        <div class="small-1 columns">&nbsp;</div>
-        <div class="small-11 columns">
-          <div class="row">
-            <div class="small-12 columns">
-              <div class="row">
-                <div class="small-12 columns"><h4></h4></div>
-              </div>
-              <div class="row">
-                <div class="small-12 columns left">
-                  <i></i>
-                </div>
-              </div>
-              <div class="row">&nbsp;</div>
-
-              <div class="row">
-                <div class="small-3 columns left"></div>
-                <div class="small-2 columns left"></div>
-              </div>
-              <div class="row">
-
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="small-12 columns"><hr></div>
-          </div>
-
-          <div class="row">
-            <div class="small-12 columns">
-              <div class="row">
-                <div class="small-12 columns"><h4>ngClick Directive</h4></div>
-              </div>
-              <div class="row">
-                <div class="small-12 columns left">
-                  <i>Buttons that add and subtract one to or from the counter each time you click them. Simple as pie!</i>
-                </div>
-              </div>
-              <div class="row">&nbsp;</div>
-
-              <div class="row" ng-init="count = 0">
-                <div class="small-2 columns left"><button ng-click="count = count - 1">Take 1</button></div>
-                <div class="small-2 columns left"><big>Count = {{ count }}</big></div>
-                <div class="small-2 columns left"><button ng-click="count = count + 1">Add 1</button></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="small-12 columns"><hr></div>
-          </div>
-
-          <div class="row">
-            <div class="small-12 columns">
-              <div class="row">
-                <div class="small-12 columns"><h4>ngRepeat Directive</h4></div>
-              </div>
-              <div class="row">
-                <div class="small-12 columns left">
-                  <i>Defines the following array: ['Item 1', 'Item 2', 'Item 3'], and then repeats &lt;p&gt; tags displaying the contents.<br>
-                    Click the button below to add an item to the array.</i>
-                </div>
-              </div>
-              <div class="row">&nbsp;</div>
-
-              <div class="row">
-                <div class="small-12 columns left">
-                  <button ng-click="my_count = my_count + 1;my_array.push('Item ' + my_count)">Add an Item</button>
-                </div>
-              </div>
-              <div class="row" ng-init="my_array = ['Item 1', 'Item 2', 'Item 3']; my_count = 3">
-                <div class="small-5 columns left">
-                  <div class="row" ng-repeat="item in my_array">
-                    <div class="small-12 columns">{{item}}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 columns"><hr></div>
-    </div>
-
-    <div class="row">
+  <div class="row small-12 columns">&nbsp;</div>
+  <div class="row small-12 columns">&nbsp;</div>
+  <div class="row small-12 columns">&nbsp;</div>
+  <div class="row small-12 columns">&nbsp;</div>
+</div>
+    <!---<div class="row">
       <div class="small-12 columns">
         <div class="row">
           <div class="small-12 columns"><h3>Custom Directives</h3></div>
@@ -207,6 +171,4 @@
         <div class="small-12 columns"><hr></div>
       </div>
     </div>
-  </div>
-
-</div>
+  </div>--->
