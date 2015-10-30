@@ -64,12 +64,20 @@
           <span class="example-description">Buttons that add and subtract one to or from the counter each time you click them. Simple as pie!</span>
         </div>
         <div class="example-body">
-          <div class="row" ng-init="count = 0">
-            <div class="small-3 medium-1 columns"><button class="button tiny radius" ng-click="count = count - 1">-1</button></div>
-            <div class="small-3 medium-1 columns end text-right"><button class="button tiny radius" ng-click="count = count + 1">+1</button></div>
-          </div>
           <div class="row">
-            <div class="small-6 medium-2 columns text-center">Count = {{ count }}</div>
+            <div class="small-12 columns left">
+              <div class="row" ng-init="count = 0">
+                <div class="small-4 medium-1 columns text-center valign-middle">
+                  <br>
+                  <span class="underline">Count</span><br>
+                  {{ count }}
+                </div>
+                <div class="small-4 medium-2 columns end">
+                  <button class="button tiny radius" ng-click="count = count + 1">+1</button><br>
+                  <button class="button tiny radius" ng-click="count = count - 1">-1</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
