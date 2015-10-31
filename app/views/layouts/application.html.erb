@@ -14,14 +14,13 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
-        <%= render 'layouts/messages' %>
-        <div class="<%= params[:controller] %>__<%= params[:action] %>">
-          <%= yield %>
-        </div>
+    <main role="main" style="min-height: 100%;">
+      <%= render 'layouts/messages' %>
+      <div class="<%= params[:controller] %>__<%= params[:action] %>" style="top: -50px;">
+        <%= yield %>
+      </div>
+      <br><br><br><br>
     </main>
-    <footer>
-      I'm a footer!
-    </footer>
+    <footer>&nbsp;</footer>
   </body>
 </html>
