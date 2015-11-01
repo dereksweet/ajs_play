@@ -14,8 +14,8 @@ var ngShowHide = function ($compile) {
           $scope.showCount = $scope.showCount + 1;
         }
 
-        var myContainer = $element.find('div');
-        myContainer.html('This has been shown <b>' + $scope.showCount + '</b> times');
+        var myContainer = $element.find('#myMessage');
+        myContainer.html('Shown <b>' + $scope.showCount + '</b> times');
       }
     }
   };
