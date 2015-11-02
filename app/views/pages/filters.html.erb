@@ -7,98 +7,82 @@
 
 <% content_for :title do %>AngularJS Playground - Filters<% end %>
 
-<div class="row left" ng-app="filtersApp" ng-controller="filtersCtrl" ng-cloak>
-  <div class="small-12 columns">
-    <div class="row">
-      <div class="small-12 columns">
+<div ng-app="filtersApp" ng-controller="filtersCtrl" ng-cloak>
+  <div class="section-header">
+    <div class="section-title">Simple Filters</div>
+    <div class="section-description">A series of simple filters that come pre-built with AngularJS</div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="example">
         <div class="row">
-          <div class="small-12 columns"><h3>Simple Filters</h3></div>
+          <div class="small-6 medium-3 columns text-right">Uppercase: </div>
+          <div class="small-6 medium-3 columns end">{{ "Derek Sweet" | uppercase }}</div>
         </div>
         <div class="row">
-          <div class="small-12 columns left">
-            A series of simple filters that come pre-built with AngularJS
-          </div>
-        </div>
-        <div class="row">&nbsp;</div>
-
-        <div class="row">
-          <div class="small-3 columns text-right">Uppercase: </div>
-          <div class="small-3 columns left">{{ "Derek Sweet" | uppercase }}</div>
+          <div class="small-6 medium-3 columns text-right">Number (2 precision): </div>
+          <div class="small-6 medium-3 columns end">{{ 1.23456 | number: 2 }}</div>
         </div>
         <div class="row">
-          <div class="small-3 columns text-right">Number (2 precision): </div>
-          <div class="small-3 columns left">{{ 1.23456 | number: 2 }}</div>
+          <div class="small-6 medium-3 columns text-right">Currency: </div>
+          <div class="small-6 medium-3 columns end">{{ 5.56 | currency }}</div>
         </div>
         <div class="row">
-          <div class="small-3 columns text-right">Currency: </div>
-          <div class="small-3 columns left">{{ 5.56 | currency }}</div>
-        </div>
-        <div class="row">
-          <div class="small-3 columns text-right">Date (medium): </div>
-          <div class="small-3 columns left">{{ data.currentDate | date:'medium' }}</div>
+          <div class="small-6 medium-3 columns text-right">Date (short): </div>
+          <div class="small-6 medium-3 columns end">{{ data.currentDate | date:'short' }}</div>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
-          <div class="small-3 columns text-right">limitTo (3 entries): </div>
-          <div class="small-3 columns left">
+          <div class="small-6 medium-3 columns text-right">limitTo (3 entries): </div>
+          <div class="small-6 medium-3 columns end">
             <span ng-repeat="datum in data.sampleData | limitTo:3">{{ datum | number:2 }}<br ng-hide="$last"></span>
           </div>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
-          <div class="small-3 columns text-right">Search Filter: </div>
-          <div class="small-6 columns left">
+          <div class="small-6 medium-3 columns text-right">Search Filter: </div>
+          <div class="small-6 medium-6 columns end">
             <input ng-model="searchText"><br>
             <span ng-repeat="datum in data.sampleData | filter:searchText">{{ datum }}<br ng-hide="$last"></span>
           </div>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
-          <div class="small-3 columns text-right">Order by (toString): </div>
-          <div class="small-6 columns left">
+          <div class="small-6 medium-3 columns text-right">Order by (toString): </div>
+          <div class="small-6 medium-6 columns end">
             <span ng-repeat="datum in data.sampleData | orderBy: 'toString()'">{{ datum }}<br ng-hide="$last"></span>
           </div>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
-          <div class="small-3 columns text-right">json: </div>
-          <div class="small-6 columns left">
+          <div class="small-6 medium-3 columns text-right">json: </div>
+          <div class="small-6 medium-6 columns end">
             {{ data | json }}
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="small-12 columns"><hr></div>
-    </div>
+  <br>
 
-    <div class="row">
-      <div class="small-12 columns">
+  <div class="section-header">
+    <div class="section-title">Custom Filters</div>
+    <div class="section-description">Custom filters that strip dashes or convert to title case from the string provided</div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="example">
         <div class="row">
-          <div class="small-12 columns"><h3>Custom Filters</h3></div>
-        </div>
-        <div class="row">
-          <div class="small-12 columns left">
-            Custom filters that strip dashes or convert to title case from the string provided
-          </div>
-        </div>
-        <div class="row">&nbsp;</div>
-
-        <div class="row">
-          <div class="small-2 columns text-right">stripDashes:</div>
-          <div class="small-3 columns left">{{ "Derek--Sweet--------is-cool!" | stripDashes }}<br><small><i>"Derek--Sweet--------is-cool!"</i></small></div>
+          <div class="small-4 medium-2 columns text-right">stripDashes:</div>
+          <div class="small-8 medium-3 columns end">{{ "Derek--Sweet--------is-cool!" | stripDashes }}<br><small><i>"Derek--Sweet--------is-cool!"</i></small></div>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
-          <div class="small-2 columns text-right">titleCase:</div>
-          <div class="small-3 columns left">{{ "DeReK sweet IS cOOl" | titleCase }}<br><small><i>"DeReK sweet IS cOOl"</i></small></div>
+          <div class="small-4 medium-2 columns text-right">titleCase:</div>
+          <div class="small-8 medium-3 columns end">{{ "DeReK sweet IS cOOl" | titleCase }}<br><small><i>"DeReK sweet IS cOOl"</i></small></div>
         </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="small-12 columns"><hr></div>
     </div>
   </div>
 </div>
