@@ -116,7 +116,7 @@ $jet         : #222222;
 $black       : #000000;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
+$primary-color: $tuatara;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
@@ -1376,7 +1376,7 @@ $topbar-height: rem-calc(55);
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: $oil;
+$topbar-dropdown-bg: $black;
 // $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-bg: $oil;
 // $topbar-dropdown-link-bg-hover: $oil;
