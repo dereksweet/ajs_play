@@ -6,21 +6,21 @@
 
 <% content_for :title do %>AngularJS Playground - Pagination<% end %>
 
-<div class="row left" ng-app="paginationApp" ng-controller="paginationCtrl" ng-init="loadCountries()" ng-cloak>
-  <div class="small-12 columns">
-    <div class="row">
-      <div class="small-12 columns"><h3>Pagination</h3></div>
+<div ng-app="paginationApp" ng-cloak>
+  <div class="section-header">
+    <div class="section-title">Pagination</div>
+    <div class="section-description">
+      Pagination is implemented using the dirPagination directive developed by Michael Bromley as part of the
+      angularUtils package (<a href="https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination" target="_blank">link</a>).
+      <br>
+      Use the interface below to page through all the countries of the world. Countries data obtained using the
+      'countries' gem developed by hexorx (<a href="https://github.com/hexorx/countries" target="_blank">link</a>)
     </div>
-    <div class="row">
-      <div class="small-12 columns left">
-        Pagination is implemented using the dirPagination directive developed by Michael Bromley as part of the angularUtils package (<a href="https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination" target="_blank">link</a>).<br>
-        Use the interface below to page through all the countries of the world. Countries data obtained using the 'countries' gem developed by hexorx (<a href="https://github.com/hexorx/countries" target="_blank">link</a>)
-      </div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-      <div class="small-6 columns left">
-        <table style="width:500px;">
+  </div>
+  <div class="row" ng-controller="paginationCtrl" ng-init="loadCountries()">
+    <div class="small-12 columns">
+      <div class="example" style="max-width:525px;">
+        <table style="width:100%">
           <thead>
           <tr>
             <th>Name</th>
@@ -28,10 +28,10 @@
           </tr>
           </thead>
           <tbody>
-            <tr dir-paginate="country in countries | itemsPerPage: 15" total-items="countryCount" current-page="currentPage">
-              <td>{{ country.data.name }}</td>
-              <td>{{ country.data.alpha3 }}</td>
-            </tr>
+          <tr dir-paginate="country in countries | itemsPerPage: 15" total-items="countryCount" current-page="currentPage">
+            <td>{{ country.data.name }}</td>
+            <td>{{ country.data.alpha3 }}</td>
+          </tr>
           </tbody>
         </table>
         <dir-pagination-controls on-page-change="loadCountries(newPageNumber)"></dir-pagination-controls>
