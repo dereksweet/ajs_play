@@ -1445,3 +1445,10 @@ $topbar-link-color: $white;
 // $include-accessibility-classes: true;
 
 @import 'foundation';
+
+// Custom overrides
+
+//Reduce padding on menu icon for smaller resolutions avoiding title overlap
+.top-bar .toggle-topbar.menu-icon a {
+  padding-right: 10px;
+}
