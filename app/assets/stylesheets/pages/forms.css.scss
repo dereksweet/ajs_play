@@ -10,12 +10,16 @@
     margin-bottom: 0px;
   }
 
-  .right-margin {
-    margin-right: 10px;
+  .medium-right-margin {
+    @media only screen and (min-width: 40.063em) {
+      margin-right: 10px;
+    }
   }
 
-  .left-margin {
-    margin-left: 10px;
+  .medium-left-margin {
+    @media only screen and (min-width: 40.063em) {
+      margin-left: 10px;
+    }
   }
 
   .load_error, .submit_error {
