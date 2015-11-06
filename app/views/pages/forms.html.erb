@@ -103,7 +103,7 @@
                   <div class="row">&nbsp;</div>
                   <div class="row">
                     <div class="small-12 columns">
-                      <input type="submit" value="Submit"><br><br>
+                      <input class="button tiny radius" type="submit" value="Submit"><br><br>
                       <div class="load_success" ng-show="showLoadSuccessMessage">Data Load completed succesfully!</div>
                       <div class="load_error" ng-show="showLoadErrorMessage">There was an error loading the data! <span id="load_error_message"></span></div>
                       <div class="submit_success" ng-show="showSubmitSuccessMessage">Form submitted succesfully!</div>
@@ -144,7 +144,7 @@
               </thead>
               <tbody>
               <tr ng-repeat="datum in sample_data">
-                <td><a href="#" ng-click="edit_datum(datum.first_name)">{{ datum.first_name }}</a></td>
+                <td><a ng-click="edit_datum(datum.first_name)">{{ datum.first_name }}</a></td>
                 <td class="small-width-limit-75">{{ datum.email }}</td>
                 <td>{{ datum.color }}</td>
                 <td>{{ datum.is_cool }}</td>
