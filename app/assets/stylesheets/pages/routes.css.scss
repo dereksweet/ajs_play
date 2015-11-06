@@ -22,6 +22,10 @@
         color: white;
         background-color: lightgray;
       }
+
+      &.last {
+        border-right: none;
+      }
     }
   }
 }
