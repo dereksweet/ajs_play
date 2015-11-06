@@ -3,4 +3,25 @@
     border: 1px solid black;
     height: 500px;
   }
+
+  .sub-nav {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding-top: 0px;
+    margin-top: 5px;
+
+    dt {
+      color: lightsteelblue;
+    }
+
+    dd, dt {
+      padding-right: 10px;
+      border-right: 1px solid gray;
+
+      a.active {
+        color: white;
+        background-color: lightgray;
+      }
+    }
+  }
 }
