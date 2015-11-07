@@ -11,7 +11,7 @@ paginationCtrl = function ($scope, dataStoreService) {
   $scope.currentPage = 1;
 
   $scope.loadCountries = function(newPageNumber) {
-    newPageNumber = newPageNumber || $scope.currentPage;
+    $scope.currentPage = newPageNumber;
 
     var promise = dataStoreService.loadCountries(newPageNumber);
 

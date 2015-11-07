@@ -8,4 +8,9 @@
   .width-100-pct {
     width: 100%;
   }
+
+  li.active a {
+    background-color: lightsteelblue;
+    color: white;
+  }
 }
