@@ -9,6 +9,7 @@ paginationCtrl = function ($scope, dataStoreService) {
   };
 
   $scope.currentPage = 1;
+  $scope.pagination_size = $('body').width() > 375 ? 25 : 8;
 
   $scope.loadCountries = function(newPageNumber) {
     $scope.currentPage = newPageNumber;
@@ -19,6 +20,7 @@ paginationCtrl = function ($scope, dataStoreService) {
       if (data) {
         $scope.countryCount = data.total_entries;
         $scope.countries = data.models;
+        document.activeElement.blur();
       }
       else {
         alert('error - no data');
