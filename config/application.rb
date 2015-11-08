@@ -35,7 +35,8 @@ module AjsPlay
 
     # Angular Directives
     config.assets.precompile += %w( angular/directives/ng-current-time.js
-                                    angular/directives/ng-show-hide.js )
+                                    angular/directives/ng-show-hide.js
+                                    angular/directives/ng-make-blue.js )
 
     # Angular Filters
     config.assets.precompile += %w( angular/filters/strip-dashes.js

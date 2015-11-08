@@ -4,6 +4,7 @@
 <!-- Reference any directives to be employed -->
 <%= javascript_include_tag asset_path('angular/directives/ng-show-hide.js') %>
 <%= javascript_include_tag asset_path('angular/directives/ng-current-time.js') %>
+<%= javascript_include_tag asset_path('angular/directives/ng-make-blue.js') %>
 
 <% content_for :title do %>AngularJS Playground - Directives<% end %>
 
@@ -156,6 +157,25 @@
           <div class="row">
             <div class="small-12 columns left">
               <b>CurrentTime</b>: &nbsp; <ng-current-time />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="example">
+        <div class="example-header">
+          <span class="example-title">ngMakeBlue</span><br>
+          <span class="example-description">
+           A transclusion directive example, makes whatever text is wrapped in the tag blue
+          </span>
+        </div>
+        <div class="example-body">
+          <div class="row">
+            <div class="small-12 columns left">
+              <ng-make-blue>This is not red..</ng-make-blue>
             </div>
           </div>
         </div>
