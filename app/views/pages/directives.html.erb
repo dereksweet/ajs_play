@@ -45,12 +45,12 @@
           <div class="row">
             <div class="small-12 medium-3 columns medium-text-right">Enter Mathmatical Expression:</div>
             <div class="small-12 medium-9 columns">
-              <input ng-model="mathexpression" type="text" style="width: 200px; display: inline-block"><br>
+              <input ng-model="mathexpression" ng-change="do_eval = true;" type="text" style="width: 200px;"><br>
             </div>
           </div>
           <div class="row">
             <div class="small-12 medium-9 columns right">
-              &nbsp;<span ng-show="$eval(mathexpression) == 10">I appear when the expression is equal to 10!</span>&nbsp;
+              &nbsp;<span ng-show="evalExpression()">I appear when the expression is equal to 10!</span>&nbsp;
             </div>
           </div>
         </div>
