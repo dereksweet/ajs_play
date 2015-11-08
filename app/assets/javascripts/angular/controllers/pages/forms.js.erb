@@ -3,12 +3,7 @@ var moduleName = "formsApp";
 var formsApp = angular.module(moduleName, []);
 
 var mySimpleFormsCtrl = function ($scope, dataStoreService, dataShareService) {
-  $scope.user = {
-    first_name: "",
-    email: "",
-    color: "",
-    is_cool: true
-  };
+  $scope.user = Object.create(User);
   $scope.colors = dataShareService.colors;
 
   reset_messages = function () {

@@ -18,7 +18,16 @@
 //= require angular-route
 //= require angular-animate
 //= require dirPagination
+//= require_tree ./angular/models
 
 $(function() {
   $(document).foundation();
 });
+
+if (typeof Object.create !== 'function') {
+  Object.create = function (o) {
+    var F = function() {};
+    F.prototype = o;
+    return new F();
+  }
+}
