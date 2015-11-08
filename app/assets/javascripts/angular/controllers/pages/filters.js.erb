@@ -6,14 +6,13 @@ var filtersApp = angular.module(moduleName, []);
 var filtersCtrl = function ($scope, $timeout) {
     $scope.data = {
       currentDate: new Date(),
-      sampleData:
-          [123.65,89.325,23.453,45.66,67.80,23.454]
+      sampleData: [123.65,89.325,23.453,45.66,67.80,23.454]
     };
     $scope.myString = 'TestString';
 
     var updateTime = function() {
-        $scope.data.currentDate = new Date();
-        $timeout(updateTime, 1000);
+      $scope.data.currentDate = new Date();
+      $timeout(updateTime, 1000);
     };
 
     $timeout(updateTime, 100);

@@ -52,11 +52,11 @@
                   <div class="row collapse">
                     <div class="small-3 medium-1 columns inline medium-right-margin">First Name:</div>
                     <div class="small-7 medium-5 columns">
-                      <input class="no-bottom" type="text" ng-model="data.first_name" name="first_name" placeholder="First Name" required>
+                      <input class="no-bottom" type="text" ng-model="user.first_name" name="first_name" placeholder="First Name" required>
                       <span class="error" ng-show="firstNameInvalid">Please enter a value for First Name</span>
                     </div>
                     <div class="small-12 medium-5 columns left medium-left-margin">
-                      <input type="button" value="Load by First Name" ng-click="get_data()">
+                      <input type="button" value="Load by First Name" ng-click="get_user()">
                     </div>
                   </div>
                   <div class="row">&nbsp;</div>
@@ -68,7 +68,7 @@
                   <div class="row collapse">
                     <div class="small-3 medium-1 columns inline medium-right-margin">Email:</div>
                     <div class="small-7 medium-5 columns left">
-                      <input class="no-bottom" type="email" ng-model="data.email" name="email" placeholder="Email" required>
+                      <input class="no-bottom" type="email" ng-model="user.email" name="email" placeholder="Email" required>
                       <span class="error" ng-show="emailInvalid">Please enter a proper email address</span>
                     </div>
                   </div>
@@ -81,7 +81,7 @@
                   <div class="row collapse">
                     <div class="small-3 medium-1 columns inline medium-right-margin">Color:</div>
                     <div class="small-7 medium-5 columns left">
-                      <select class="no-bottom" name="color" ng-model="data.color" ng-options="obj.value as obj.label for obj in colors" required>
+                      <select class="no-bottom" name="color" ng-model="user.color" ng-options="obj.value as obj.label for obj in colors" required>
                         <option value="">Choose a color...</option>
                       </select>
                       <span class="error" ng-show="colorInvalid">Please select a color</span>
@@ -96,7 +96,7 @@
                   <div class="row">
                     <div class="small-3 medium-1 columns inline medium-right-margin">&nbsp;</div>
                     <div class="small-6 medium-5 columns left">
-                      <input type="checkbox" ng-model="data.is_cool" name="is_cool" id="is_cool" value="is_cool" style="display:inline">
+                      <input type="checkbox" ng-model="user.is_cool" name="is_cool" id="is_cool" value="is_cool" style="display:inline">
                       <label for="is_cool">Check here if cool..</label>
                     </div>
                   </div>
@@ -125,7 +125,7 @@
     <div class="section-title">Modal Forms</div>
     <div class="section-description">
       Combining the $http directive with reveal modal divs from Foundation5, we can make some pretty slick forms. Use
-      the interface below to modify any of the datum from the section above.
+      the interface below to modify any of the user from the section above.
     </div>
   </div>
   <div class="row">
@@ -133,7 +133,7 @@
       <div class="example">
         <div class="row"  ng-controller="myModalFormsCtrl">
           <div class="small-12 columns">
-            <table ng-init="get_all_data()">
+            <table ng-init="get_all_users()">
               <thead>
               <tr>
                 <th>First Name</th>
@@ -143,11 +143,11 @@
               </tr>
               </thead>
               <tbody>
-              <tr ng-repeat="datum in sample_data">
-                <td><a ng-click="edit_datum(datum.first_name)">{{ datum.first_name }}</a></td>
-                <td class="small-width-limit-75">{{ datum.email }}</td>
-                <td>{{ datum.color }}</td>
-                <td>{{ datum.is_cool }}</td>
+              <tr ng-repeat="user in users">
+                <td><a ng-click="edit_user(user.first_name)">{{ user.first_name }}</a></td>
+                <td class="small-width-limit-75">{{ user.email }}</td>
+                <td>{{ user.color }}</td>
+                <td>{{ user.is_cool }}</td>
               </tr>
               </tbody>
             </table>

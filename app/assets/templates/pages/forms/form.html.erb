@@ -1,31 +1,31 @@
-<form id="datum_form" accept-charset="utf-8">
+<form id="user_form" accept-charset="utf-8">
   <div class="row small-12 columns">
-    First Name: <b>{{ datum_form.first_name }}</b>
+    First Name: <b>{{ user_form.first_name }}</b>
   </div>
   <div class="row">&nbsp;</div>
   <div class="row small-12 columns">
     <label>Email</label>
-    <input type="text" value="" ng-model="datum_form.email">
+    <input type="text" value="" ng-model="user_form.email">
   </div>
   <div class="row small-12 columns">
     <label>Color</label>
-    <select class="no-bottom" name="color" ng-model="datum_form.color" ng-options="obj.value as obj.label for obj in colors" required>
+    <select class="no-bottom" name="color" ng-model="user_form.color" ng-options="obj.value as obj.label for obj in colors" required>
       <option value="">Choose a color...</option>
     </select>
   </div>
   <div class="row small-12 columns">
-    <input type="checkbox" ng-model="datum_form.is_cool" name="is_cool" id="is_cool" value="is_cool">
+    <input type="checkbox" ng-model="user_form.is_cool" name="is_cool" id="is_cool" value="is_cool">
     <label for="is_cool">Check here if they are cool..</label>
   </div>
   <div class="row">&nbsp;</div>
   <div class="row">&nbsp;</div>
   <div class="row actions collapse">
     <div class="columns small-8 ">
-      <input class="button tiny radius" type="button" value="Update" ng-click="update_datum()">
+      <input class="button tiny radius" type="button" value="Update" ng-click="update_user()">
       <a class="cancel button tiny radius" style="margin-left:10px" ng-click="closeModal()">Cancel</a>
     </div>
     <div class="columns small-4 text-right">
-      <a class="button tiny radius alert" rel="nofollow" ng-click="delete_datum()"><i class="fi-trash ilink"></i> Delete</a>
+      <a class="button tiny radius alert" rel="nofollow" ng-click="delete_user()"><i class="fi-trash ilink"></i> Delete</a>
     </div>
   </div>
 </form>

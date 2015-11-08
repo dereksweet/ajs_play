@@ -1,20 +1,20 @@
 var dataStoreService = function ($http) {
   var dataStore = {};
 
-  dataStore.saveDatum = function (theData) {
-    return $http({ method: 'POST', url: 'api/save_datum', data: theData });
+  dataStore.saveUser = function (user) {
+    return $http({ method: 'POST', url: 'api/save_user', data: user });
   };
 
-  dataStore.getDatum = function (first_name) {
-    return $http({ method: 'GET', url: 'api/get_datum?first_name=' + first_name });
+  dataStore.getUser = function (first_name) {
+    return $http({ method: 'GET', url: 'api/get_user?first_name=' + first_name });
   };
 
-  dataStore.deleteDatum = function (first_name) {
-    return $http({ method: 'DELETE', url: 'api/delete_datum?first_name=' + first_name });
+  dataStore.deleteUser = function (first_name) {
+    return $http({ method: 'DELETE', url: 'api/delete_user?first_name=' + first_name });
   };
 
-  dataStore.getAllData = function () {
-    return $http({ method: 'GET', url: 'api/get_all_data' });
+  dataStore.getAllUsers = function () {
+    return $http({ method: 'GET', url: 'api/get_all_users' });
   };
 
   dataStore.loadCountries = function (page) {

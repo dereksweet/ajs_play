@@ -4,10 +4,6 @@ var controllerName = "paginationCtrl";
 var paginationApp = angular.module(moduleName, ['angularUtils.directives.dirPagination']);
 
 paginationCtrl = function ($scope, dataStoreService) {
-  $scope.data = {
-
-  };
-
   $scope.currentPage = 1;
   $scope.pagination_size = $('body').width() > 375 ? 25 : 8;
 
