@@ -34,7 +34,7 @@
           </tr>
           </tbody>
         </table>
-        <dir-pagination-controls max-size="pagination_size" on-page-change="loadCountries(newPageNumber)"></dir-pagination-controls>
+        <dir-pagination-controls boundary-links="false" max-size="pagination_size" on-page-change="loadCountries(newPageNumber)"></dir-pagination-controls>
         <br>
         {{ pagination.current }}
       </div>

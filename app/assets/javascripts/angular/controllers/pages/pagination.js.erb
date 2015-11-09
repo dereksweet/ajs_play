@@ -5,7 +5,7 @@ var paginationApp = angular.module(moduleName, ['angularUtils.directives.dirPagi
 
 paginationCtrl = function ($scope, dataStoreService) {
   $scope.currentPage = 1;
-  $scope.pagination_size = $('body').width() > 375 ? 25 : 8;
+  $scope.pagination_size = $('body').width() > 375 ? 25 : 7;
 
   $scope.loadCountries = function(newPageNumber) {
     $scope.currentPage = newPageNumber;
