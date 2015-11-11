@@ -1,20 +1,20 @@
 <form id="user_form" accept-charset="utf-8">
   <div class="row small-12 columns">
-    First Name: <b>{{ user_form.first_name }}</b>
+    First Name: <b>{{ modal_user.first_name }}</b>
   </div>
   <div class="row">&nbsp;</div>
   <div class="row small-12 columns">
     <label>Email</label>
-    <input type="text" value="" ng-model="user_form.email">
+    <input type="text" value="" ng-model="modal_user.email">
   </div>
   <div class="row small-12 columns">
     <label>Color</label>
-    <select class="no-bottom" name="color" ng-model="user_form.color" ng-options="obj.value as obj.label for obj in colors" required>
+    <select class="no-bottom" name="color" ng-model="modal_user.color" ng-options="obj.value as obj.label for obj in colors" required>
       <option value="">Choose a color...</option>
     </select>
   </div>
   <div class="row small-12 columns">
-    <input type="checkbox" ng-model="user_form.is_cool" name="is_cool" id="is_cool" value="is_cool">
+    <input type="checkbox" ng-model="modal_user.is_cool" name="is_cool" id="is_cool" value="is_cool">
     <label for="is_cool">Check here if they are cool..</label>
   </div>
   <div class="row">&nbsp;</div>

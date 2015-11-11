@@ -79,20 +79,20 @@ myModalFormsCtrl = function ($scope, dataStore, dataShareService) {
   };
 
   $scope.edit_user = function(first_name) {
-    $scope.user_form = dataStore.User.get( { id: first_name} );
+    $scope.modal_user = dataStore.User.get( { id: first_name} );
 
     $scope.openModal();
   };
 
   $scope.update_user = function() {
-    $scope.user_form.$save().then(function() {
+    $scope.modal_user.$save().then(function() {
       $scope.closeModal();
       $scope.get_all_users();
     });
   };
 
   $scope.delete_user = function() {
-    $scope.user_form.$remove().then(function () {
+    $scope.modal_user.$remove().then(function () {
       $scope.closeModal();
       $scope.get_all_users();
     });
