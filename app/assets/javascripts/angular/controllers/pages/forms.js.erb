@@ -45,10 +45,10 @@ mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
     }
 
     if ($scope.sampleForm.$valid) {
-      $scope.user.$save();
-
-      $scope.showSubmitSuccessMessage = true;
-      dataShareService.get_all_users();
+      $scope.user.$save().then(function() {
+        $scope.showSubmitSuccessMessage = true;
+        dataShareService.get_all_users();
+      });
     }
   }
 };
@@ -84,10 +84,10 @@ myModalFormsCtrl = function ($scope, dataStore, dataShareService) {
   };
 
   $scope.update_user = function() {
-    $scope.user_form.$save();
-
-    $scope.closeModal();
-    $scope.get_all_users();
+    $scope.user_form.$save().then(function() {
+      $scope.closeModal();
+      $scope.get_all_users();
+    });
   };
 
   $scope.delete_user = function() {
