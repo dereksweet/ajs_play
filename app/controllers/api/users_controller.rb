@@ -15,12 +15,8 @@ class Api::UsersController < ApplicationController
     user = User.where(first_name: params[:user][:first_name]).first
     user = User.new if user.nil?
 
-    user.first_name = params[:user][:first_name]
-    user.email = params[:user][:email]
-    user.color = params[:user][:color]
-    user.is_cool = params[:user][:is_cool]
-    user.save!
-
+    user.update(user_params)
+    
     render json: user.as_json
   end
 
