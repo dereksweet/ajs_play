@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources 'countries', only: [:index]
-    resources 'users', only: [:index, :show, :update, :destroy]
+    resources 'users'
+    post 'users/:id', to: 'users#update'
   end
 
   get '/directives', to: 'pages#directives'

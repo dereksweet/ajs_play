@@ -24,9 +24,21 @@ class Api::UsersController < ApplicationController
     render json: user.as_json
   end
 
+  def create
+    user = User.create(user_params)
+
+    render json: user.as_json
+  end
+
   def destroy
-    User.where(first_name: params[:first_name]).first.destroy!
+    User.find(params[:id]).destroy!
 
     render json: { result: 'success' }
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :email, :color, :is_cool)
   end
 end

@@ -3,7 +3,8 @@ var moduleName = "formsApp";
 var formsApp = angular.module(moduleName, ['ngResource']);
 
 mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
-  $scope.user = {};
+  $scope.user = new dataStore.User;
+  $scope.user.is_cool = false;
   $scope.colors = dataShareService.colors;
 
   reset_messages = function () {
@@ -91,10 +92,10 @@ myModalFormsCtrl = function ($scope, dataStore, dataShareService) {
   };
 
   $scope.delete_user = function() {
-    $scope.user_form.remove();
-
-    $scope.closeModal();
-    $scope.get_all_users();
+    $scope.user_form.$remove().then(function () {
+      $scope.closeModal();
+      $scope.get_all_users();
+    });
   };
 };
 myModalFormsCtrl.$inject = ['$scope', 'dataStore', 'dataShareService'];
