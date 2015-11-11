@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
     user = User.new if user.nil?
 
     user.update(user_params)
-    
+
     render json: user.as_json
   end
 
@@ -29,7 +29,7 @@ class Api::UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy!
 
-    render json: { result: 'success' }
+    render nothing: true
   end
 
   private
