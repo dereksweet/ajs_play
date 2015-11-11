@@ -16,6 +16,7 @@
 //= require foundation
 //= require angular
 //= require angular-route
+//= require angular-ui-router
 //= require angular-animate
 //= require angular-resource
 //= require dirPagination

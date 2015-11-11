@@ -17,6 +17,8 @@ gem 'sdoc', group: :doc
 gem 'foundation-rails'
 gem 'angularjs-rails'
 
+gem 'angular-ui-router-rails'
+
 gem 'countries', :require => 'global'
 
 group :development, :test do
