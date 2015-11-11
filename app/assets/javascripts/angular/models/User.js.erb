@@ -1,6 +1,7 @@
 var User = {
-  first_name: '',
-  last_name: '',
-  email: '',
-  is_cool: false
+  url: '/api/users/:id',
+  paramDefaults: { id:'@id' },
+  actions: { 'save': { method: 'PATCH' }},
+  options: {}
 };
+

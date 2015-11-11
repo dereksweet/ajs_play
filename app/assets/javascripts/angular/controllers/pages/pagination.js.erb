@@ -1,32 +1,17 @@
 var moduleName = "paginationApp";
 var controllerName = "paginationCtrl";
 
-var paginationApp = angular.module(moduleName, ['angularUtils.directives.dirPagination']);
+var paginationApp = angular.module(moduleName, ['angularUtils.directives.dirPagination', 'ngResource']);
 
-paginationCtrl = function ($scope, dataStoreService) {
+paginationCtrl = function ($scope, dataStore) {
   $scope.currentPage = 1;
   $scope.pagination_size = $('body').width() > 375 ? 25 : 7;
 
   $scope.loadCountries = function(newPageNumber) {
     $scope.currentPage = newPageNumber;
 
-    var promise = dataStoreService.loadCountries(newPageNumber);
-
-    promise.success(function (data, status) {
-      if (data) {
-        $scope.countryCount = data.total_entries;
-        $scope.countries = data.models;
-        document.activeElement.blur();
-      }
-      else {
-        alert('error - no data');
-      }
-    });
-
-    promise.error(function (data, status) {
-      alert('error - communication issue (' + status + ')');
-    });
+    $scope.countries = dataStore.Country.query({ page: newPageNumber });
   };
 };
-paginationCtrl.$inject = ['$scope', 'dataStoreService'];
+paginationCtrl.$inject = ['$scope', 'dataStore'];
 paginationApp.controller(controllerName, paginationCtrl);

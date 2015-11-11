@@ -1,9 +1,9 @@
 var moduleName = "animateApp";
 var controllerName = "animateCtrl";
 
-var formsApp = angular.module(moduleName, ['ngAnimate']);
+var animateApp = angular.module(moduleName, ['ngAnimate']);
 
-formsApp.controller(controllerName, function ($scope) {
+animateCtrl = function ($scope) {
   $scope.data = {
     on: false
   };
@@ -13,4 +13,6 @@ formsApp.controller(controllerName, function ($scope) {
     { name: 'Kelsey Sweet', url: '<%= asset_path('pages/animate/kelsey-sweet.html') %>' }
   ];
   $scope.selected_person = "";
-});
+};
+animateCtrl.$inject = ['$scope'];
+animateApp.controller(controllerName, animateCtrl);

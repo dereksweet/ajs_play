@@ -1,9 +1,9 @@
 var moduleName = "formsApp";
 
-var formsApp = angular.module(moduleName, []);
+var formsApp = angular.module(moduleName, ['ngResource']);
 
-var mySimpleFormsCtrl = function ($scope, dataStoreService, dataShareService) {
-  $scope.user = Object.create(User);
+mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
+  $scope.user = {};
   $scope.colors = dataShareService.colors;
 
   reset_messages = function () {
@@ -16,29 +16,13 @@ var mySimpleFormsCtrl = function ($scope, dataStoreService, dataShareService) {
   $scope.get_user = function () {
     reset_messages();
 
-    var promise = dataStoreService.getUser($scope.user.first_name);
+    $scope.user = dataStore.User.get( { id: $scope.user.first_name} );
 
-    promise.success(function (user, status) {
-      if (user) {
-        $scope.user.email = user.email;
-        $scope.user.color = user.color;
-        $scope.user.is_cool = user.is_cool;
+    $scope.sampleForm.email.$setDirty();
+    $scope.sampleForm.color.$setDirty();
+    $scope.sampleForm.is_cool.$setDirty();
 
-        $scope.sampleForm.email.$setDirty();
-        $scope.sampleForm.color.$setDirty();
-        $scope.sampleForm.is_cool.$setDirty();
-
-        $scope.showLoadSuccessMessage = true;
-      }
-      else {
-        $scope.showLoadErrorMessage = true;
-      }
-    });
-
-    promise.error(function (data, status) {
-      $scope.showLoadErrorMessage = true;
-      $('#load_error_message').html('(' + status + ')');
-    });
+    $scope.showLoadSuccessMessage = true;
   };
 
   $scope.submit_form = function() {
@@ -61,26 +45,18 @@ var mySimpleFormsCtrl = function ($scope, dataStoreService, dataShareService) {
     }
 
     if ($scope.sampleForm.$valid) {
-      var promise = dataStoreService.saveUser($scope.user);
+      $scope.user.$save();
 
-      promise.success(function (data, status) {
-        $scope.showSubmitSuccessMessage = true;
-        dataShareService.get_all_users();
-      });
-
-      promise.error(function (data, status) {
-        $scope.showSubmitErrorMessage = true;
-        $('#submit_error_message').html('(' + status + ')');
-      });
+      $scope.showSubmitSuccessMessage = true;
+      dataShareService.get_all_users();
     }
   }
 };
-mySimpleFormsCtrl.$inject = ['$scope', 'dataStoreService', 'dataShareService'];
+mySimpleFormsCtrl.$inject = ['$scope', 'dataStore', 'dataShareService'];
 formsApp.controller('mySimpleFormsCtrl', mySimpleFormsCtrl);
 
 
-myModalFormsCtrl = function ($scope, dataStoreService, dataShareService) {
-  $scope.user_form = {};
+myModalFormsCtrl = function ($scope, dataStore, dataShareService) {
   $scope.form_template = '<%= asset_path('pages/forms/form.html') %>';
   $scope.colors = dataShareService.colors;
   modal = $('#modal__form');
@@ -90,20 +66,7 @@ myModalFormsCtrl = function ($scope, dataStoreService, dataShareService) {
   });
 
   $scope.get_all_users = function () {
-    var promise = dataStoreService.getAllUsers();
-
-    promise.success(function (users, status) {
-      if (users) {
-        $scope.users = users;
-      }
-      else {
-        alert('Error')
-      }
-    });
-
-    promise.error(function (data, status) {
-        alert('Error Communicating');
-    });
+    $scope.users = dataStore.User.query();
   };
 
   $scope.openModal = function() {
@@ -115,62 +78,24 @@ myModalFormsCtrl = function ($scope, dataStoreService, dataShareService) {
   };
 
   $scope.edit_user = function(first_name) {
-    var promise = dataStoreService.getUser(first_name);
+    $scope.user_form = dataStore.User.get( { id: first_name} );
 
-    promise.success(function (user, status) {
-      if (user) {
-        $scope.user_form.first_name = first_name;
-        $scope.user_form.email = user.email;
-        $scope.user_form.color = user.color;
-        $scope.user_form.is_cool = user.is_cool;
-        $scope.openModal();
-      }
-      else {
-        alert('Error - no Data')
-      }
-    });
-
-    promise.error(function (data, status) {
-      alert('Error Communicating - ' + status);
-    });
+    $scope.openModal();
   };
 
   $scope.update_user = function() {
-    var user = {
-      first_name: $scope.user_form.first_name,
-      email: $scope.user_form.email,
-      color: $scope.user_form.color,
-      is_cool: $scope.user_form.is_cool
-    };
-    var promise = dataStoreService.saveUser(user);
+    $scope.user_form.$save();
 
-    promise.success(function (data, status) {
-      if (data) {
-        $scope.closeModal();
-        $scope.get_all_users();
-      }
-      else {
-        alert('Error - no Data')
-      }
-    });
-
-    promise.error(function (data, status) {
-      alert('Error Communicating - ' + status);
-    });
+    $scope.closeModal();
+    $scope.get_all_users();
   };
 
   $scope.delete_user = function() {
-    var promise = dataStoreService.deleteUser($scope.user_form.first_name);
+    $scope.user_form.remove();
 
-    promise.success(function (data, status) {
-      $scope.closeModal();
-      $scope.get_all_data();
-    });
-
-    promise.error(function (data, status) {
-      alert('Error Communicating - ' + status);
-    });
+    $scope.closeModal();
+    $scope.get_all_users();
   };
 };
-myModalFormsCtrl.$inject = ['$scope', 'dataStoreService', 'dataShareService'];
+myModalFormsCtrl.$inject = ['$scope', 'dataStore', 'dataShareService'];
 formsApp.controller('myModalFormsCtrl', myModalFormsCtrl);

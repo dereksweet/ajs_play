@@ -28,15 +28,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr dir-paginate="country in countries | itemsPerPage: 15" total-items="countryCount" current-page="currentPage">
+          <tr dir-paginate="country in countries.models | itemsPerPage: 15" total-items="countries.total" current-page="currentPage">
             <td>{{ country.data.name }}</td>
             <td class="medium-width-200">{{ country.data.alpha3 }}</td>
           </tr>
           </tbody>
         </table>
         <dir-pagination-controls boundary-links="false" max-size="pagination_size" on-page-change="loadCountries(newPageNumber)"></dir-pagination-controls>
-        <br>
-        {{ pagination.current }}
       </div>
     </div>
   </div>

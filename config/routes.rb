@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   root 'pages#directives'
 
-  get '/api/countries', to: 'api#countries'
-  get '/api/get_user', to: 'api#get_user'
-  post '/api/save_user', to: 'api#save_user'
-  get '/api/get_all_users', to: 'api#get_all_users'
-  delete '/api/delete_user', to: 'api#delete_user'
+  namespace :api do
+    resources 'countries', only: [:index]
+    resources 'users', only: [:index, :show, :update, :destroy]
+  end
 
   get '/directives', to: 'pages#directives'
   get '/filters', to: 'pages#filters'
