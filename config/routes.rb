@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/filters', to: 'pages#filters'
   get '/forms', to: 'pages#forms'
   get '/routes', to: 'pages#routes'
+  get '/uirouter', to: 'pages#uirouter'
   get '/animate', to: 'pages#animate'
   get '/pagination', to: 'pages#pagination'
 

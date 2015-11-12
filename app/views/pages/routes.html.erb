@@ -1,7 +1,7 @@
 <!-- Reference controller for this page --->
 <%= javascript_include_tag asset_path('angular/controllers/pages/routes.js') %>
 
-<% content_for :title do %>AngularJS Playground - Forms<% end %>
+<% content_for :title do %>AngularJS Playground - ngRoute<% end %>
 
 <div ng-app="routesApp" ng-cloak>
   <div class="section-header">
@@ -9,7 +9,8 @@
     <div class="section-description">
       Angular Routes allow us to do things like create Single Page Applications. Below is
       a view that can have its contents loaded from a template by clicking the links below. Note that the URL in your
-      browser address bar is changing
+      browser address bar is changing<br>
+      <a href="/uirouter" data-method="get">Click here for the ui-router implementation of this page</a>
     </div>
   </div>
   <div class="row" ng-controller="rootController as rootCtrl">
@@ -31,40 +32,6 @@
         <div class="row">
           <div class="small-12 columns">
             <div ng-view></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="section-header">
-    <div class="section-title">ui-router</div>
-    <div class="section-description">
-      UI-Router is an angular extension that allows us to route based on a state machine. Below is the exact same example
-      as above but using ui-router instead of ngRoute
-    </div>
-  </div>
-  <div class="row" ng-controller="homeController as homeCtrl">
-    <div class="small-12 columns">
-      <div class="example">
-        <div class="row">
-          <div class="small-12 columns">
-            <dl class="sub-nav">
-              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('home')" ng-click="rootCtrl.active = 'home'" ui-sref="home">Home</a></dd>
-              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('about')" ng-click="rootCtrl.active = 'about'" ui-sref="about">About</a></dd>
-              <dd class="small-clear-both sub-nav-link"><a ng-class="rootCtrl.isActive('contact')" ng-click="rootCtrl.active = 'contact'" ui-sref="contact">Contact</a></dd>
-              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('contact_learn')" ng-click="rootCtrl.active = 'contact_learn'" ui-sref="contact_learn">Contact-Learn</a></dd>
-              <dd class="small-clear-both sub-nav-link"><a ng-class="rootCtrl.isActive('contact_complain')" ng-click="rootCtrl.active = 'contact_complain'" ui-sref="contact_complain">Contact-Complain</a></dd>
-              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('eager')" ng-click="rootCtrl.active = 'eager'" ui-sref="eager">Eager</a></dd>
-              <dd class="last small-clear-both sub-nav-link"><a ng-class="rootCtrl.isActive('undefined')" ng-click="rootCtrl.active = 'undefined'" ui-sref="i_blow_goats">Undefined Route</a></dd>
-            </dl>
-          </div>
-        </div>
-        <div class="row">
-          <div class="small-12 columns">
-            <div ui-view></div>
           </div>
         </div>
       </div>

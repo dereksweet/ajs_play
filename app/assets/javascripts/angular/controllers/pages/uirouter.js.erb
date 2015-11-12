@@ -1,0 +1,107 @@
+var moduleName = "uiRouterApp";
+
+var uiRouterApp = angular.module(moduleName, ['ui.router']);
+
+var rootController = function($rootScope) {
+  this.active = 'home';
+
+  this.isActive = function isActive(page) {
+    return this.active == page ? 'active' : '';
+  };
+};
+rootController.$inject = ['$rootScope'];
+uiRouterApp.controller('rootController', rootController);
+
+
+var homeController = function ($scope) {
+
+};
+homeController.$inject = ['$scope'];
+uiRouterApp.controller('homeController', homeController);
+
+
+var aboutController = function ($scope) {
+
+};
+aboutController.$inject = ['$scope'];
+uiRouterApp.controller('aboutController', aboutController);
+
+
+var contactController = function ($scope, $state) {
+  if ($state.current.data.subject == 'learn') {
+    $scope.showLearn = true;
+  } else if ($state.current.data.subject == 'complain') {
+    $scope.showComplain = true;
+  }
+};
+contactController.$inject = ['$scope', '$state'];
+uiRouterApp.controller('contactController', contactController);
+
+
+var eagerController = function ($scope, $routeParams) {
+  $scope.extra = $routeParams['extra'];
+};
+eagerController.$inject = ['$scope','$routeParams'];
+uiRouterApp.controller('eagerController', eagerController);
+
+
+var notFoundController = function ($scope, $location) {
+  $scope.data = {
+    attemptedLocation: $location.path()
+  };
+};
+notFoundController.$inject = ['$scope', '$location'];
+uiRouterApp.controller('notFoundController', notFoundController);
+
+var stateConfig = function($stateProvider, $urlRouterProvider) {
+  //
+  // For any unmatched url, redirect to /state1
+  $urlRouterProvider.otherwise("/");
+  //
+  // Now set up the states
+  $stateProvider
+      .state('home', {
+        url: "/",
+        templateUrl: '<%= asset_path('pages/routes/home.html') %>',
+        controller: homeController
+      })
+      .state('about', {
+        url: "/about",
+        templateUrl: '<%= asset_path('pages/routes/about.html') %>',
+        controller: aboutController
+      })
+      .state('contact', {
+        name: "contact",
+        url: "/contact",
+        templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
+        controller: contactController,
+        data: {
+          subject: ''
+        }
+      })
+      .state('contact_learn', {
+        name: "contact_learn",
+        url: "/contact/learn",
+        templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
+        controller: contactController,
+        data: {
+          subject: 'learn'
+        }
+      })
+      .state('contact_complain', {
+        name: "contact_complain",
+        url: "/contact/complain",
+        templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
+        controller: contactController,
+        data: {
+          subject: 'complain'
+        }
+      })
+      .state('eager', {
+        url: "/eager/var1/var2/var3",
+        templateUrl: '<%= asset_path('pages/routes/eager.html') %>',
+        controller: eagerController
+      });
+};
+stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+uiRouterApp.config(stateConfig);

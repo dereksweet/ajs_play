@@ -1,0 +1,49 @@
+.pages__uirouter {
+  .dynamic_view {
+    border: 1px solid black;
+    height: 500px;
+  }
+
+  .sub-nav {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    padding-top: 0px;
+    margin-top: 5px;
+
+    dt {
+      color: lightsteelblue;
+    }
+
+    dd, dt {
+      padding-right: 10px;
+
+      @media only screen and (min-width: 40.063em) {
+        border-right: 1px solid gray;
+      }
+
+      a.active {
+        color: white;
+        background-color: lightgray;
+      }
+
+      &.last {
+        border-right: none;
+      }
+    }
+  }
+
+  .sub-nav-link {
+    @media only screen and (max-width: 40em) {
+      width: 135px;
+      font-size: 10px;
+    }
+  }
+
+  .small-clear-both {
+    @media only screen and (max-width: 40em) {
+      clear:both;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 var moduleName = "routesApp";
 
-var routesApp = angular.module(moduleName, ['ngRoute', 'ui.router']);
+var routesApp = angular.module(moduleName, ['ngRoute']);
 
 var routesConfig = function ($routeProvider) {
   $routeProvider
@@ -87,44 +87,3 @@ var notFoundController = function ($scope, $location) {
 };
 notFoundController.$inject = ['$scope', '$location'];
 routesApp.controller('notFoundController', notFoundController);
-
-var stateConfig = function($stateProvider, $urlRouterProvider) {
-  //
-  // For any unmatched url, redirect to /state1
-  $urlRouterProvider.otherwise("/");
-  //
-  // Now set up the states
-  $stateProvider
-      .state('home', {
-        url: "/",
-        templateUrl: '<%= asset_path('pages/routes/home.html') %>',
-        controller: homeController
-      })
-      .state('about', {
-        url: "/about",
-        templateUrl: '<%= asset_path('pages/routes/about.html') %>',
-        controller: aboutController
-      })
-      .state('contact', {
-        url: "/contact",
-        templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
-        controller: contactController
-      })
-      .state('contact_learn', {
-        url: "/contact/learn",
-        templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
-        controller: contactController
-      })
-      .state('contact_complain', {
-        url: "/contact/complain",
-        templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
-        controller: contactController
-      })
-      .state('eager', {
-        url: "/eager/var1/var2/var3",
-        templateUrl: '<%= asset_path('pages/routes/eager.html') %>',
-        controller: eagerController
-      });
-};
-stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
-routesApp.config(stateConfig);

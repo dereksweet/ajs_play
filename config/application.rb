@@ -30,6 +30,7 @@ module AjsPlay
                                     angular/controllers/pages/filters.js
                                     angular/controllers/pages/forms.js
                                     angular/controllers/pages/routes.js
+                                    angular/controllers/pages/uirouter.js
                                     angular/controllers/pages/animate.js
                                     angular/controllers/pages/pagination.js )
 

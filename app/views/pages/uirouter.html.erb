@@ -1,0 +1,36 @@
+<!-- Reference controller for this page --->
+<%= javascript_include_tag asset_path('angular/controllers/pages/uirouter.js') %>
+
+<% content_for :title do %>AngularJS Playground - ui-router<% end %>
+
+<div ng-app="uiRouterApp" ng-cloak>
+  <div class="section-header">
+    <div class="section-title">ui-router</div>
+    <div class="section-description">
+      UI-Router is an angular extension that allows us to route based on a state machine. Below is a similar example
+      as the ngRoutes page but using ui-router instead. Lots more can be done with ui-router than what you see here.
+    </div>
+  </div>
+  <div class="row" ng-controller="rootController as rootCtrl">
+    <div class="small-12 columns">
+      <div class="example">
+        <div class="row">
+          <div class="small-12 columns">
+            <dl class="sub-nav">
+              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('home')" ng-click="rootCtrl.active = 'home'" ui-sref="home">Home</a></dd>
+              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('about')" ng-click="rootCtrl.active = 'about'" ui-sref="about">About</a></dd>
+              <dd class="small-clear-both sub-nav-link"><a ng-class="rootCtrl.isActive('contact')" ng-click="rootCtrl.active = 'contact'" ui-sref="contact">Contact</a></dd>
+              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('contact_learn')" ng-click="rootCtrl.active = 'contact_learn'" ui-sref="contact_learn">Contact-Learn</a></dd>
+              <dd class="small-clear-both sub-nav-link"><a ng-class="rootCtrl.isActive('contact_complain')" ng-click="rootCtrl.active = 'contact_complain'" ui-sref="contact_complain">Contact-Complain</a></dd>
+            </dl>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns">
+            <div ui-view></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
