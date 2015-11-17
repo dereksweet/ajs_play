@@ -28,30 +28,20 @@ uiRouterApp.controller('aboutController', aboutController);
 
 
 var contactController = function ($scope, $state) {
-  if ($state.current.data.subject == 'learn') {
-    $scope.showLearn = true;
-  } else if ($state.current.data.subject == 'complain') {
+  if ($state.current.data.subject == 'complain') {
     $scope.showComplain = true;
   }
 };
 contactController.$inject = ['$scope', '$state'];
 uiRouterApp.controller('contactController', contactController);
 
+var nestedController = function ($scope, $state) {
 
-var eagerController = function ($scope, $routeParams) {
-  $scope.extra = $routeParams['extra'];
 };
-eagerController.$inject = ['$scope','$routeParams'];
-uiRouterApp.controller('eagerController', eagerController);
+nestedController.$inject = ['$scope', '$state'];
+uiRouterApp.controller('nestedController', nestedController);
 
 
-var notFoundController = function ($scope, $location) {
-  $scope.data = {
-    attemptedLocation: $location.path()
-  };
-};
-notFoundController.$inject = ['$scope', '$location'];
-uiRouterApp.controller('notFoundController', notFoundController);
 
 var stateConfig = function($stateProvider, $urlRouterProvider) {
   //
@@ -61,11 +51,13 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
   // Now set up the states
   $stateProvider
       .state('home', {
+        name: 'home',
         url: "/",
         templateUrl: '<%= asset_path('pages/routes/home.html') %>',
         controller: homeController
       })
       .state('about', {
+        name: 'about',
         url: "/about",
         templateUrl: '<%= asset_path('pages/routes/about.html') %>',
         controller: aboutController
@@ -79,15 +71,6 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
           subject: ''
         }
       })
-      .state('contact_learn', {
-        name: "contact_learn",
-        url: "/contact/learn",
-        templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
-        controller: contactController,
-        data: {
-          subject: 'learn'
-        }
-      })
       .state('contact_complain', {
         name: "contact_complain",
         url: "/contact/complain",
@@ -97,10 +80,17 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
           subject: 'complain'
         }
       })
-      .state('eager', {
-        url: "/eager/var1/var2/var3",
-        templateUrl: '<%= asset_path('pages/routes/eager.html') %>',
-        controller: eagerController
+      .state('nested', {
+        name: 'nested',
+        url: "/nested",
+        templateUrl: '<%= asset_path('pages/uirouter/nested.html') %>'
+      })
+      .state('nested.list', {
+        url: "/list",
+        templateUrl: '<%= asset_path('pages/uirouter/nested.list.html') %>',
+        controller: function($scope) {
+          $scope.items = ["A", "List", "Of", "Items"];
+        }
       });
 };
 stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
