@@ -89,11 +89,18 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
         controller: nestedController
       })
       .state('nested.list', {
+        name: 'nested',
         url: "/list",
         templateUrl: '<%= asset_path('pages/uirouter/nested.list.html') %>',
         controller: function($scope) {
           $scope.items = ["A", "List", "Of", "Items"];
         }
+      })
+      .state('multiple', {
+        name: 'multiple',
+        url: "/multiple",
+        templateUrl: '<%= asset_path('pages/uirouter/multiple.html') %>',
+        controller: multipleController
       })
       .state('multiple_state1', {
         name: 'multiple',
