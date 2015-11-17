@@ -102,22 +102,19 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
         templateUrl: '<%= asset_path('pages/uirouter/multiple.html') %>',
         controller: multipleController
       })
-      .state('multiple_state1', {
-        name: 'multiple',
-        url: "/multiple_state1",
-        controller: multipleController,
+      .state('multiple.state1', {
         views: {
-          "viewA": { template: '<%= asset_path('pages/uirouter/multiple.state1.viewA.html') %>'},
-          "viewB": { template: '<%= asset_path('pages/uirouter/multiple.state1.viewB.html') %>'}
+          "viewA": { templateUrl: '<%= asset_path('pages/uirouter/multiple.state1.viewA.html') %>'},
+          "viewB": { templateUrl: '<%= asset_path('pages/uirouter/multiple.state1.viewB.html') %>'}
         }
       })
-      .state('multiple_state2', {
+      .state('multiple.state2', {
         name: 'multiple',
         url: "/multiple_state2",
         controller: multipleController,
         views: {
-          "viewA": { template: '<%= asset_path('pages/uirouter/multiple.state2.viewA.html') %>'},
-          "viewB": { template: '<%= asset_path('pages/uirouter/multiple.state2.viewB.html') %>'}
+          "viewA": { templateUrl: '<%= asset_path('pages/uirouter/multiple.state2.viewA.html') %>'},
+          "viewB": { templateUrl: '<%= asset_path('pages/uirouter/multiple.state2.viewB.html') %>'}
         }
       });
 };
