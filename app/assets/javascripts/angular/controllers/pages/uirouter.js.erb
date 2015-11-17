@@ -37,6 +37,12 @@ var nestedController = function ($scope, $state) {
 nestedController.$inject = ['$scope', '$state'];
 uiRouterApp.controller('nestedController', nestedController);
 
+var multipleController = function ($scope, $state) {
+
+};
+multipleController.$inject = ['$scope', '$state'];
+uiRouterApp.controller('multipleController', multipleController);
+
 
 
 var stateConfig = function($stateProvider, $urlRouterProvider) {
@@ -87,6 +93,24 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
         templateUrl: '<%= asset_path('pages/uirouter/nested.list.html') %>',
         controller: function($scope) {
           $scope.items = ["A", "List", "Of", "Items"];
+        }
+      })
+      .state('multiple_state1', {
+        name: 'multiple',
+        url: "/multiple_state1",
+        controller: multipleController,
+        views: {
+          "viewA": { template: '<%= asset_path('pages/uirouter/multiple.state1.viewA.html') %>'},
+          "viewB": { template: '<%= asset_path('pages/uirouter/multiple.state1.viewB.html') %>'}
+        }
+      })
+      .state('multiple_state2', {
+        name: 'multiple',
+        url: "/multiple_state2",
+        controller: multipleController,
+        views: {
+          "viewA": { template: '<%= asset_path('pages/uirouter/multiple.state2.viewA.html') %>'},
+          "viewB": { template: '<%= asset_path('pages/uirouter/multiple.state2.viewB.html') %>'}
         }
       });
 };
