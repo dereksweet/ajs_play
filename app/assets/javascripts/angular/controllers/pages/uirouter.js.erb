@@ -2,14 +2,10 @@ var moduleName = "uiRouterApp";
 
 var uiRouterApp = angular.module(moduleName, ['ui.router']);
 
-var rootController = function($rootScope) {
-  this.active = 'home';
-
-  this.isActive = function isActive(page) {
-    return this.active == page ? 'active' : '';
-  };
+var rootController = function($scope, $state) {
+  $scope.state = $state;
 };
-rootController.$inject = ['$rootScope'];
+rootController.$inject = ['$scope', '$state'];
 uiRouterApp.controller('rootController', rootController);
 
 
@@ -83,7 +79,8 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('nested', {
         name: 'nested',
         url: "/nested",
-        templateUrl: '<%= asset_path('pages/uirouter/nested.html') %>'
+        templateUrl: '<%= asset_path('pages/uirouter/nested.html') %>',
+        controller: nestedController
       })
       .state('nested.list', {
         url: "/list",

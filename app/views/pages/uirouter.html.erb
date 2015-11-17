@@ -17,11 +17,11 @@
         <div class="row">
           <div class="small-12 columns">
             <dl class="sub-nav">
-              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('home')" ng-click="rootCtrl.active = 'home'" ui-sref="home">Home</a></dd>
-              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('about')" ng-click="rootCtrl.active = 'about'" ui-sref="about">About</a></dd>
-              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('contact')" ng-click="rootCtrl.active = 'contact'" ui-sref="contact">Contact</a></dd>
-              <dd class="sub-nav-link"><a ng-class="rootCtrl.isActive('contact_complain')" ng-click="rootCtrl.active = 'contact_complain'" ui-sref="contact_complain">Contact-Complain</a></dd>
-              <dd class="small-clear-both sub-nav-link"><a ng-class="rootCtrl.isActive('nested')" ng-click="rootCtrl.active = 'nested'" ui-sref="nested">Nested</a></dd>
+              <dd class="sub-nav-link"><a ng-class="{active: state.current.name == 'home'}" ui-sref="home">Home</a></dd>
+              <dd class="sub-nav-link"><a ng-class="{active: state.current.name == 'about'}" ui-sref="about">About</a></dd>
+              <dd class="sub-nav-link"><a ng-class="{active: state.current.name == 'contact'}" ui-sref="contact">Contact</a></dd>
+              <dd class="sub-nav-link"><a ng-class="{active: state.current.name == 'contact_complain'}" ui-sref="contact_complain">Contact-Complain</a></dd>
+              <dd class="small-clear-both sub-nav-link"><a ng-class="{active: state.current.name == 'nested'}" ui-sref="nested">Nested</a></dd>
             </dl>
           </div>
         </div>
