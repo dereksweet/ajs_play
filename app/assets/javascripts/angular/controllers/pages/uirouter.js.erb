@@ -38,7 +38,9 @@ nestedController.$inject = ['$scope', '$state'];
 uiRouterApp.controller('nestedController', nestedController);
 
 var multipleController = function ($scope, $state) {
-
+  $scope.alertState = function alertState(){
+    alert($state.current.data.myName);
+  }
 };
 multipleController.$inject = ['$scope', '$state'];
 uiRouterApp.controller('multipleController', multipleController);
@@ -53,65 +55,78 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
   // Now set up the states
   $stateProvider
       .state('home', {
-        name: 'home',
         url: "/",
         templateUrl: '<%= asset_path('pages/routes/home.html') %>',
-        controller: homeController
+        controller: homeController,
+        data: {
+          name: 'home'
+        }
       })
       .state('about', {
-        name: 'about',
         url: "/about",
         templateUrl: '<%= asset_path('pages/routes/about.html') %>',
-        controller: aboutController
+        controller: aboutController,
+        data: {
+          name: 'about'
+        }
       })
       .state('contact', {
-        name: "contact",
         url: "/contact",
         templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
         controller: contactController,
         data: {
-          subject: ''
+          subject: '',
+          name: 'contact'
         }
       })
       .state('contact_complain', {
-        name: "contact_complain",
         url: "/contact/complain",
         templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
         controller: contactController,
         data: {
-          subject: 'complain'
+          subject: 'complain',
+          name: 'contact_complain'
         }
       })
       .state('nested', {
-        name: 'nested',
         url: "/nested",
+        controller: nestedController,
         templateUrl: '<%= asset_path('pages/uirouter/nested.html') %>',
-        controller: nestedController
+        data: {
+          name: 'nested'
+        }
       })
       .state('nested.list', {
-        name: 'nested',
         url: "/list",
         templateUrl: '<%= asset_path('pages/uirouter/nested.list.html') %>',
         controller: function($scope) {
           $scope.items = ["A", "List", "Of", "Items"];
+        },
+        data: {
+          name: 'nested'
         }
       })
       .state('multiple', {
-        name: 'multiple',
         url: "/multiple",
+        controller: multipleController,
         templateUrl: '<%= asset_path('pages/uirouter/multiple.html') %>',
-        controller: multipleController
+        data: {
+          name: 'multiple'
+        }
       })
       .state('multiple.state1', {
+        data: {
+          name: 'multiple'
+        },
         views: {
           "viewA": { templateUrl: '<%= asset_path('pages/uirouter/multiple.state1.viewA.html') %>'},
           "viewB": { templateUrl: '<%= asset_path('pages/uirouter/multiple.state1.viewB.html') %>'}
         }
       })
       .state('multiple.state2', {
-        name: 'multiple',
-        url: "/multiple_state2",
-        controller: multipleController,
+        data: {
+          name: 'multiple'
+        },
         views: {
           "viewA": { templateUrl: '<%= asset_path('pages/uirouter/multiple.state2.viewA.html') %>'},
           "viewB": { templateUrl: '<%= asset_path('pages/uirouter/multiple.state2.viewB.html') %>'}
