@@ -15,5 +15,8 @@
 /log/*.log
 /tmp
 
+# Ignore automatically installed node modules
+node_modules/
+
 .idea/
 .powenv
