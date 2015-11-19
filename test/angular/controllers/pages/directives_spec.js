@@ -1,3 +1,4 @@
+require('../../../test_helper');
 require('../../../../app/assets/javascripts/angular/controllers/pages/directives.js.erb');
 
 describe('Array', function() {

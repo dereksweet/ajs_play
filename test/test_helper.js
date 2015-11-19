@@ -1,24 +1,24 @@
-//process.env.NODE_PATH = require('path').resolve(__dirname, '..');
+process.env.NODE_PATH = require('path').resolve(__dirname, '..');
+
+console.log(process.env.NODE_PATH);
 
 var jsdom = require('jsdom').jsdom;
-var document = jsdom('<html><head><script></script></head><body></body></html>');
-var window = document.defaultView;
 
-global.jsdom = jsdom;
-global.document = document;
-global.window = window;
+global.document = jsdom('<html><head><script></script></head><body></body></html>');
+global.window = global.document.defaultView;
+global.navigator = window.navigator = {};
 
 global.window.mocha = {};
-//global.window.beforeEach = beforeEach;
-//global.window.afterEach = afterEach;
+global.window.beforeEach = beforeEach;
+global.window.afterEach = afterEach;
 
 require('angular/angular');
-//require('angular-mocks');
+require('angular-mocks');
 
 global.angular = window.angular;
 
-//global.inject = angular.mock.inject;
-//global.ngModule = angular.mock.module;
+global.inject = angular.mock.inject;
+global.ngModule = angular.mock.module;
 
 // Chai for assertions.
 var chai = require('chai');
@@ -36,7 +36,7 @@ global.sinon = require('sinon');
 global.stub = sinon.stub;
 global.match = sinon.match;
 
-/*beforeEach(function() {
+beforeEach(function() {
  // Create a new sandbox before each test
  this.sinon = sinon.sandbox.create();
 });
@@ -44,4 +44,4 @@ global.match = sinon.match;
 afterEach(function() {
  // Cleanup the sandbox to remove all the stubs
  this.sinon.restore();
-});*/
+});

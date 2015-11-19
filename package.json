@@ -3,12 +3,8 @@
   "version": "0.0.1",
   "description": "A playground to teach the basics of AngularJS and provide a guide to how it should be structured for Rails",
   "author": "dereksweet@gmail.com",
-  "bin": {
-
-  },
-  "scripts": {
-
-  },
+  "bin": {},
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/dereksweet/ajs_play.git"
@@ -19,21 +15,17 @@
   "keywords": [
     "ajs_play"
   ],
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "devDependencies": {
+    "angular": "*",
+    "angular-mocks": "^1.4.7",
     "chai": "*",
     "chai-as-promised": "*",
-    "sinon-as-promised": "*",
-    "angular": "*",
-    "angular-mocks": "*",
     "jsdom": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "sinon-as-promised": "*"
   },
   "preferGlobal": true,
-  "publishConfig": {
-
-  },
+  "publishConfig": {},
   "license": "MIT"
 }
