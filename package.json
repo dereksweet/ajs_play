@@ -27,7 +27,8 @@
     "chai-as-promised": "*",
     "sinon-as-promised": "*",
     "angular": "*",
-    "phantomjs": "*",
+    "angular-mocks": "*",
+    "jsdom": "*",
     "mocha": "*"
   },
   "preferGlobal": true,
