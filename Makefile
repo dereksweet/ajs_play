@@ -1,10 +1,13 @@
 .PHONY: install
-install: node_modules $(bower)
+install: bundle_install node_modules $(bower)
 
 node_modules: package.json
 	@npm install
 	@touch $@
 
+bundle_install: Gemfile
+	@bundle install
+
 .PHONY: test
-test: install
-	@mocha --require test/test_helper --recursive
+test:
+	@node_modules/mocha/bin/mocha --require test/test_helper --recursive
