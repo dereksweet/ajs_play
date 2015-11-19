@@ -1,4 +1,4 @@
-var assert = require('assert');
+
 describe('Array', function() {
   describe('#indexOf()', function () {
     it('should return -1 when the value is not present', function () {
@@ -7,3 +7,17 @@ describe('Array', function() {
     });
   });
 });
+
+describe('Foobar', function() {
+  describe('#sayHello()', function() {
+    it('should return some text', function() {
+      var foobar = {
+        sayHello: function() {
+          return 'Hello World!';
+        }
+      };
+
+      assert(foobar.sayHello() === 'Hello World!');
+    })
+  })
+})

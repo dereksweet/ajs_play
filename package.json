@@ -4,7 +4,7 @@
   "description": "A playground to teach the basics of AngularJS and provide a guide to how it should be structured for Rails",
   "author": "dereksweet@gmail.com",
   "bin": {
-    "module-name": "./bin/module-name"
+
   },
   "scripts": {
 
@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "chai": "*",
+    "chai-as-promised": "*",
+    "sinon-as-promised": "*",
     "mocha": "*"
   },
   "preferGlobal": true,
