@@ -10,4 +10,4 @@ bundle_install: Gemfile
 
 .PHONY: test
 test:
-	@node_modules/mocha/bin/mocha --recursive
+	@node_modules/mocha/bin/mocha --require test/modify_path --recursive
