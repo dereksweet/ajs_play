@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A playground to teach the basics of AngularJS and provide a guide to how it should be structured for Rails",
   "author": "dereksweet@gmail.com",
+  "engines": { "node" : "5.0.0" },
   "bin": {},
   "scripts": {},
   "repository": {
