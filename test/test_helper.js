@@ -1,6 +1,5 @@
 process.env.NODE_PATH = require('path').resolve(__dirname, '..');
-
-console.log(process.env.NODE_PATH);
+require('module').Module._initPaths();
 
 var jsdom = require('jsdom').jsdom;
 
