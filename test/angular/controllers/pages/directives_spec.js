@@ -1,25 +1,44 @@
 require('test/test_helper');
 require('app/assets/javascripts/angular/controllers/pages/directives.js.erb');
 
-describe('Array', function() {
-  describe('#indexOf()', function () {
-    it('should return -1 when the value is not present', function () {
-      assert.equal(-1, [1,2,3].indexOf(5));
-      assert.equal(-1, [1,2,3].indexOf(0));
-    });
+beforeEach(angular.mock.module("directivesApp"));
+
+beforeEach(angular.mock.inject(function ($controller, $rootScope) {
+  mockScope = $rootScope.$new();
+  controller = $controller("directivesCtrl", {
+    $scope: mockScope
   });
-});
+}));
 
-describe('Foobar', function() {
-  describe('#sayHello()', function() {
-    it('should return some text', function() {
-      var foobar = {
-        sayHello: function() {
-          return 'Hello World!';
-        }
-      };
+describe('directivesApp', function () {
+  describe('directivesCtrl', function () {
 
-      assert(foobar.sayHello() === 'Hello World!');
-    })
+    it('should default do_eval to false', function () {
+      expect(mockScope.do_eval).to.equal(false);
+    });
+
+    describe('evalExpression()', function() {
+
+      it('should return true if mathexpression evaluates to 10', function () {
+        mockScope.do_eval = true;
+        mockScope.mathexpression = "2 * 5";
+        expect(mockScope.evalExpression()).to.equal(true);
+      });
+
+      it('should return false if mathexpression does not evaluate to 10', function () {
+        mockScope.do_eval = true;
+        mockScope.mathexpression = "2 + 5";
+        expect(mockScope.evalExpression()).to.equal(false);
+      });
+
+      it('should set do_eval false if mathexpression is not a valid expression', function () {
+        mockScope.do_eval = true;
+        mockScope.mathexpression = "2 +";
+        mockScope.evalExpression();
+        expect(mockScope.do_eval).to.equal(false);
+      });
+
+    });
+
   })
 });
