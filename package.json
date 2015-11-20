@@ -24,6 +24,7 @@
     "chai-as-promised": "*",
     "jsdom": "*",
     "mocha": "*",
+    "sinon": "*",
     "sinon-as-promised": "*"
   },
   "preferGlobal": true,

@@ -1,11 +1,11 @@
 .PHONY: install
-install: bundle_install node_modules $(bower)
+install: Gemfile.lock node_modules $(bower)
 
 node_modules: package.json
 	@npm install
 	@touch $@
 
-bundle_install: Gemfile
+Gemfile.lock: Gemfile
 	@bundle install
 
 .PHONY: test
