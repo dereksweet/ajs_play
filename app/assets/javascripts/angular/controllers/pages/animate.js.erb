@@ -4,13 +4,11 @@ var controllerName = "animateCtrl";
 var animateApp = angular.module(moduleName, ['ngAnimate']);
 
 animateCtrl = function ($scope) {
-  $scope.data = {
-    on: false
-  };
+  $scope.animate_on = false;
 
   $scope.people = [
-    { name: 'Derek Sweet', url: '<%= asset_path('pages/animate/derek-sweet.html') %>' },
-    { name: 'Kelsey Sweet', url: '<%= asset_path('pages/animate/kelsey-sweet.html') %>' }
+    { name: 'Derek Sweet', url: asset_paths['pages/animate/derek-sweet.html'] },
+    { name: 'Kelsey Sweet', url: asset_paths['pages/animate/kelsey-sweet.html'] }
   ];
   $scope.selected_person = "";
 };

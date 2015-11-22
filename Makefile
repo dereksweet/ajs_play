@@ -10,4 +10,4 @@ Gemfile.lock: Gemfile
 
 .PHONY: test
 test:
-	@node_modules/mocha/bin/mocha --require test/modify_path --recursive
+	@node_modules/mocha/bin/mocha --require test/modify_path --require test/mock_asset_paths --recursive

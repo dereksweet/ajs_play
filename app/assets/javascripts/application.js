@@ -20,6 +20,7 @@
 //= require angular-animate
 //= require angular-resource
 //= require dirPagination
+//= require ./angular/asset_paths
 //= require_tree ./angular/models
 
 $(function() {

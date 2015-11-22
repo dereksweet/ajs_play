@@ -3,15 +3,15 @@ require('app/assets/javascripts/angular/controllers/pages/directives.js.erb');
 
 beforeEach(angular.mock.module("directivesApp"));
 
-beforeEach(angular.mock.inject(function ($controller, $rootScope) {
-  mockScope = $rootScope.$new();
-  controller = $controller("directivesCtrl", {
-    $scope: mockScope
-  });
-}));
-
 describe('directivesApp', function () {
   describe('directivesCtrl', function () {
+
+    beforeEach(angular.mock.inject(function ($controller, $rootScope) {
+      mockScope = $rootScope.$new();
+      controller = $controller("directivesCtrl", {
+        $scope: mockScope
+      });
+    }));
 
     it('should default do_eval to false', function () {
       expect(mockScope.do_eval).to.equal(false);
