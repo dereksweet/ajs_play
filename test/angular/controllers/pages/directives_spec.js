@@ -1,9 +1,10 @@
 require('test/test_helper');
 require('app/assets/javascripts/angular/controllers/pages/directives.js.erb');
 
-beforeEach(angular.mock.module("directivesApp"));
-
 describe('directivesApp', function () {
+
+  beforeEach(angular.mock.module("directivesApp"));
+
   describe('directivesCtrl', function () {
 
     beforeEach(angular.mock.inject(function ($controller, $rootScope) {

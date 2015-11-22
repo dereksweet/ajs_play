@@ -26,7 +26,8 @@
     "jsdom": "*",
     "mocha": "*",
     "sinon": "*",
-    "sinon-as-promised": "*"
+    "sinon-as-promised": "*",
+    "timekeeper": "*"
   },
   "preferGlobal": true,
   "publishConfig": {},

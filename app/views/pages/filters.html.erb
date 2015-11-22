@@ -29,13 +29,13 @@
         </div>
         <div class="row">
           <div class="small-6 medium-3 columns text-right">Date (short): </div>
-          <div class="small-6 medium-3 columns end">{{ data.currentDate | date:'short' }}</div>
+          <div class="small-6 medium-3 columns end">{{ currentDate | date:'short' }}</div>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
           <div class="small-6 medium-3 columns text-right">limitTo (3 entries): </div>
           <div class="small-6 medium-3 columns end">
-            <span ng-repeat="datum in data.sampleData | limitTo:3">{{ datum | number:2 }}<br ng-hide="$last"></span>
+            <span ng-repeat="datum in sampleData | limitTo:3">{{ datum | number:2 }}<br ng-hide="$last"></span>
           </div>
         </div>
         <div class="row">&nbsp;</div>
@@ -43,21 +43,21 @@
           <div class="small-6 medium-3 columns text-right">Search Filter: </div>
           <div class="small-6 medium-6 columns end">
             <input ng-model="searchText"><br>
-            <span ng-repeat="datum in data.sampleData | filter:searchText">{{ datum }}<br ng-hide="$last"></span>
+            <span ng-repeat="datum in sampleData | filter:searchText">{{ datum }}<br ng-hide="$last"></span>
           </div>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
           <div class="small-6 medium-3 columns text-right">Order by (toString): </div>
           <div class="small-6 medium-6 columns end">
-            <span ng-repeat="datum in data.sampleData | orderBy: 'toString()'">{{ datum }}<br ng-hide="$last"></span>
+            <span ng-repeat="datum in sampleData | orderBy: 'toString()'">{{ datum }}<br ng-hide="$last"></span>
           </div>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
           <div class="small-6 medium-3 columns text-right">json: </div>
           <div class="small-6 medium-6 columns end">
-            {{ data | json }}
+            {{ jsonObject | json }}
           </div>
         </div>
       </div>

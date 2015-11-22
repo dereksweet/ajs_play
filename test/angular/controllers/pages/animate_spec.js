@@ -2,9 +2,10 @@ require('test/test_helper');
 require('angular-animate');
 require('app/assets/javascripts/angular/controllers/pages/animate.js.erb');
 
-beforeEach(angular.mock.module("animateApp"));
-
 describe('animateApp', function () {
+
+  beforeEach(angular.mock.module("animateApp"));
+
   describe('animateCtrl', function () {
 
     beforeEach(angular.mock.inject(function ($controller, $rootScope) {
