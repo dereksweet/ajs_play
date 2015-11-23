@@ -37,15 +37,14 @@ var routesConfig = function ($routeProvider) {
 routesConfig.$inject = ['$routeProvider'];
 routesApp.config(routesConfig);
 
-var rootController = function($rootScope) {
+var routesController = function() {
   this.active = 'home';
 
   this.isActive = function isActive(page) {
     return this.active == page ? 'active' : '';
   };
 };
-rootController.$inject = ['$rootScope'];
-routesApp.controller('rootController', rootController);
+routesApp.controller('routesController', routesController);
 
 
 var homeController = function ($scope) {
