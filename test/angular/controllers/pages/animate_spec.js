@@ -8,12 +8,14 @@ describe('animateApp', function () {
 
   describe('animateCtrl', function () {
 
-    beforeEach(angular.mock.inject(function ($controller, $rootScope) {
+    mockController = function ($controller, $rootScope) {
       mockScope = $rootScope.$new();
       controller = $controller("animateCtrl", {
         $scope: mockScope
       });
-    }));
+    };
+
+    beforeEach(angular.mock.inject(mockController));
 
     it('should default animate_on to false', function () {
       expect(mockScope.animate_on).to.equal(false);

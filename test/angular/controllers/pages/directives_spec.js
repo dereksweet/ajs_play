@@ -7,12 +7,14 @@ describe('directivesApp', function () {
 
   describe('directivesCtrl', function () {
 
-    beforeEach(angular.mock.inject(function ($controller, $rootScope) {
+    mockController = function ($controller, $rootScope) {
       mockScope = $rootScope.$new();
       controller = $controller("directivesCtrl", {
         $scope: mockScope
       });
-    }));
+    };
+
+    beforeEach(angular.mock.inject(mockController));
 
     it('should default do_eval to false', function () {
       expect(mockScope.do_eval).to.equal(false);

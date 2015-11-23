@@ -21,6 +21,8 @@
     "angular": "*",
     "angular-mocks": "^1.4.7",
     "angular-animate": "*",
+    "angular-resource": "*",
+    "angular-utils-pagination": "*",
     "chai": "*",
     "chai-as-promised": "*",
     "jsdom": "*",

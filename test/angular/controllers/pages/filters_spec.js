@@ -11,7 +11,7 @@ describe('filtersApp', function () {
 
   describe('filtersCtrl', function () {
 
-    beforeEach(angular.mock.inject(function ($controller, $rootScope, $timeout) {
+    mockController = function ($controller, $rootScope, $timeout) {
       // Freeze Date() to the current Date
       tk.freeze(currentDate);
 
@@ -21,7 +21,9 @@ describe('filtersApp', function () {
         $scope: mockScope,
         $timeout: mockTimeout
       });
-    }));
+    };
+
+    beforeEach(angular.mock.inject(mockController));
 
     afterEach(function () {
       // Unfreeze Date()
