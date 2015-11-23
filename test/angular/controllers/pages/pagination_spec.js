@@ -72,7 +72,7 @@ describe('paginationApp', function () {
           expect(mockScope.countries).to.include.members(expected);
         });
 
-        it('should set the countries appropriately page 2', function () {
+        it('should set the countries appropriately for page 2', function () {
           mockScope.loadCountries(2);
           expected = ['Country3', 'Country4'];
           expect(mockScope.countries).to.include.members(expected);
