@@ -1,4 +1,5 @@
 require('test/test_helper');
+require('angular-route');
 require('app/assets/javascripts/angular/controllers/pages/routes.js.erb');
 
 describe('routesApp', function () {
@@ -16,8 +17,8 @@ describe('routesApp', function () {
 
         beforeEach(angular.mock.inject(mockController));
 
-        it('should be true', function () {
-            expect(true).to.equal(true);
+        it('default active to "home"', function () {
+            expect(controller.active).to.equal('home');
         });
     })
 });

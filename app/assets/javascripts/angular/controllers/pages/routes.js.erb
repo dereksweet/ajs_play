@@ -5,46 +5,46 @@ var routesApp = angular.module(moduleName, ['ngRoute']);
 var routesConfig = function ($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: '<%= asset_path('pages/routes/home.html') %>',
+      templateUrl: asset_paths['pages/routes/home.html'],
       controller: 'homeController'
     })
 
     .when('/about', {
-      templateUrl: '<%= asset_path('pages/routes/about.html') %>',
+      templateUrl: asset_paths['pages/routes/about.html'],
       controller: 'aboutController'
     })
 
     .when('/contact', {
-      templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
+      templateUrl: asset_paths['pages/routes/contact.html'],
       controller: 'contactController'
     })
 
     .when('/contact/:subject', {
-      templateUrl: '<%= asset_path('pages/routes/contact.html') %>',
+      templateUrl: asset_paths['pages/routes/contact.html'],
       controller: 'contactController'
     })
 
     .when('/eager/:extra*', {
-      templateUrl: '<%= asset_path('pages/routes/eager.html') %>',
+      templateUrl: asset_paths['pages/routes/eager.html'],
       controller: 'eagerController'
     })
 
     .otherwise({
-      templateUrl: '<%= asset_path('pages/routes/routeNotFound.html') %>',
+      templateUrl: asset_paths['pages/routes/routeNotFound.html'],
       controller: 'notFoundController'
     });
 };
 routesConfig.$inject = ['$routeProvider'];
 routesApp.config(routesConfig);
 
-var routesController = function() {
+var routesCtrl = function() {
   this.active = 'home';
 
   this.isActive = function isActive(page) {
     return this.active == page ? 'active' : '';
   };
 };
-routesApp.controller('routesController', routesController);
+routesApp.controller('routesCtrl', routesCtrl);
 
 
 var homeController = function ($scope) {
