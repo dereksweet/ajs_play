@@ -6,32 +6,32 @@ var routesConfig = function ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: asset_paths['pages/routes/home.html'],
-      controller: 'homeController'
+      controller: 'homeCtrl'
     })
 
     .when('/about', {
       templateUrl: asset_paths['pages/routes/about.html'],
-      controller: 'aboutController'
+      controller: 'aboutCtrl'
     })
 
     .when('/contact', {
       templateUrl: asset_paths['pages/routes/contact.html'],
-      controller: 'contactController'
+      controller: 'contactCtrl'
     })
 
     .when('/contact/:subject', {
       templateUrl: asset_paths['pages/routes/contact.html'],
-      controller: 'contactController'
+      controller: 'contactCtrl'
     })
 
     .when('/eager/:extra*', {
       templateUrl: asset_paths['pages/routes/eager.html'],
-      controller: 'eagerController'
+      controller: 'eagerCtrl'
     })
 
     .otherwise({
       templateUrl: asset_paths['pages/routes/routeNotFound.html'],
-      controller: 'notFoundController'
+      controller: 'notFoundCtrl'
     });
 };
 routesConfig.$inject = ['$routeProvider'];
@@ -47,42 +47,40 @@ var routesCtrl = function() {
 routesApp.controller('routesCtrl', routesCtrl);
 
 
-var homeController = function ($scope) {
+var homeCtrl = function ($scope) {
 
 };
-homeController.$inject = ['$scope'];
-routesApp.controller('homeController', homeController);
+homeCtrl.$inject = ['$scope'];
+routesApp.controller('homeCtrl', homeCtrl);
 
 
-var aboutController = function ($scope) {
+var aboutCtrl = function ($scope) {
 
 };
-aboutController.$inject = ['$scope'];
-routesApp.controller('aboutController', aboutController);
+aboutCtrl.$inject = ['$scope'];
+routesApp.controller('aboutCtrl', aboutCtrl);
 
 
-var contactController = function ($scope, $routeParams) {
+var contactCtrl = function ($scope, $routeParams) {
   if ($routeParams['subject'] == 'learn') {
     $scope.showLearn = true;
   } else if ($routeParams['subject'] == 'complain') {
     $scope.showComplain = true;
   }
 };
-contactController.$inject = ['$scope', '$routeParams'];
-routesApp.controller('contactController', contactController);
+contactCtrl.$inject = ['$scope', '$routeParams'];
+routesApp.controller('contactCtrl', contactCtrl);
 
 
-var eagerController = function ($scope, $routeParams) {
+var eagerCtrl = function ($scope, $routeParams) {
   $scope.extra = $routeParams['extra'];
 };
-eagerController.$inject = ['$scope','$routeParams'];
-routesApp.controller('eagerController', eagerController);
+eagerCtrl.$inject = ['$scope','$routeParams'];
+routesApp.controller('eagerCtrl', eagerCtrl);
 
 
-var notFoundController = function ($scope, $location) {
-  $scope.data = {
-    attemptedLocation: $location.path()
-  };
+var notFoundCtrl = function ($scope, $location) {
+  $scope.attemptedLocation = $location.path();
 };
-notFoundController.$inject = ['$scope', '$location'];
-routesApp.controller('notFoundController', notFoundController);
+notFoundCtrl.$inject = ['$scope', '$location'];
+routesApp.controller('notFoundCtrl', notFoundCtrl);
