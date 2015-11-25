@@ -85,15 +85,20 @@ describe('routesApp', function () {
 
   describe('contactCtrl', function () {
 
+    mockController = function ($controller, $rootScope) {
+      mockScope = $rootScope.$new();
+      mockRouteParams = { 'subject': subject };
+      controller = $controller("contactCtrl", {
+        $scope: mockScope,
+        $routeParams: mockRouteParams
+      });
+    };
+
     describe('the subject passed in is "learn"', function() {
-      mockController = function ($controller, $rootScope) {
-        mockScope = $rootScope.$new();
-        mockRouteParams = { 'subject': 'learn' };
-        controller = $controller("contactCtrl", {
-          $scope: mockScope,
-          $routeParams: mockRouteParams
-        });
-      };
+
+      beforeEach(function() {
+        subject = 'learn';
+      });
 
       beforeEach(angular.mock.inject(mockController));
 
@@ -102,19 +107,14 @@ describe('routesApp', function () {
       });
     });
 
-    describe('the subject passed in is "learn"', function() {
-      mockController = function ($controller, $rootScope) {
-        mockScope = $rootScope.$new();
-        mockRouteParams = { 'subject': 'complain' };
-        controller = $controller("contactCtrl", {
-          $scope: mockScope,
-          $routeParams: mockRouteParams
-        });
-      };
+    describe('the subject passed in is "complain"', function() {
+      beforeEach(function() {
+        subject = 'complain';
+      });
 
       beforeEach(angular.mock.inject(mockController));
 
-      it('should set showLearn true', function () {
+      it('should set showComplain true', function () {
         expect(mockScope.showComplain).to.be.ok;
       });
     });
