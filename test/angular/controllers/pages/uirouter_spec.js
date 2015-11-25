@@ -51,6 +51,16 @@ describe('uirouterApp', function () {
       expect(multipleState.url).to.equal('/multiple');
       expect(multipleState.templateUrl).to.equal('pages/uirouter/multiple.html');
       expect(multipleState.data.name).to.equal('multiple');
+
+      multipleState1State = $state.get('multiple.state1');
+      expect(multipleState1State.data.name).to.equal('multiple');
+      expect(multipleState1State.views['viewA'].templateUrl).to.equal('pages/uirouter/multiple.state1.viewA.html');
+      expect(multipleState1State.views['viewB'].templateUrl).to.equal('pages/uirouter/multiple.state1.viewB.html');
+
+      multipleState2State = $state.get('multiple.state2');
+      expect(multipleState2State.data.name).to.equal('multiple');
+      expect(multipleState2State.views['viewA'].templateUrl).to.equal('pages/uirouter/multiple.state2.viewA.html');
+      expect(multipleState2State.views['viewB'].templateUrl).to.equal('pages/uirouter/multiple.state2.viewB.html');
     }));
   });
 
