@@ -50,8 +50,111 @@ describe('uirouterApp', function () {
       multipleState = $state.get('multiple');
       expect(multipleState.url).to.equal('/multiple');
       expect(multipleState.templateUrl).to.equal('pages/uirouter/multiple.html');
-      //expect(multipleState.data.name).to.equal('multiple');
+      expect(multipleState.data.name).to.equal('multiple');
     }));
+  });
+
+  describe('uirouterCtrl', function () {
+
+    mockController = function ($controller, $rootScope, $state) {
+      mockScope = $rootScope.$new();
+      mockState = $state;
+      controller = $controller("uirouterCtrl", {
+        $scope: mockScope,
+        $state: mockState
+      });
+    };
+
+    beforeEach(angular.mock.inject(mockController));
+
+    it('should set the $scope.state object to $state', function() {
+      expect(mockScope.state).to.equal(mockState);
+    });
+  });
+
+
+
+  // homeCtrl has no functionality so x it out for now
+  xdescribe('homeCtrl', function () {
+
+    mockController = function ($controller, $rootScope) {
+      mockScope = $rootScope.$new();
+      controller = $controller("homeCtrl", {
+        $scope: mockScope
+      });
+    };
+
+    beforeEach(angular.mock.inject(mockController));
+  });
+
+
+
+  // aboutCtrl has no functionality so x it out for now
+  xdescribe('aboutCtrl', function () {
+
+    mockController = function ($controller, $rootScope) {
+      mockScope = $rootScope.$new();
+      controller = $controller("aboutCtrl", {
+        $scope: mockScope
+      });
+    };
+
+    beforeEach(angular.mock.inject(mockController));
+  });
+
+
+
+  describe('contactCtrl', function () {
+
+    mockController = function ($controller, $rootScope) {
+      mockScope = $rootScope.$new();
+      mockState = { current: { data: { subject: subject }}};
+      controller = $controller("contactCtrl", {
+        $scope: mockScope,
+        $state: mockState
+      });
+    };
+
+    describe('the subject passed in is complain', function() {
+      beforeEach(function() {
+        subject = 'complain'
+      });
+
+      beforeEach(angular.mock.inject(mockController));
+
+      it('should set showComplain to true', function() {
+        expect(mockScope.showComplain).to.equal(true);
+      });
+    });
+  });
+
+
+
+  // nestedCtrl has no functionality so x it out for now
+  xdescribe('nestedCtrl', function () {
+
+    mockController = function ($controller, $rootScope) {
+      mockScope = $rootScope.$new();
+      controller = $controller("nestedCtrl", {
+        $scope: mockScope
+      });
+    };
+
+    beforeEach(angular.mock.inject(mockController));
+  });
+
+
+  // multipleCtrl has no functionality so x it out for now
+  xdescribe('mulitpleCtrl', function () {
+
+    mockController = function ($controller, $rootScope) {
+      mockScope = $rootScope.$new();
+      controller = $controller("multipleCtrl", {
+        $scope: mockScope
+      });
+    };
+
+    beforeEach(angular.mock.inject(mockController));
   });
 
 });

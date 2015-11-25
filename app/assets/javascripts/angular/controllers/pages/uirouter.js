@@ -2,48 +2,46 @@ var moduleName = "uiRouterApp";
 
 var uiRouterApp = angular.module(moduleName, ['ui.router']);
 
-var rootController = function($scope, $state) {
+var uirouterCtrl = function($scope, $state) {
   $scope.state = $state;
 };
-rootController.$inject = ['$scope', '$state'];
-uiRouterApp.controller('rootController', rootController);
+uirouterCtrl.$inject = ['$scope', '$state'];
+uiRouterApp.controller('uirouterCtrl', uirouterCtrl);
 
 
-var homeController = function ($scope) {
-
-};
-homeController.$inject = ['$scope'];
-uiRouterApp.controller('homeController', homeController);
-
-
-var aboutController = function ($scope) {
+var homeCtrl = function ($scope) {
 
 };
-aboutController.$inject = ['$scope'];
-uiRouterApp.controller('aboutController', aboutController);
+homeCtrl.$inject = ['$scope'];
+uiRouterApp.controller('homeCtrl', homeCtrl);
 
 
-var contactController = function ($scope, $state) {
+var aboutCtrl = function ($scope) {
+
+};
+aboutCtrl.$inject = ['$scope'];
+uiRouterApp.controller('aboutCtrl', aboutCtrl);
+
+
+var contactCtrl = function ($scope, $state) {
   if ($state.current.data.subject == 'complain') {
     $scope.showComplain = true;
   }
 };
-contactController.$inject = ['$scope', '$state'];
-uiRouterApp.controller('contactController', contactController);
+contactCtrl.$inject = ['$scope', '$state'];
+uiRouterApp.controller('contactCtrl', contactCtrl);
 
-var nestedController = function ($scope, $state) {
+var nestedCtrl = function ($scope, $state) {
 
 };
-nestedController.$inject = ['$scope', '$state'];
-uiRouterApp.controller('nestedController', nestedController);
+nestedCtrl.$inject = ['$scope', '$state'];
+uiRouterApp.controller('nestedCtrl', nestedCtrl);
 
-var multipleController = function ($scope, $state) {
-  $scope.alertState = function alertState(){
-    alert($state.current.data.myName);
-  }
+var multipleCtrl = function ($scope, $state) {
+
 };
-multipleController.$inject = ['$scope', '$state'];
-uiRouterApp.controller('multipleController', multipleController);
+multipleCtrl.$inject = ['$scope', '$state'];
+uiRouterApp.controller('multipleCtrl', multipleCtrl);
 
 
 
@@ -57,7 +55,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('home', {
         url: "/",
         templateUrl: asset_paths['pages/routes/home.html'],
-        controller: homeController,
+        controller: homeCtrl,
         data: {
           name: 'home'
         }
@@ -65,7 +63,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('about', {
         url: "/about",
         templateUrl: asset_paths['pages/routes/about.html'],
-        controller: aboutController,
+        controller: aboutCtrl,
         data: {
           name: 'about'
         }
@@ -73,7 +71,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('contact', {
         url: "/contact",
         templateUrl: asset_paths['pages/routes/contact.html'],
-        controller: contactController,
+        controller: contactCtrl,
         data: {
           subject: '',
           name: 'contact'
@@ -82,7 +80,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('contact_complain', {
         url: "/contact/complain",
         templateUrl: asset_paths['pages/routes/contact.html'],
-        controller: contactController,
+        controller: contactCtrl,
         data: {
           subject: 'complain',
           name: 'contact_complain'
@@ -90,7 +88,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       })
       .state('nested', {
         url: "/nested",
-        controller: nestedController,
+        controller: nestedCtrl,
         templateUrl: asset_paths['pages/uirouter/nested.html'],
         data: {
           name: 'nested'
@@ -108,7 +106,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       })
       .state('multiple', {
         url: "/multiple",
-        controller: multipleController,
+        controller: multipleCtrl,
         templateUrl: asset_paths['pages/uirouter/multiple.html'],
         data: {
           name: 'multiple'
