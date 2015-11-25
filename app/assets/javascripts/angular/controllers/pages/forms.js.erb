@@ -58,7 +58,7 @@ formsApp.controller('mySimpleFormsCtrl', mySimpleFormsCtrl);
 
 
 myModalFormsCtrl = function ($scope, dataStore, dataShareService) {
-  $scope.form_template = '<%= asset_path('pages/forms/form.html') %>';
+  $scope.form_template = asset_paths['pages/forms/form.html'];
   $scope.colors = dataShareService.colors;
   modal = $('#modal__form');
 
