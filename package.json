@@ -31,7 +31,8 @@
     "mocha": "*",
     "sinon": "*",
     "sinon-as-promised": "*",
-    "timekeeper": "*"
+    "timekeeper": "*",
+    "glob-fs": "*"
   },
   "preferGlobal": true,
   "publishConfig": {},
