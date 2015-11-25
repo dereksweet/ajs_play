@@ -114,7 +114,7 @@ describe('routesApp', function () {
 
       beforeEach(angular.mock.inject(mockController));
 
-      it('should set showComplain true', function () {
+      it('should set showLearn true', function () {
         expect(mockScope.showComplain).to.be.ok;
       });
     });

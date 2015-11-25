@@ -24,6 +24,7 @@
     "angular-resource": "*",
     "angular-route": "*",
     "angular-utils-pagination": "*",
+    "ui-router": "*",
     "chai": "*",
     "chai-as-promised": "*",
     "jsdom": "*",
