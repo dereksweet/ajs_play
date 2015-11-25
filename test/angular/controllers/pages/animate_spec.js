@@ -1,6 +1,6 @@
 require('test/test_helper');
 require('angular-animate');
-require('app/assets/javascripts/angular/controllers/pages/animate.js.erb');
+require('app/assets/javascripts/angular/controllers/pages/animate.js');
 
 describe('animateApp', function () {
 

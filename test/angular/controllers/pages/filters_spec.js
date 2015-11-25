@@ -1,5 +1,5 @@
 require('test/test_helper');
-require('app/assets/javascripts/angular/controllers/pages/filters.js.erb');
+require('app/assets/javascripts/angular/controllers/pages/filters.js');
 
 // Use timekeeper to freeze the Date so we can test it is being set properly
 var tk = require('timekeeper');

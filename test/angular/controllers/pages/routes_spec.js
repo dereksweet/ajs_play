@@ -1,6 +1,6 @@
 require('test/test_helper');
 require('angular-route');
-require('app/assets/javascripts/angular/controllers/pages/routes.js.erb');
+require('app/assets/javascripts/angular/controllers/pages/routes.js');
 
 describe('routesApp', function () {
 

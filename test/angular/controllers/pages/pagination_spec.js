@@ -1,7 +1,7 @@
 require('test/test_helper');
 require('angular-utils-pagination');
 require('angular-resource');
-require('app/assets/javascripts/angular/controllers/pages/pagination.js.erb');
+require('app/assets/javascripts/angular/controllers/pages/pagination.js');
 
 describe('paginationApp', function () {
 
