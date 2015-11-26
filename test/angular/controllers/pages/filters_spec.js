@@ -11,12 +11,12 @@ describe('filtersApp', function () {
 
   describe('filtersCtrl', function () {
 
-    mockController = function ($controller, $rootScope, $timeout) {
+    mockController = function ($controller, $rootScope) {
       // Freeze Date() to the current Date
       tk.freeze(currentDate);
 
+      mockTimeout = sinon.spy();
       mockScope = $rootScope.$new();
-      mockTimeout = $timeout;
       controller = $controller("filtersCtrl", {
         $scope: mockScope,
         $timeout: mockTimeout
@@ -48,10 +48,24 @@ describe('filtersApp', function () {
       expect(JSON.stringify(mockScope.jsonObject)).to.equal(expected);
     });
 
-    xit('should fire an updateTime $timeout event', function() {
-      var updateTimeSpy = sinon.spy(controller, 'updateTime');
-      mockTimeout.flush();
-      expect(updateTimeSpy.called).to.equal(true);
+    it('should fire an updateTime $timeout event', function() {
+      expect(mockTimeout.calledWith(controller.updateTime, 1000)).to.equal(true);
+    });
+
+    describe('this.updateTime()', function () {
+      it('should update the currentDate', function () {
+        expect(mockScope.currentDate).to.equal(currentDate);
+        var newDate = new Date();
+        newDate.setDate(currentDate.getDate() + 1);
+        tk.travel(newDate);
+        controller.updateTime();
+        expect(mockScope.currentDate).to.equal(newDate);
+      });
+
+      it('should call itself again', function () {
+        controller.updateTime();
+        expect(mockTimeout.calledTwice).to.equal(true);
+      });
     });
   })
 });
