@@ -7,7 +7,7 @@ mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
   $scope.user.is_cool = false;
   $scope.colors = dataShareService.colors;
 
-  reset_messages = function () {
+  $scope.reset_messages = function () {
     $scope.showSubmitSuccessMessage = false;
     $scope.showSubmitErrorMessage = false;
     $scope.showLoadSuccessMessage = false;
@@ -15,7 +15,7 @@ mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
   };
 
   $scope.get_user = function () {
-    reset_messages();
+    $scope.reset_messages();
 
     $scope.user = dataStore.User.get( { id: $scope.user.first_name} );
 
@@ -27,7 +27,7 @@ mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
   };
 
   $scope.submit_form = function() {
-    reset_messages();
+    $scope.reset_messages();
 
     $scope.firstNameInvalid = false;
     $scope.emailInvalid = false;

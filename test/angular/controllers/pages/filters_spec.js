@@ -48,10 +48,10 @@ describe('filtersApp', function () {
       expect(JSON.stringify(mockScope.jsonObject)).to.equal(expected);
     });
 
-    it('should fire an updateTime $timeout event', function() {
-      var updateTimeSpy = sinon.spy(controller.updateTime);
-      expect(updateTimeSpy.called);
+    xit('should fire an updateTime $timeout event', function() {
+      var updateTimeSpy = sinon.spy(controller, 'updateTime');
       mockTimeout.flush();
+      expect(updateTimeSpy.called).to.equal(true);
     });
   })
 });
