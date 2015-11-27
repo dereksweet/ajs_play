@@ -32,6 +32,13 @@ global.sinon = require('sinon');
 global.stub = sinon.stub;
 global.match = sinon.match;
 
+global.moduleName = 'test_app';
+try {
+ angular.module(moduleName); // throws error if "one" doesn't exist
+}catch(e){
+ angular.module(moduleName, []);
+}
+
 beforeEach(function() {
  // Create a new sandbox before each test
  this.sinon = sinon.sandbox.create();
