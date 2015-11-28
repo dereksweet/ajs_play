@@ -39,6 +39,11 @@ try {
  angular.module(moduleName, []);
 }
 
+global.readSingleFile = function readSingleFile(filePath) {
+ var fs = require('fs');
+ return fs.readFileSync(filePath, "utf8");
+};
+
 beforeEach(function() {
  // Create a new sandbox before each test
  this.sinon = sinon.sandbox.create();
