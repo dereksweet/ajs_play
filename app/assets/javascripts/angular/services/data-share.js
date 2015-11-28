@@ -1,4 +1,4 @@
-dataShareService = function($rootScope) {
+var dataShareService = function($rootScope) {
   var sharedService = {};
 
   sharedService.colors = [

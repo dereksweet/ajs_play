@@ -36,7 +36,7 @@ global.moduleName = 'test_app';
 try {
  angular.module(moduleName); // throws error if "one" doesn't exist
 }catch(e){
- angular.module(moduleName, []);
+ angular.module(moduleName, ['ngResource']);
 }
 
 global.readSingleFile = function readSingleFile(filePath) {
