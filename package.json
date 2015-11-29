@@ -32,7 +32,8 @@
     "sinon": "*",
     "sinon-as-promised": "*",
     "timekeeper": "*",
-    "glob-fs": "*"
+    "glob-fs": "*",
+    "protractor": "*"
   },
   "preferGlobal": true,
   "publishConfig": {},
