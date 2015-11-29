@@ -33,7 +33,8 @@
     "sinon-as-promised": "*",
     "timekeeper": "*",
     "glob-fs": "*",
-    "protractor": "*"
+    "protractor": "*",
+    "dateformat": "*"
   },
   "preferGlobal": true,
   "publishConfig": {},

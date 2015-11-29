@@ -71,11 +71,11 @@
                 <div class="small-4 medium-1 columns text-center valign-middle">
                   <br>
                   <span class="underline">Count</span><br>
-                  {{ count }}
+                  <span id="count">{{ count }}</span>
                 </div>
                 <div class="small-4 medium-2 columns end">
-                  <button class="button tiny radius" ng-click="count = count + 1">+1</button><br>
-                  <button class="button tiny radius" ng-click="count = count - 1">-1</button>
+                  <button id="plus_1" class="button tiny radius" ng-click="count = count + 1">+1</button><br>
+                  <button id="minus_1" class="button tiny radius" ng-click="count = count - 1">-1</button>
                 </div>
               </div>
             </div>
@@ -97,11 +97,11 @@
         <div class="example-body">
           <div class="row">
             <div class="small-12 columns left">
-              <button class="button tiny radius" ng-click="my_count = my_count + 1;my_array.push(my_count)">Add an Item</button>
+              <button id="add_item_to_list" class="button tiny radius" ng-click="my_count = my_count + 1;my_array.push(my_count)">Add an Item</button>
             </div>
           </div>
           <div class="row" ng-init="my_array = ['1', '2', '3']; my_count = 3">
-            <div class="small-12 medium-6 columns left">
+            <div id="number_list" class="small-12 medium-6 columns left">
               <span ng-repeat="item in my_array">{{item}}<span ng-if="!$last">, </span></span>
             </div>
           </div>
@@ -156,7 +156,7 @@
         <div class="example-body">
           <div class="row">
             <div class="small-12 columns left">
-              <b>CurrentTime</b>: &nbsp; <ng-current-time />
+              <b>CurrentTime</b>: &nbsp; <span id="current_time"><ng-current-time /></span>
             </div>
           </div>
         </div>
@@ -175,7 +175,7 @@
         <div class="example-body">
           <div class="row">
             <div class="small-12 columns left">
-              <ng-make-blue>This is not red..</ng-make-blue>
+              <ng-make-blue id="make-blue">This is not red..</ng-make-blue>
             </div>
           </div>
         </div>

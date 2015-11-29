@@ -15,14 +15,10 @@ test.unit:
 .PHONY: selenium
 selenium: node_modules
 	@webdriver-manager update
-	@webdriver-manager start >selenium_webdriver.log 2>&1
+	@webdriver-manager start >log/selenium_webdriver.log 2>&1
 
 .PHONT: test.integration
 test.integration:
-	@$(MAKE) -j2 selenium integration
-
-.PHONY: integration
-integration:
 	@protractor integration/conf.js
 
 .PHONY: test
