@@ -28,7 +28,7 @@
           </div>
           <div class="row">
             <div class="small-12 medium-2 columns medium-text-right">You Entered:</div>
-            <div class="small-12 medium-10 columns">&nbsp;{{ boundinput }}&nbsp;</div>
+            <div id="boundinput_clone" class="small-12 medium-10 columns">&nbsp;{{ boundinput }}&nbsp;</div>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
           </div>
           <div class="row">
             <div class="small-12 medium-9 columns right">
-              &nbsp;<span ng-show="evalExpression()">I appear when the expression is equal to 10!</span>&nbsp;
+              &nbsp;<span id="mathexpression_eql10" ng-show="evalExpression()">I appear when the expression is equal to 10!</span>&nbsp;
             </div>
           </div>
         </div>
