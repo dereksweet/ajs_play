@@ -19,19 +19,19 @@
         <div class="row">
           <div class="small-12 columns">
             <dl class="sub-nav">
-              <dd class="sub-nav-link"><a ng-class="routesCtrl.isActive('home')" ng-click="routesCtrl.active = 'home'" href="/routes#/">Home</a></dd>
-              <dd class="sub-nav-link"><a ng-class="routesCtrl.isActive('about')" ng-click="routesCtrl.active = 'about'" href="/routes#/about">About</a></dd>
-              <dd class="small-clear-both sub-nav-link"><a ng-class="routesCtrl.isActive('contact')" ng-click="routesCtrl.active = 'contact'" href="/routes#/contact">Contact</a></dd>
-              <dd class="sub-nav-link"><a ng-class="routesCtrl.isActive('contact_learn')" ng-click="routesCtrl.active = 'contact_learn'" href="/routes#/contact/learn">Contact-Learn</a></dd>
-              <dd class="small-clear-both sub-nav-link"><a ng-class="routesCtrl.isActive('contact_complain')" ng-click="routesCtrl.active = 'contact_complain'" href="/routes#/contact/complain">Contact-Complain</a></dd>
-              <dd class="sub-nav-link"><a ng-class="routesCtrl.isActive('eager')" ng-click="routesCtrl.active = 'eager'" href="/routes#/eager/var1/var2/var3">Eager</a></dd>
-              <dd class="last small-clear-both sub-nav-link"><a ng-class="routesCtrl.isActive('undefined')" ng-click="routesCtrl.active = 'undefined'" href="/routes#/i_blow_goats">Undefined Route</a></dd>
+              <dd class="sub-nav-link"><a id="home_link" ng-class="routesCtrl.isActive('home')" ng-click="routesCtrl.active = 'home'" href="/routes#/">Home</a></dd>
+              <dd class="sub-nav-link"><a id="about_link" ng-class="routesCtrl.isActive('about')" ng-click="routesCtrl.active = 'about'" href="/routes#/about">About</a></dd>
+              <dd class="small-clear-both sub-nav-link"><a id="contact_link" ng-class="routesCtrl.isActive('contact')" ng-click="routesCtrl.active = 'contact'" href="/routes#/contact">Contact</a></dd>
+              <dd class="sub-nav-link"><a id="contact_learn_link" ng-class="routesCtrl.isActive('contact_learn')" ng-click="routesCtrl.active = 'contact_learn'" href="/routes#/contact/learn">Contact-Learn</a></dd>
+              <dd class="small-clear-both sub-nav-link"><a id="contact_complain_link" ng-class="routesCtrl.isActive('contact_complain')" ng-click="routesCtrl.active = 'contact_complain'" href="/routes#/contact/complain">Contact-Complain</a></dd>
+              <dd class="sub-nav-link"><a id="eager_link" ng-class="routesCtrl.isActive('eager')" ng-click="routesCtrl.active = 'eager'" href="/routes#/eager/var1/var2/var3">Eager</a></dd>
+              <dd class="last small-clear-both sub-nav-link"><a id="undefined_link" ng-class="routesCtrl.isActive('undefined')" ng-click="routesCtrl.active = 'undefined'" href="/routes#/i_blow_goats">Undefined Route</a></dd>
             </dl>
           </div>
         </div>
         <div class="row">
           <div class="small-12 columns">
-            <div ng-view></div>
+            <div id="routes_ng_view" ng-view></div>
           </div>
         </div>
       </div>
