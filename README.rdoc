@@ -23,3 +23,9 @@ Then run a rails console by simply typing:
 and visit your local copy of the application by opening a browser and visiting http://localhost:3000. 
 
 (or you could not be a noob and use .pow [http://pow.cx/])
+
+=== NOTES FOR FUTURE ===
+In order to run the integration tests you will need to install protractor
+`npm install -g protractor`
+It may be required to update your Java Development Kit as well to JDK7
+`http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html`
