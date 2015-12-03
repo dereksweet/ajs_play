@@ -39,5 +39,35 @@ describe('routes', function () {
         expect(element.all(by.repeater('user in users').column('user.first_name')).getText()).not.toContain('Test');
       });
     });
+
+    it('should allow me to edit a users details', function () {
+      expect(element.all(by.repeater('user in users').column('user.email')).getText()).not.toContain('test2@test.com');
+
+      createUser();
+
+      element(by.linkText('Test')).click();
+      browser.driver.sleep(1000);
+      element(by.model('modal_user.email')).clear();
+      element(by.model('modal_user.email')).sendKeys('test2@test.com');
+      element(by.css('input[value="Update"]')).click();
+      browser.driver.sleep(1000);
+      expect(element.all(by.repeater('user in users').column('user.email')).getText()).toContain('test2@test.com');
+
+      deleteUser();
+    });
+
+    it('should allow me to load a user in the simple form by first name', function () {
+      createUser();
+
+      element(by.model('user.first_name')).clear();
+      element(by.model('user.email')).clear();
+
+      element(by.model('user.first_name')).sendKeys('Test');
+      element(by.css('input[value="Load by First Name"]')).click();
+      browser.driver.sleep(1000);
+      expect(element(by.model('user.email')).getAttribute('value')).toEqual('test@test.com');
+
+      deleteUser();
+    });
   });
 });
