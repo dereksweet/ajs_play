@@ -81,7 +81,7 @@
                   <div class="row collapse">
                     <div class="small-3 medium-1 columns inline medium-right-margin">Color:</div>
                     <div class="small-7 medium-5 columns left">
-                      <select class="no-bottom" name="color" ng-model="user.color" ng-options="obj.value as obj.label for obj in colors" required>
+                      <select class="no-bottom" id="color" name="color" ng-model="user.color" ng-options="obj.value as obj.label for obj in colors" required>
                         <option value="">Choose a color...</option>
                       </select>
                       <span class="error" ng-show="colorInvalid">Please select a color</span>
@@ -133,6 +133,8 @@
       <div class="example">
         <div class="row"  ng-controller="myModalFormsCtrl">
           <div class="small-12 columns">
+            <b>Number of Users: </b><span id="num_users">{{ users.length }}</span><br>
+            <br>
             <table ng-init="get_all_users()">
               <thead>
               <tr>
