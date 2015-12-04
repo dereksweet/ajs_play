@@ -12,7 +12,7 @@
       removal of those styles.
     </div>
   </div>
-  <div class="row" ng-controller="animateCtrl">
+  <div class="row" ng-controller="animateCtrl as vm">
     <div class="small-12 columns">
       <div class="example">
         <div class="example-header">
@@ -22,9 +22,9 @@
         <div class="example-body">
           <div class="row">
             <div class="small-12 medium-2 columns">
-              <button class="button tiny radius" ng-click="animate_on=!animate_on">Toggle Content</button>
+              <button class="button tiny radius" ng-click="vm.animate_on=!vm.animate_on">Toggle Content</button>
             </div>
-            <div class="small-12 medium-6 columns end simple-fade-in-out" ng-if="animate_on">
+            <div class="small-12 medium-6 columns end simple-fade-in-out" ng-if="vm.animate_on">
               Look at me fade in and out. Isn't that cool!
             </div>
           </div>
@@ -41,11 +41,11 @@
           <div class="row">
             <div class="small-12 columns">
               <label for="selected_person">Person:</label>
-              <select class="person-dropdown" id="selected_person" ng-model="selected_person" ng-options="p.name for p in people">
+              <select class="person-dropdown" id="selected_person" ng-model="vm.selected_person" ng-options="p.name for p in vm.people">
                 <option value="">Please select a person..</option>
               </select>
               <div class="simple-slide-container">
-                <div class="simple-slide" ng-include="selected_person.url"></div>
+                <div class="simple-slide" ng-include="vm.selected_person.url"></div>
               </div>
             </div>
           </div>
