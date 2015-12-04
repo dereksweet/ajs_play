@@ -21,7 +21,7 @@
   <div class="row">
     <div class="small-12 columns">
       <div class="example">
-        <div class="row" ng-controller="mySimpleFormsCtrl">
+        <div class="row" ng-controller="mySimpleFormsCtrl as simpleVm">
           <div class="small-12 columns">
             <div class="row">
               <div class="small-12 columns"><h3>Forms</h3></div>
@@ -36,14 +36,14 @@
             <div class="row">&nbsp;</div>
             <div class="row">
               <div class="small-12 columns">
-                <div ng-show="sampleForm.$pristine"><b>Form input has not yet started</b></div>
-                <div ng-show="sampleForm.$dirty" class="submit_success"><b>Form input has started</b></div>
+                <div ng-show="simpleVm.sampleForm.$pristine"><b>Form input has not yet started</b></div>
+                <div ng-show="simpleVm.sampleForm.$dirty" class="submit_success"><b>Form input has started</b></div>
               </div>
             </div>
             <div class="row">&nbsp;</div>
             <div class="row">
               <div class="small-12 columns">
-                <form name="sampleForm" ng-submit="submit_form()" novalidate>
+                <form name="simpleVm.sampleForm" ng-submit="simpleVm.submit_form()" novalidate>
                   <div class="row">
                     <div class="small-12 columns">
                       <i>The following is an input for first name, does not have much validation on it.</i>
@@ -52,11 +52,11 @@
                   <div class="row collapse">
                     <div class="small-3 medium-1 columns inline medium-right-margin">First Name:</div>
                     <div class="small-7 medium-5 columns">
-                      <input class="no-bottom" type="text" ng-model="user.first_name" name="first_name" placeholder="First Name" required>
-                      <span class="error" ng-show="firstNameInvalid">Please enter a value for First Name</span>
+                      <input class="no-bottom" type="text" ng-model="simpleVm.user.first_name" name="first_name" placeholder="First Name" required>
+                      <span class="error" ng-show="simpleVm.firstNameInvalid">Please enter a value for First Name</span>
                     </div>
                     <div class="small-12 medium-5 columns left medium-left-margin">
-                      <input type="button" value="Load by First Name" ng-click="get_user()">
+                      <input type="button" value="Load by First Name" ng-click="simpleVm.get_user()">
                     </div>
                   </div>
                   <div class="row">&nbsp;</div>
@@ -68,8 +68,8 @@
                   <div class="row collapse">
                     <div class="small-3 medium-1 columns inline medium-right-margin">Email:</div>
                     <div class="small-7 medium-5 columns left">
-                      <input class="no-bottom" type="email" ng-model="user.email" name="email" placeholder="Email" required>
-                      <span class="error" ng-show="emailInvalid">Please enter a proper email address</span>
+                      <input class="no-bottom" type="email" ng-model="simpleVm.user.email" name="email" placeholder="Email" required>
+                      <span class="error" ng-show="simpleVm.emailInvalid">Please enter a proper email address</span>
                     </div>
                   </div>
                   <div class="row">&nbsp;</div>
@@ -81,10 +81,10 @@
                   <div class="row collapse">
                     <div class="small-3 medium-1 columns inline medium-right-margin">Color:</div>
                     <div class="small-7 medium-5 columns left">
-                      <select class="no-bottom" id="color" name="color" ng-model="user.color" ng-options="obj.value as obj.label for obj in colors" required>
+                      <select class="no-bottom" id="color" name="color" ng-model="simpleVm.user.color" ng-options="obj.value as obj.label for obj in simpleVm.colors" required>
                         <option value="">Choose a color...</option>
                       </select>
-                      <span class="error" ng-show="colorInvalid">Please select a color</span>
+                      <span class="error" ng-show="simpleVm.colorInvalid">Please select a color</span>
                     </div>
                   </div>
                   <div class="row">&nbsp;</div>
@@ -96,7 +96,7 @@
                   <div class="row">
                     <div class="small-3 medium-1 columns inline medium-right-margin">&nbsp;</div>
                     <div class="small-6 medium-5 columns left">
-                      <input type="checkbox" ng-model="user.is_cool" name="is_cool" id="is_cool" value="is_cool" style="display:inline">
+                      <input type="checkbox" ng-model="simpleVm.user.is_cool" name="is_cool" id="is_cool" value="is_cool" style="display:inline">
                       <label for="is_cool">Check here if cool..</label>
                     </div>
                   </div>
@@ -104,10 +104,10 @@
                   <div class="row">
                     <div class="small-12 columns">
                       <input class="button tiny radius" type="submit" value="Submit"><br><br>
-                      <div class="load_success" ng-show="showLoadSuccessMessage">Data Load completed succesfully!</div>
-                      <div class="load_error" ng-show="showLoadErrorMessage">There was an error loading the data! <span id="load_error_message"></span></div>
-                      <div class="submit_success" ng-show="showSubmitSuccessMessage">Form submitted succesfully!</div>
-                      <div class="submit_error" ng-show="showSubmitErrorMessage">There was an error submitting the form! <span id="submit_error_message"></span></div>
+                      <div class="load_success" ng-show="simpleVm.showLoadSuccessMessage">Data Load completed succesfully!</div>
+                      <div class="load_error" ng-show="simpleVm.showLoadErrorMessage">There was an error loading the data! <span id="load_error_message"></span></div>
+                      <div class="submit_success" ng-show="simpleVm.showSubmitSuccessMessage">Form submitted succesfully!</div>
+                      <div class="submit_error" ng-show="simpleVm.showSubmitErrorMessage">There was an error submitting the form! <span id="submit_error_message"></span></div>
                     </div>
                   </div>
                 </form>
@@ -131,11 +131,11 @@
   <div class="row">
     <div class="small-12 columns">
       <div class="example">
-        <div class="row"  ng-controller="myModalFormsCtrl">
+        <div class="row"  ng-controller="myModalFormsCtrl as modalVm">
           <div class="small-12 columns">
-            <b>Number of Users: </b><span id="num_users">{{ users.length }}</span><br>
+            <b>Number of Users: </b><span id="num_users">{{ modalVm.users.length }}</span><br>
             <br>
-            <table ng-init="get_all_users()">
+            <table ng-init="modalVm.get_all_users()">
               <thead>
               <tr>
                 <th>First Name</th>
@@ -145,8 +145,8 @@
               </tr>
               </thead>
               <tbody>
-              <tr ng-repeat="user in users">
-                <td><a ng-click="edit_user(user.first_name)">{{ user.first_name }}</a></td>
+              <tr ng-repeat="user in modalVm.users">
+                <td><a ng-click="modalVm.edit_user(user.first_name)">{{ user.first_name }}</a></td>
                 <td class="small-width-limit-75">{{ user.email }}</td>
                 <td>{{ user.color }}</td>
                 <td>{{ user.is_cool }}</td>
@@ -155,7 +155,7 @@
             </table>
           </div>
           <div id="modal__form" class="reveal-modal form-modal small" data-reveal>
-            <div ng-include="form_template"></div>
+            <div ng-include="modalVm.form_template"></div>
           </div>
         </div>
       </div>

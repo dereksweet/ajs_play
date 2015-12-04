@@ -2,99 +2,101 @@ var moduleName = "formsApp";
 
 angular.module(moduleName, ['ngResource']);
 
-var mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
-  $scope.user = new dataStore.User;
-  $scope.user.is_cool = false;
-  $scope.colors = dataShareService.colors;
+var mySimpleFormsCtrl = function (dataStore, dataShareService) {
+  var vm = this;
+  vm.user = new dataStore.User;
+  vm.user.is_cool = false;
+  vm.colors = dataShareService.colors;
 
-  $scope.reset_messages = function () {
-    $scope.showSubmitSuccessMessage = false;
-    $scope.showSubmitErrorMessage = false;
-    $scope.showLoadSuccessMessage = false;
-    $scope.showLoadErrorMessage = false;
+  vm.reset_messages = function () {
+    vm.showSubmitSuccessMessage = false;
+    vm.showSubmitErrorMessage = false;
+    vm.showLoadSuccessMessage = false;
+    vm.showLoadErrorMessage = false;
   };
 
-  $scope.get_user = function () {
-    $scope.reset_messages();
+  vm.get_user = function () {
+    vm.reset_messages();
 
-    $scope.user = dataStore.User.get( { id: $scope.user.first_name} );
+    vm.user = dataStore.User.get( { id: vm.user.first_name} );
 
-    $scope.sampleForm.email.$setDirty();
-    $scope.sampleForm.color.$setDirty();
-    $scope.sampleForm.is_cool.$setDirty();
+    vm.sampleForm.email.$setDirty();
+    vm.sampleForm.color.$setDirty();
+    vm.sampleForm.is_cool.$setDirty();
 
-    $scope.showLoadSuccessMessage = true;
+    vm.showLoadSuccessMessage = true;
   };
 
-  $scope.submit_form = function() {
-    $scope.reset_messages();
+  vm.submit_form = function() {
+    vm.reset_messages();
 
-    $scope.firstNameInvalid = false;
-    $scope.emailInvalid = false;
-    $scope.colorInvalid = false;
+    vm.firstNameInvalid = false;
+    vm.emailInvalid = false;
+    vm.colorInvalid = false;
 
-    if ($scope.sampleForm.first_name.$invalid){
-      $scope.firstNameInvalid = true;
+    if (vm.sampleForm.first_name.$invalid){
+      vm.firstNameInvalid = true;
     }
 
-    if ($scope.sampleForm.email.$invalid){
-      $scope.emailInvalid = true;
+    if (vm.sampleForm.email.$invalid){
+      vm.emailInvalid = true;
     }
 
-    if ($scope.sampleForm.color.$invalid){
-      $scope.colorInvalid = true;
+    if (vm.sampleForm.color.$invalid){
+      vm.colorInvalid = true;
     }
 
-    if ($scope.sampleForm.$valid) {
-      $scope.user.$save().then(function() {
-        $scope.showSubmitSuccessMessage = true;
+    if (vm.sampleForm.$valid) {
+      vm.user.$save().then(function() {
+        vm.showSubmitSuccessMessage = true;
         dataShareService.get_all_users();
       });
     }
   }
 };
-mySimpleFormsCtrl.$inject = ['$scope', 'dataStore', 'dataShareService'];
+mySimpleFormsCtrl.$inject = ['dataStore', 'dataShareService'];
 angular.module(moduleName).controller('mySimpleFormsCtrl', mySimpleFormsCtrl);
 
 
 var myModalFormsCtrl = function ($scope, dataStore, dataShareService) {
-  $scope.form_template = asset_paths['pages/forms/form.html'];
-  $scope.colors = dataShareService.colors;
+  var vm = this;
+  vm.form_template = asset_paths['pages/forms/form.html'];
+  vm.colors = dataShareService.colors;
   modal = $('#modal__form');
 
   $scope.$on('get_all_users', function() {
-    $scope.get_all_users();
+    vm.get_all_users();
   });
 
-  $scope.get_all_users = function () {
-    $scope.users = dataStore.User.query();
+  vm.get_all_users = function () {
+    vm.users = dataStore.User.query();
   };
 
-  $scope.openModal = function() {
+  vm.openModal = function() {
     modal.foundation('reveal', 'open');
   };
 
-  $scope.closeModal = function() {
+  vm.closeModal = function() {
     modal.foundation('reveal', 'close');
   };
 
-  $scope.edit_user = function(first_name) {
-    $scope.modal_user = dataStore.User.get( { id: first_name} );
+  vm.edit_user = function(first_name) {
+    vm.modal_user = dataStore.User.get( { id: first_name} );
 
-    $scope.openModal();
+    vm.openModal();
   };
 
-  $scope.update_user = function() {
-    $scope.modal_user.$save().then(function() {
-      $scope.closeModal();
-      $scope.get_all_users();
+  vm.update_user = function() {
+    vm.modal_user.$save().then(function() {
+      vm.closeModal();
+      vm.get_all_users();
     });
   };
 
-  $scope.delete_user = function() {
-    $scope.modal_user.$remove().then(function () {
-      $scope.closeModal();
-      $scope.get_all_users();
+  vm.delete_user = function() {
+    vm.modal_user.$remove().then(function () {
+      vm.closeModal();
+      vm.get_all_users();
     });
   };
 };
