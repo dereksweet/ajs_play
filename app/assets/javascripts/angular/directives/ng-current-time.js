@@ -2,7 +2,6 @@ angular.module(moduleName).directive('ngCurrentTime', ngCurrentTime);
 
 
 
-
 function ngCurrentTime ($compile, $timeout) {
   return {
     scope: {},

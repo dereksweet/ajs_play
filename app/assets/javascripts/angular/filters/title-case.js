@@ -1,5 +1,7 @@
 angular.module(moduleName).filter('titleCase', titleCase);
 
+
+
 function titleCase() {
   return function(str) {
     return str.replace(/\w\S*/g, function(txt) {
