@@ -1,4 +1,9 @@
-var ngCurrentTime = function ($compile, $timeout) {
+angular.module(moduleName).directive('ngCurrentTime', ngCurrentTime);
+
+
+
+
+function ngCurrentTime ($compile, $timeout) {
   return {
     scope: {},
     restrict: 'AE',
@@ -14,7 +19,5 @@ var ngCurrentTime = function ($compile, $timeout) {
       $timeout(updateTime, 1000);
     }
   };
-};
+}
 ngCurrentTime.$inject = ['$compile', '$timeout'];
-
-angular.module(moduleName).directive('ngCurrentTime', ngCurrentTime);

@@ -1,4 +1,8 @@
-var dataShareService = function($rootScope) {
+angular.module(moduleName).factory('dataShareService', dataShareService);
+
+
+
+function dataShareService ($rootScope) {
   var sharedService = {};
 
   sharedService.colors = [
@@ -12,7 +16,5 @@ var dataShareService = function($rootScope) {
   };
 
   return sharedService;
-};
+}
 dataShareService.$inject = ['$rootScope'];
-
-angular.module(moduleName).factory('dataShareService', dataShareService);

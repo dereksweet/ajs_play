@@ -2,8 +2,12 @@ var moduleName = "directivesApp";
 var controllerName = "directivesCtrl";
 
 angular.module(moduleName, []);
+angular.module(moduleName).controller(controllerName, directivesCtrl);
 
-var directivesCtrl = function ($scope) {
+
+
+
+function directivesCtrl ($scope) {
   var vm = this;
 
   vm.count = 0;
@@ -28,6 +32,5 @@ var directivesCtrl = function ($scope) {
 
     return myResult;
   }
-};
+}
 directivesCtrl.$inject = ['$scope'];
-angular.module(moduleName).controller(controllerName, directivesCtrl);

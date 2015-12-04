@@ -1,8 +1,18 @@
 var moduleName = "routesApp";
 
 angular.module(moduleName, ['ngRoute']);
+angular.module(moduleName).config(routesConfig);
+angular.module(moduleName).controller('routesCtrl', routesCtrl);
+angular.module(moduleName).controller('homeCtrl', homeCtrl);
+angular.module(moduleName).controller('aboutCtrl', aboutCtrl);
+angular.module(moduleName).controller('contactCtrl', contactCtrl);
+angular.module(moduleName).controller('eagerCtrl', eagerCtrl);
+angular.module(moduleName).controller('notFoundCtrl', notFoundCtrl);
 
-var routesConfig = function ($routeProvider) {
+
+
+
+function routesConfig ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: asset_paths['pages/routes/home.html'],
@@ -33,11 +43,13 @@ var routesConfig = function ($routeProvider) {
       templateUrl: asset_paths['pages/routes/routeNotFound.html'],
       controller: 'notFoundCtrl as vm'
     });
-};
+}
 routesConfig.$inject = ['$routeProvider'];
-angular.module(moduleName).config(routesConfig);
 
-var routesCtrl = function() {
+
+
+
+function routesCtrl () {
   var vm = this;
 
   vm.active = 'home';
@@ -48,25 +60,28 @@ var routesCtrl = function() {
   function isActive (page) {
     return this.active == page ? 'active' : '';
   }
-};
-angular.module(moduleName).controller('routesCtrl', routesCtrl);
+}
 
 
-var homeCtrl = function () {
 
-};
+
+function homeCtrl () {
+
+}
 homeCtrl.$inject = [];
-angular.module(moduleName).controller('homeCtrl', homeCtrl);
 
 
-var aboutCtrl = function () {
 
-};
+
+function aboutCtrl () {
+
+}
 aboutCtrl.$inject = [];
-angular.module(moduleName).controller('aboutCtrl', aboutCtrl);
 
 
-var contactCtrl = function ($routeParams) {
+
+
+function contactCtrl ($routeParams) {
   var vm = this;
 
   vm.showLearn = false;
@@ -79,24 +94,25 @@ var contactCtrl = function ($routeParams) {
   } else if ($routeParams['subject'] == 'complain') {
     vm.showComplain = true;
   }
-};
+}
 contactCtrl.$inject = ['$routeParams'];
-angular.module(moduleName).controller('contactCtrl', contactCtrl);
 
 
-var eagerCtrl = function ($routeParams) {
+
+
+function eagerCtrl ($routeParams) {
   var vm = this;
 
   vm.extra = $routeParams['extra'];
-};
+}
 eagerCtrl.$inject = ['$routeParams'];
-angular.module(moduleName).controller('eagerCtrl', eagerCtrl);
 
 
-var notFoundCtrl = function ($location) {
+
+
+function notFoundCtrl ($location) {
   var vm = this;
 
   vm.attemptedLocation = $location.path();
-};
+}
 notFoundCtrl.$inject = ['$location'];
-angular.module(moduleName).controller('notFoundCtrl', notFoundCtrl);

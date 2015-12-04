@@ -1,4 +1,8 @@
-var ngShowHide = function () {
+angular.module(moduleName).directive('ngShowHide', ngShowHide);
+
+
+
+function ngShowHide () {
   return {
     scope: {},
     restrict: 'AE',
@@ -19,6 +23,5 @@ var ngShowHide = function () {
       }
     }
   };
-};
+}
 ngShowHide.$inject = [];
-angular.module(moduleName).directive('ngShowHide', ngShowHide);
