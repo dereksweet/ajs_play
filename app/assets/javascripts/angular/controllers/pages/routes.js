@@ -1,6 +1,6 @@
 var moduleName = "routesApp";
 
-var routesApp = angular.module(moduleName, ['ngRoute']);
+angular.module(moduleName, ['ngRoute']);
 
 var routesConfig = function ($routeProvider) {
   $routeProvider
@@ -35,7 +35,7 @@ var routesConfig = function ($routeProvider) {
     });
 };
 routesConfig.$inject = ['$routeProvider'];
-routesApp.config(routesConfig);
+angular.module(moduleName).config(routesConfig);
 
 var routesCtrl = function() {
   this.active = 'home';
@@ -44,21 +44,21 @@ var routesCtrl = function() {
     return this.active == page ? 'active' : '';
   };
 };
-routesApp.controller('routesCtrl', routesCtrl);
+angular.module(moduleName).controller('routesCtrl', routesCtrl);
 
 
 var homeCtrl = function ($scope) {
 
 };
 homeCtrl.$inject = ['$scope'];
-routesApp.controller('homeCtrl', homeCtrl);
+angular.module(moduleName).controller('homeCtrl', homeCtrl);
 
 
 var aboutCtrl = function ($scope) {
 
 };
 aboutCtrl.$inject = ['$scope'];
-routesApp.controller('aboutCtrl', aboutCtrl);
+angular.module(moduleName).controller('aboutCtrl', aboutCtrl);
 
 
 var contactCtrl = function ($scope, $routeParams) {
@@ -69,18 +69,18 @@ var contactCtrl = function ($scope, $routeParams) {
   }
 };
 contactCtrl.$inject = ['$scope', '$routeParams'];
-routesApp.controller('contactCtrl', contactCtrl);
+angular.module(moduleName).controller('contactCtrl', contactCtrl);
 
 
 var eagerCtrl = function ($scope, $routeParams) {
   $scope.extra = $routeParams['extra'];
 };
 eagerCtrl.$inject = ['$scope','$routeParams'];
-routesApp.controller('eagerCtrl', eagerCtrl);
+angular.module(moduleName).controller('eagerCtrl', eagerCtrl);
 
 
 var notFoundCtrl = function ($scope, $location) {
   $scope.attemptedLocation = $location.path();
 };
 notFoundCtrl.$inject = ['$scope', '$location'];
-routesApp.controller('notFoundCtrl', notFoundCtrl);
+angular.module(moduleName).controller('notFoundCtrl', notFoundCtrl);

@@ -1,7 +1,7 @@
 var moduleName = "directivesApp";
 var controllerName = "directivesCtrl";
 
-var directivesApp = angular.module(moduleName, []);
+angular.module(moduleName, []);
 
 var directivesCtrl = function ($scope) {
   $scope.do_eval = false;
@@ -22,4 +22,4 @@ var directivesCtrl = function ($scope) {
   };
 };
 directivesCtrl.$inject = ['$scope'];
-directivesApp.controller(controllerName, directivesCtrl);
+angular.module(moduleName).controller(controllerName, directivesCtrl);

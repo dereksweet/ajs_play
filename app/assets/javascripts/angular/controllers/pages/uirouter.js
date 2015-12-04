@@ -1,26 +1,26 @@
 var moduleName = "uiRouterApp";
 
-var uiRouterApp = angular.module(moduleName, ['ui.router']);
+angular.module(moduleName, ['ui.router']);
 
 var uirouterCtrl = function($scope, $state) {
   $scope.state = $state;
 };
 uirouterCtrl.$inject = ['$scope', '$state'];
-uiRouterApp.controller('uirouterCtrl', uirouterCtrl);
+angular.module(moduleName).controller('uirouterCtrl', uirouterCtrl);
 
 
 var homeCtrl = function ($scope) {
 
 };
 homeCtrl.$inject = ['$scope'];
-uiRouterApp.controller('homeCtrl', homeCtrl);
+angular.module(moduleName).controller('homeCtrl', homeCtrl);
 
 
 var aboutCtrl = function ($scope) {
 
 };
 aboutCtrl.$inject = ['$scope'];
-uiRouterApp.controller('aboutCtrl', aboutCtrl);
+angular.module(moduleName).controller('aboutCtrl', aboutCtrl);
 
 
 var contactCtrl = function ($scope, $state) {
@@ -29,19 +29,19 @@ var contactCtrl = function ($scope, $state) {
   }
 };
 contactCtrl.$inject = ['$scope', '$state'];
-uiRouterApp.controller('contactCtrl', contactCtrl);
+angular.module(moduleName).controller('contactCtrl', contactCtrl);
 
 var nestedCtrl = function ($scope, $state) {
 
 };
 nestedCtrl.$inject = ['$scope', '$state'];
-uiRouterApp.controller('nestedCtrl', nestedCtrl);
+angular.module(moduleName).controller('nestedCtrl', nestedCtrl);
 
 var multipleCtrl = function ($scope, $state) {
 
 };
 multipleCtrl.$inject = ['$scope', '$state'];
-uiRouterApp.controller('multipleCtrl', multipleCtrl);
+angular.module(moduleName).controller('multipleCtrl', multipleCtrl);
 
 
 
@@ -132,4 +132,4 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       });
 };
 stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
-uiRouterApp.config(stateConfig);
+angular.module(moduleName).config(stateConfig);

@@ -1,8 +1,8 @@
 var moduleName = "formsApp";
 
-var formsApp = angular.module(moduleName, ['ngResource']);
+angular.module(moduleName, ['ngResource']);
 
-mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
+var mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
   $scope.user = new dataStore.User;
   $scope.user.is_cool = false;
   $scope.colors = dataShareService.colors;
@@ -54,10 +54,10 @@ mySimpleFormsCtrl = function ($scope, dataStore, dataShareService) {
   }
 };
 mySimpleFormsCtrl.$inject = ['$scope', 'dataStore', 'dataShareService'];
-formsApp.controller('mySimpleFormsCtrl', mySimpleFormsCtrl);
+angular.module(moduleName).controller('mySimpleFormsCtrl', mySimpleFormsCtrl);
 
 
-myModalFormsCtrl = function ($scope, dataStore, dataShareService) {
+var myModalFormsCtrl = function ($scope, dataStore, dataShareService) {
   $scope.form_template = asset_paths['pages/forms/form.html'];
   $scope.colors = dataShareService.colors;
   modal = $('#modal__form');
@@ -99,4 +99,4 @@ myModalFormsCtrl = function ($scope, dataStore, dataShareService) {
   };
 };
 myModalFormsCtrl.$inject = ['$scope', 'dataStore', 'dataShareService'];
-formsApp.controller('myModalFormsCtrl', myModalFormsCtrl);
+angular.module(moduleName).controller('myModalFormsCtrl', myModalFormsCtrl);

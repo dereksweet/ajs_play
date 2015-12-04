@@ -1,7 +1,7 @@
 var moduleName = "filtersApp";
 var controllerName = "filtersCtrl";
 
-var filtersApp = angular.module(moduleName, []);
+angular.module(moduleName, []);
 
 var filtersCtrl = function ($scope, $timeout) {
     $scope.currentDate = new Date();
@@ -20,4 +20,4 @@ var filtersCtrl = function ($scope, $timeout) {
     $timeout(this.updateTime, 1000);
 };
 filtersCtrl.$inject = ['$scope', '$timeout'];
-filtersApp.controller(controllerName, filtersCtrl);
+angular.module(moduleName).controller(controllerName, filtersCtrl);

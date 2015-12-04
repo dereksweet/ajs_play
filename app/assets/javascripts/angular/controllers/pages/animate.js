@@ -1,9 +1,9 @@
 var moduleName = "animateApp";
 var controllerName = "animateCtrl";
 
-var animateApp = angular.module(moduleName, ['ngAnimate']);
+angular.module(moduleName, ['ngAnimate']);
 
-animateCtrl = function ($scope) {
+var animateCtrl = function ($scope) {
   $scope.animate_on = false;
 
   $scope.people = [
@@ -13,4 +13,4 @@ animateCtrl = function ($scope) {
   $scope.selected_person = "";
 };
 animateCtrl.$inject = ['$scope'];
-animateApp.controller(controllerName, animateCtrl);
+angular.module(moduleName).controller(controllerName, animateCtrl);
