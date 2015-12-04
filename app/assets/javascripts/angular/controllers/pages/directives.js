@@ -4,17 +4,21 @@ var controllerName = "directivesCtrl";
 angular.module(moduleName, []);
 
 var directivesCtrl = function ($scope) {
-  $scope.do_eval = false;
+  var vm = this;
+  vm.count = 0;
+  vm.my_count = 3;
+  vm.my_array = ['1','2','3'];
+  vm.do_eval = false;
 
-  $scope.evalExpression = function evalExpression() {
+  vm.evalExpression = function evalExpression() {
     var myResult = false;
 
-    if ($scope.do_eval) {
+    if (vm.do_eval) {
       try {
-        myResult = $scope.$eval($scope.mathexpression) == 10;
+        myResult = $scope.$eval(vm.mathexpression) == 10;
       }
       catch(exception) {
-        $scope.do_eval = false;
+        vm.do_eval = false;
       }
     }
 

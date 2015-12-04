@@ -8,7 +8,7 @@
 
 <% content_for :title do %>AngularJS Playground - Directives<% end %>
 
-<div ng-app="directivesApp" ng-controller="directivesCtrl" ng-cloak>
+<div ng-app="directivesApp" ng-controller="directivesCtrl as vm" ng-cloak>
   <div class="section-header">
     <div class="section-title">Simple Directives</div>
     <div class="section-description">A series of simple directives that come pre-built with AngularJS</div>
@@ -24,11 +24,11 @@
         <div class="example-body">
           <div class="row">
             <div class="small-12 medium-2 columns medium-text-right">Enter Something:</div>
-            <div class="small-12 medium-10 columns"><input ng-model="boundinput" type="text" style="width: 200px;"></div>
+            <div class="small-12 medium-10 columns"><input ng-model="vm.boundinput" type="text" style="width: 200px;"></div>
           </div>
           <div class="row">
             <div class="small-12 medium-2 columns medium-text-right">You Entered:</div>
-            <div id="boundinput_clone" class="small-12 medium-10 columns">&nbsp;{{ boundinput }}&nbsp;</div>
+            <div id="boundinput_clone" class="small-12 medium-10 columns">&nbsp;{{ vm.boundinput }}&nbsp;</div>
           </div>
         </div>
       </div>
@@ -45,12 +45,12 @@
           <div class="row">
             <div class="small-12 medium-3 columns medium-text-right">Enter Mathmatical Expression:</div>
             <div class="small-12 medium-9 columns">
-              <input ng-model="mathexpression" ng-change="do_eval = true;" type="text" style="width: 200px;"><br>
+              <input ng-model="vm.mathexpression" ng-change="vm.do_eval = true;" type="text" style="width: 200px;"><br>
             </div>
           </div>
           <div class="row">
             <div class="small-12 medium-9 columns right">
-              &nbsp;<span id="mathexpression_eql10" ng-show="evalExpression()">I appear when the expression is equal to 10!</span>&nbsp;
+              &nbsp;<span id="mathexpression_eql10" ng-show="vm.evalExpression()">I appear when the expression is equal to 10!</span>&nbsp;
             </div>
           </div>
         </div>
@@ -71,11 +71,11 @@
                 <div class="small-4 medium-1 columns text-center valign-middle">
                   <br>
                   <span class="underline">Count</span><br>
-                  <span id="count">{{ count }}</span>
+                  <span id="count">{{ vm.count }}</span>
                 </div>
                 <div class="small-4 medium-2 columns end">
-                  <button id="plus_1" class="button tiny radius" ng-click="count = count + 1">+1</button><br>
-                  <button id="minus_1" class="button tiny radius" ng-click="count = count - 1">-1</button>
+                  <button id="plus_1" class="button tiny radius" ng-click="vm.count = vm.count + 1">+1</button><br>
+                  <button id="minus_1" class="button tiny radius" ng-click="vm.count = vm.count - 1">-1</button>
                 </div>
               </div>
             </div>
@@ -97,12 +97,12 @@
         <div class="example-body">
           <div class="row">
             <div class="small-12 columns left">
-              <button id="add_item_to_list" class="button tiny radius" ng-click="my_count = my_count + 1;my_array.push(my_count)">Add an Item</button>
+              <button id="add_item_to_list" class="button tiny radius" ng-click="vm.my_count = vm.my_count + 1;vm.my_array.push(vm.my_count)">Add an Item</button>
             </div>
           </div>
-          <div class="row" ng-init="my_array = ['1', '2', '3']; my_count = 3">
+          <div class="row">
             <div id="number_list" class="small-12 medium-6 columns left">
-              <span ng-repeat="item in my_array">{{item}}<span ng-if="!$last">, </span></span>
+              <span ng-repeat="item in vm.my_array">{{item}}<span ng-if="!$last">, </span></span>
             </div>
           </div>
         </div>

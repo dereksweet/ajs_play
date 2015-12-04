@@ -17,28 +17,28 @@ describe('directivesApp', function () {
     beforeEach(angular.mock.inject(mockController));
 
     it('should default do_eval to false', function () {
-      expect(mockScope.do_eval).to.equal(false);
+      expect(controller.do_eval).to.equal(false);
     });
 
     describe('evalExpression()', function() {
 
       it('should return true if mathexpression evaluates to 10', function () {
-        mockScope.do_eval = true;
-        mockScope.mathexpression = "2 * 5";
-        expect(mockScope.evalExpression()).to.equal(true);
+        controller.do_eval = true;
+        controller.mathexpression = "2 * 5";
+        expect(controller.evalExpression()).to.equal(true);
       });
 
       it('should return false if mathexpression does not evaluate to 10', function () {
-        mockScope.do_eval = true;
-        mockScope.mathexpression = "2 + 5";
-        expect(mockScope.evalExpression()).to.equal(false);
+        controller.do_eval = true;
+        controller.mathexpression = "2 + 5";
+        expect(controller.evalExpression()).to.equal(false);
       });
 
       it('should set do_eval false if mathexpression is not a valid expression', function () {
-        mockScope.do_eval = true;
-        mockScope.mathexpression = "2 +";
-        mockScope.evalExpression();
-        expect(mockScope.do_eval).to.equal(false);
+        controller.do_eval = true;
+        controller.mathexpression = "2 +";
+        controller.evalExpression();
+        expect(controller.do_eval).to.equal(false);
       });
 
     });
