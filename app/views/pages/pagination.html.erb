@@ -17,7 +17,7 @@
       'countries' gem developed by hexorx (<a href="https://github.com/hexorx/countries" target="_blank">link</a>)
     </div>
   </div>
-  <div class="row" ng-controller="paginationCtrl" ng-init="loadCountries()">
+  <div class="row" ng-controller="paginationCtrl as vm" ng-init="vm.loadCountries()">
     <div class="small-12 columns">
       <div class="example">
         <table class="width-100-pct">
@@ -28,13 +28,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr dir-paginate="country in countries.models | itemsPerPage: 15" total-items="countries.total" current-page="currentPage">
+          <tr dir-paginate="country in vm.countries.models | itemsPerPage: 15" total-items="vm.countries.total" current-page="vm.currentPage">
             <td>{{ country.data.name }}</td>
             <td class="medium-width-200">{{ country.data.alpha3 }}</td>
           </tr>
           </tbody>
         </table>
-        <dir-pagination-controls boundary-links="false" max-size="pagination_size" on-page-change="loadCountries(newPageNumber)"></dir-pagination-controls>
+        <dir-pagination-controls boundary-links="false" max-size="pagination_size" on-page-change="vm.loadCountries(newPageNumber)"></dir-pagination-controls>
       </div>
     </div>
   </div>

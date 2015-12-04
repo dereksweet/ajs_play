@@ -9,9 +9,7 @@ describe('paginationApp', function () {
 
   describe('paginationCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
-
+    mockController = function ($controller) {
       mockQuery = sinon.stub();
       mockQuery.withArgs({ page: 1 }).returns(['Country1', 'Country2']);
       mockQuery.withArgs({ page: 2 }).returns(['Country3', 'Country4']);
@@ -23,7 +21,6 @@ describe('paginationApp', function () {
       global.$ = mock_$;
 
       controller = $controller("paginationCtrl", {
-        $scope: mockScope,
         dataStore: mockDataStore
       });
     };
@@ -36,7 +33,7 @@ describe('paginationApp', function () {
       beforeEach(angular.mock.inject(mockController));
 
       it('should set the pagination_size to 7', function () {
-        expect(mockScope.pagination_size).to.equal(7);
+        expect(controller.pagination_size).to.equal(7);
       });
     });
 
@@ -48,7 +45,7 @@ describe('paginationApp', function () {
       beforeEach(angular.mock.inject(mockController));
 
       it('should set the pagination_size to 25', function () {
-        expect(mockScope.pagination_size).to.equal(25);
+        expect(controller.pagination_size).to.equal(25);
       });
     });
 
@@ -56,26 +53,26 @@ describe('paginationApp', function () {
       beforeEach(angular.mock.inject(mockController));
 
       it('should set the currentPage to 1', function () {
-        expect(mockScope.currentPage).to.equal(1);
+        expect(controller.currentPage).to.equal(1);
       });
 
       describe('$scope.loadCountries', function () {
         it('should set the currentPage to the page passed in', function () {
-          expect(mockScope.currentPage).to.equal(1);
-          mockScope.loadCountries(2);
-          expect(mockScope.currentPage).to.equal(2);
+          expect(controller.currentPage).to.equal(1);
+          controller.loadCountries(2);
+          expect(controller.currentPage).to.equal(2);
         });
 
         it('should set the countries appropriately for page 1', function () {
-          mockScope.loadCountries(1);
+          controller.loadCountries(1);
           expected = ['Country1', 'Country2'];
-          expect(mockScope.countries).to.include.members(expected);
+          expect(controller.countries).to.include.members(expected);
         });
 
         it('should set the countries appropriately for page 2', function () {
-          mockScope.loadCountries(2);
+          controller.loadCountries(2);
           expected = ['Country3', 'Country4'];
-          expect(mockScope.countries).to.include.members(expected);
+          expect(controller.countries).to.include.members(expected);
         });
       });
     });
