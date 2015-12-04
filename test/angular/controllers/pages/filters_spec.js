@@ -11,14 +11,12 @@ describe('filtersApp', function () {
 
   describe('filtersCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
+    mockController = function ($controller) {
       // Freeze Date() to the current Date
       tk.freeze(currentDate);
 
       mockTimeout = sinon.spy();
-      mockScope = $rootScope.$new();
       controller = $controller("filtersCtrl", {
-        $scope: mockScope,
         $timeout: mockTimeout
       });
     };
@@ -31,21 +29,21 @@ describe('filtersApp', function () {
     });
 
     it('should set the current date', function () {
-      expect(mockScope.currentDate).to.equal(currentDate);
+      expect(controller.currentDate).to.equal(currentDate);
     });
 
     it('should create the sampleData array', function() {
       expected = [123.65,89.325,23.453,45.66,67.80,23.454];
-      expect(mockScope.sampleData).to.include.members(expected);
+      expect(controller.sampleData).to.include.members(expected);
     });
 
     it('should create the myString string', function() {
-      expect(mockScope.myString).to.equal('TestString');
+      expect(controller.myString).to.equal('TestString');
     });
 
     it('should create the jsonObject object', function() {
       expected = JSON.stringify({ data1: 'blah', data2: 'blah!'});
-      expect(JSON.stringify(mockScope.jsonObject)).to.equal(expected);
+      expect(JSON.stringify(controller.jsonObject)).to.equal(expected);
     });
 
     it('should fire an updateTime $timeout event', function() {
@@ -54,12 +52,12 @@ describe('filtersApp', function () {
 
     describe('this.updateTime()', function () {
       it('should update the currentDate', function () {
-        expect(mockScope.currentDate).to.equal(currentDate);
+        expect(controller.currentDate).to.equal(currentDate);
         var newDate = new Date();
         newDate.setDate(currentDate.getDate() + 1);
         tk.travel(newDate);
         controller.updateTime();
-        expect(mockScope.currentDate).to.equal(newDate);
+        expect(controller.currentDate).to.equal(newDate);
       });
 
       it('should call itself again', function () {
