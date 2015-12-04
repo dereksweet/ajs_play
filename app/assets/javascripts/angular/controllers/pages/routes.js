@@ -6,32 +6,32 @@ var routesConfig = function ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: asset_paths['pages/routes/home.html'],
-      controller: 'homeCtrl'
+      controller: 'homeCtrl as vm'
     })
 
     .when('/about', {
       templateUrl: asset_paths['pages/routes/about.html'],
-      controller: 'aboutCtrl'
+      controller: 'aboutCtrl as vm'
     })
 
     .when('/contact', {
       templateUrl: asset_paths['pages/routes/contact.html'],
-      controller: 'contactCtrl'
+      controller: 'contactCtrl as vm'
     })
 
     .when('/contact/:subject', {
       templateUrl: asset_paths['pages/routes/contact.html'],
-      controller: 'contactCtrl'
+      controller: 'contactCtrl as vm'
     })
 
     .when('/eager/:extra*', {
       templateUrl: asset_paths['pages/routes/eager.html'],
-      controller: 'eagerCtrl'
+      controller: 'eagerCtrl as vm'
     })
 
     .otherwise({
       templateUrl: asset_paths['pages/routes/routeNotFound.html'],
-      controller: 'notFoundCtrl'
+      controller: 'notFoundCtrl as vm'
     });
 };
 routesConfig.$inject = ['$routeProvider'];
@@ -47,40 +47,46 @@ var routesCtrl = function() {
 angular.module(moduleName).controller('routesCtrl', routesCtrl);
 
 
-var homeCtrl = function ($scope) {
+var homeCtrl = function () {
 
 };
-homeCtrl.$inject = ['$scope'];
+homeCtrl.$inject = [];
 angular.module(moduleName).controller('homeCtrl', homeCtrl);
 
 
-var aboutCtrl = function ($scope) {
+var aboutCtrl = function () {
 
 };
-aboutCtrl.$inject = ['$scope'];
+aboutCtrl.$inject = [];
 angular.module(moduleName).controller('aboutCtrl', aboutCtrl);
 
 
-var contactCtrl = function ($scope, $routeParams) {
+var contactCtrl = function ($routeParams) {
+  var vm = this;
+
   if ($routeParams['subject'] == 'learn') {
-    $scope.showLearn = true;
+    vm.showLearn = true;
   } else if ($routeParams['subject'] == 'complain') {
-    $scope.showComplain = true;
+    vm.showComplain = true;
   }
 };
-contactCtrl.$inject = ['$scope', '$routeParams'];
+contactCtrl.$inject = ['$routeParams'];
 angular.module(moduleName).controller('contactCtrl', contactCtrl);
 
 
-var eagerCtrl = function ($scope, $routeParams) {
-  $scope.extra = $routeParams['extra'];
+var eagerCtrl = function ($routeParams) {
+  var vm = this;
+
+  vm.extra = $routeParams['extra'];
 };
-eagerCtrl.$inject = ['$scope','$routeParams'];
+eagerCtrl.$inject = ['$routeParams'];
 angular.module(moduleName).controller('eagerCtrl', eagerCtrl);
 
 
-var notFoundCtrl = function ($scope, $location) {
-  $scope.attemptedLocation = $location.path();
+var notFoundCtrl = function ($location) {
+  var vm = this;
+
+  this.attemptedLocation = $location.path();
 };
-notFoundCtrl.$inject = ['$scope', '$location'];
+notFoundCtrl.$inject = ['$location'];
 angular.module(moduleName).controller('notFoundCtrl', notFoundCtrl);

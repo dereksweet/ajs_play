@@ -8,29 +8,28 @@ describe('routesApp', function () {
 
   describe('routesConfig', function () {
     it('should configure the routes properly', inject(function ($route) {
-      expect($route.routes['/'].controller).to.equal('homeCtrl');
+      expect($route.routes['/'].controller).to.equal('homeCtrl as vm');
       expect($route.routes['/'].templateUrl).to.equal(asset_paths['pages/routes/home.html']);
 
-      expect($route.routes['/about'].controller).to.equal('aboutCtrl');
+      expect($route.routes['/about'].controller).to.equal('aboutCtrl as vm');
       expect($route.routes['/about'].templateUrl).to.equal(asset_paths['pages/routes/about.html']);
 
-      expect($route.routes['/contact'].controller).to.equal('contactCtrl');
+      expect($route.routes['/contact'].controller).to.equal('contactCtrl as vm');
       expect($route.routes['/contact'].templateUrl).to.equal(asset_paths['pages/routes/contact.html']);
 
-      expect($route.routes['/eager/:extra*'].controller).to.equal('eagerCtrl');
+      expect($route.routes['/eager/:extra*'].controller).to.equal('eagerCtrl as vm');
       expect($route.routes['/eager/:extra*'].templateUrl).to.equal(asset_paths['pages/routes/eager.html']);
 
-      expect($route.routes[null].controller).to.equal('notFoundCtrl');
+      expect($route.routes[null].controller).to.equal('notFoundCtrl as vm');
       expect($route.routes[null].templateUrl).to.equal(asset_paths['pages/routes/routeNotFound.html']);
     }));
   });
 
   describe('routesCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       controller = $controller("routesCtrl", {
-          $scope: mockScope
+
       });
     };
 
@@ -56,10 +55,9 @@ describe('routesApp', function () {
   // homeCtrl has no functionality so x it out for now
   xdescribe('homeCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       controller = $controller("homeCtrl", {
-        $scope: mockScope
+
       });
     };
 
@@ -71,10 +69,9 @@ describe('routesApp', function () {
   // aboutCtrl has no functionality so x it out for now
   xdescribe('aboutCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       controller = $controller("aboutCtrl", {
-        $scope: mockScope
+
       });
     };
 
@@ -85,11 +82,9 @@ describe('routesApp', function () {
 
   describe('contactCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       mockRouteParams = { 'subject': subject };
       controller = $controller("contactCtrl", {
-        $scope: mockScope,
         $routeParams: mockRouteParams
       });
     };
@@ -103,7 +98,7 @@ describe('routesApp', function () {
       beforeEach(angular.mock.inject(mockController));
 
       it('should set showLearn true', function () {
-        expect(mockScope.showLearn).to.be.ok;
+        expect(controller.showLearn).to.be.ok;
       });
     });
 
@@ -115,7 +110,7 @@ describe('routesApp', function () {
       beforeEach(angular.mock.inject(mockController));
 
       it('should set showLearn true', function () {
-        expect(mockScope.showComplain).to.be.ok;
+        expect(controller.showComplain).to.be.ok;
       });
     });
   });
@@ -124,11 +119,9 @@ describe('routesApp', function () {
 
   describe('eagerCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       mockRouteParams = { 'extra': '12/34/56' };
       controller = $controller("eagerCtrl", {
-        $scope: mockScope,
         $routeParams: mockRouteParams
       });
     };
@@ -136,7 +129,7 @@ describe('routesApp', function () {
     beforeEach(angular.mock.inject(mockController));
 
     it('should set extra to the routeParams extra', function () {
-      expect(mockScope.extra).to.equal('12/34/56');
+      expect(controller.extra).to.equal('12/34/56');
     });
   });
 
@@ -144,11 +137,9 @@ describe('routesApp', function () {
 
   describe('notFoundCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       mockLocation = { path: sinon.stub().returns('/routes/i_blow_goats') };
       controller = $controller("notFoundCtrl", {
-        $scope: mockScope,
         $location: mockLocation
       });
     };
@@ -156,7 +147,7 @@ describe('routesApp', function () {
     beforeEach(angular.mock.inject(mockController));
 
     it('should set attemptedLocation to the $location page', function() {
-      expect(mockScope.attemptedLocation).to.equal('/routes/i_blow_goats');
+      expect(controller.attemptedLocation).to.equal('/routes/i_blow_goats');
     });
   });
 });
