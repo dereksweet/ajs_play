@@ -5,12 +5,16 @@ angular.module(moduleName, []);
 
 var directivesCtrl = function ($scope) {
   var vm = this;
+
   vm.count = 0;
   vm.my_count = 3;
   vm.my_array = ['1','2','3'];
   vm.do_eval = false;
+  vm.evalExpression = evalExpression;
 
-  vm.evalExpression = function evalExpression() {
+  /////////////////////
+
+  function evalExpression() {
     var myResult = false;
 
     if (vm.do_eval) {
@@ -23,7 +27,7 @@ var directivesCtrl = function ($scope) {
     }
 
     return myResult;
-  };
+  }
 };
 directivesCtrl.$inject = ['$scope'];
 angular.module(moduleName).controller(controllerName, directivesCtrl);

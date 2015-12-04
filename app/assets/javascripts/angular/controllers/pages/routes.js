@@ -38,11 +38,16 @@ routesConfig.$inject = ['$routeProvider'];
 angular.module(moduleName).config(routesConfig);
 
 var routesCtrl = function() {
-  this.active = 'home';
+  var vm = this;
 
-  this.isActive = function isActive(page) {
+  vm.active = 'home';
+  vm.isActive = isActive;
+
+  /////////////////////
+
+  function isActive (page) {
     return this.active == page ? 'active' : '';
-  };
+  }
 };
 angular.module(moduleName).controller('routesCtrl', routesCtrl);
 
@@ -63,6 +68,11 @@ angular.module(moduleName).controller('aboutCtrl', aboutCtrl);
 
 var contactCtrl = function ($routeParams) {
   var vm = this;
+
+  vm.showLearn = false;
+  vm.showComplain = false;
+
+  ////////////////////
 
   if ($routeParams['subject'] == 'learn') {
     vm.showLearn = true;
@@ -86,7 +96,7 @@ angular.module(moduleName).controller('eagerCtrl', eagerCtrl);
 var notFoundCtrl = function ($location) {
   var vm = this;
 
-  this.attemptedLocation = $location.path();
+  vm.attemptedLocation = $location.path();
 };
 notFoundCtrl.$inject = ['$location'];
 angular.module(moduleName).controller('notFoundCtrl', notFoundCtrl);

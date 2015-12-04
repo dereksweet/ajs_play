@@ -17,7 +17,7 @@ describe('formsApp', function () {
       mockDataStore = { User: mockUser };
 
       mockDataShareService = { colors: ['blue', 'red', 'green'],
-                               get_all_users: sinon.spy() };
+                               getAllUsers: sinon.spy() };
 
       controller = $controller("mySimpleFormsCtrl", {
         $scope: mockScope,
@@ -45,9 +45,9 @@ describe('formsApp', function () {
       expect(controller.colors).to.include.members(mockDataShareService.colors);
     });
 
-    describe('$scope.get_user()', function () {
+    describe('$scope.getUser()', function () {
       beforeEach(function () {
-        controller.get_user();
+        controller.getUser();
       });
 
       it('should set $scope.user to the dataStore.User.get', function () {
@@ -66,54 +66,54 @@ describe('formsApp', function () {
       });
     });
 
-    describe('$scope.submit_form()', function () {
+    describe('$scope.submitForm()', function () {
       it('should set firstNameInvalid false when first name is valid', function () {
         controller.sampleForm.first_name.$invalid = false;
-        controller.submit_form();
+        controller.submitForm();
         expect(controller.firstNameInvalid).to.equal(false);
       });
 
       it('should set firstNameInvalid true when first name is invalid', function () {
         controller.sampleForm.first_name.$invalid = true;
-        controller.submit_form();
+        controller.submitForm();
         expect(controller.firstNameInvalid).to.equal(true);
       });
 
       it('should set emailInvalid false when email is valid', function () {
         controller.sampleForm.email.$invalid = false;
-        controller.submit_form();
+        controller.submitForm();
         expect(controller.emailInvalid).to.equal(false);
       });
 
       it('should set emailInvalid true when email is invalid', function () {
         controller.sampleForm.email.$invalid = true;
-        controller.submit_form();
+        controller.submitForm();
         expect(controller.emailInvalid).to.equal(true);
       });
 
       it('should set colorInvalid false when color is valid', function () {
         controller.sampleForm.color.$invalid = false;
-        controller.submit_form();
+        controller.submitForm();
         expect(controller.colorInvalid).to.equal(false);
       });
 
       it('should set colorInvalid true when color is invalid', function () {
         controller.sampleForm.color.$invalid = true;
-        controller.submit_form();
+        controller.submitForm();
         expect(controller.colorInvalid).to.equal(true);
       });
 
       it('should not call user.save if the form is not valid', function () {
         controller.sampleForm.$valid = false;
         controller.user.$save = sinon.spy();
-        controller.submit_form();
+        controller.submitForm();
         expect(controller.user.$save.called).to.equal(false);
       });
 
       it('should call user.save if the form is valid', function () {
         controller.sampleForm.$valid = true;
         controller.user.$save = sinon.stub().returns({ then: sinon.stub() });
-        controller.submit_form();
+        controller.submitForm();
         expect(controller.user.$save.called).to.equal(true);
       })
     });
@@ -136,7 +136,7 @@ describe('formsApp', function () {
 
         mockDataShareService = {
           colors: ['blue', 'red', 'green'],
-          get_all_users: sinon.spy()
+          getAllUsers: sinon.spy()
         };
 
         mock_$ = sinon.stub();
@@ -165,15 +165,15 @@ describe('formsApp', function () {
         expect(modal).to.equal(mockModal);
       });
 
-      it('should fire the get_all_users method when the "get_all_user" event fires', function () {
-        getAllUsersSpy = sinon.spy(controller, 'get_all_users');
-        rootScope.$broadcast('get_all_users');
+      it('should fire the getAllUsers method when the "getAllUsers" event fires', function () {
+        getAllUsersSpy = sinon.spy(controller, 'getAllUsers');
+        rootScope.$broadcast('getAllUsers');
         expect(getAllUsersSpy.called).to.equal(true);
       });
 
-      describe('$scope.get_all_users()', function () {
+      describe('$scope.getAllUsers()', function () {
         beforeEach(function () {
-          controller.get_all_users();
+          controller.getAllUsers();
         });
 
         it('should set users to the results of the dataStore User model', function () {
@@ -201,33 +201,33 @@ describe('formsApp', function () {
         });
       });
 
-      describe('$scope.edit_user()', function () {
+      describe('$scope.editUser()', function () {
         it('should call the dataStore.User.get for the first name passed in', function () {
-          controller.edit_user('Derek');
+          controller.editUser('Derek');
           expect(mockUser.get.calledWith({ id: 'Derek' })).to.equal(true);
         });
 
         it('should call openModal()', function () {
           openModalSpy = sinon.spy(controller, 'openModal');
-          controller.edit_user('Derek');
+          controller.editUser('Derek');
           expect(openModalSpy.called).to.equal(true);
         });
       });
 
-      describe('$scope.update_user()', function () {
+      describe('$scope.updateUser()', function () {
         it('should try to save the modal_user', function () {
           controller.modal_user = {};
           controller.modal_user.$save = sinon.stub().returns({ then: sinon.stub() });
-          controller.update_user();
+          controller.updateUser();
           expect(controller.modal_user.$save.called).to.equal(true);
         });
       });
 
-      describe('$scope.delete_user()', function () {
+      describe('$scope.deleteUser()', function () {
         it('should try to remove the modal_user', function () {
           controller.modal_user = {};
           controller.modal_user.$remove = sinon.stub().returns({ then: sinon.stub() });
-          controller.delete_user();
+          controller.deleteUser();
           expect(controller.modal_user.$remove.called).to.equal(true);
         });
       });

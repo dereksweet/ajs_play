@@ -2,7 +2,7 @@ var moduleName = "uiRouterApp";
 
 angular.module(moduleName, ['ui.router']);
 
-var uirouterCtrl = function($state) {
+var uirouterCtrl = function ($state) {
   var vm = this;
 
   vm.state = $state;
@@ -66,7 +66,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('home', {
         url: "/",
         templateUrl: asset_paths['pages/routes/home.html'],
-        controller: homeCtrl,
+        controller: "homeCtrl as vm",
         data: {
           name: 'home'
         }
@@ -74,7 +74,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('about', {
         url: "/about",
         templateUrl: asset_paths['pages/routes/about.html'],
-        controller: aboutCtrl,
+        controller: "aboutCtrl as vm",
         data: {
           name: 'about'
         }
@@ -115,7 +115,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       })
       .state('multiple', {
         url: "/multiple",
-        controller: multipleCtrl,
+        controller: "multipleCtrl as vm",
         templateUrl: asset_paths['pages/uirouter/multiple.html'],
         data: {
           name: 'multiple'

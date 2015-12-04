@@ -7,8 +7,8 @@ var dataShareService = function($rootScope) {
     {value: "yellow", label: "Yellow"}
   ];
 
-  sharedService.get_all_users = function() {
-    $rootScope.$broadcast('get_all_users');
+  sharedService.getAllUsers = function() {
+    $rootScope.$broadcast('getAllUsers');
   };
 
   return sharedService;

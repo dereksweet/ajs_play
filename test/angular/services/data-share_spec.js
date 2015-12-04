@@ -22,13 +22,13 @@ describe('data-share service', function () {
     expect(service.colors[2].value).to.include.equal('yellow');
   });
 
-  describe('get_all_users()', function () {
+  describe('getAllUsers()', function () {
     beforeEach(function () {
-      service.get_all_users();
+      service.getAllUsers();
     });
 
-    it('should broadcast the get_all_users event from the rootScope', function () {
-      expect($rootScope.$broadcast.calledWith('get_all_users')).to.equal(true);
+    it('should broadcast the getAllUsers event from the rootScope', function () {
+      expect($rootScope.$broadcast.calledWith('getAllUsers')).to.equal(true);
     });
   });
 });

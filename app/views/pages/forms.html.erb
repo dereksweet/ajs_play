@@ -43,7 +43,7 @@
             <div class="row">&nbsp;</div>
             <div class="row">
               <div class="small-12 columns">
-                <form name="simpleVm.sampleForm" ng-submit="simpleVm.submit_form()" novalidate>
+                <form name="simpleVm.sampleForm" ng-submit="simpleVm.submitForm()" novalidate>
                   <div class="row">
                     <div class="small-12 columns">
                       <i>The following is an input for first name, does not have much validation on it.</i>
@@ -56,7 +56,7 @@
                       <span class="error" ng-show="simpleVm.firstNameInvalid">Please enter a value for First Name</span>
                     </div>
                     <div class="small-12 medium-5 columns left medium-left-margin">
-                      <input type="button" value="Load by First Name" ng-click="simpleVm.get_user()">
+                      <input type="button" value="Load by First Name" ng-click="simpleVm.getUser()">
                     </div>
                   </div>
                   <div class="row">&nbsp;</div>
@@ -135,7 +135,7 @@
           <div class="small-12 columns">
             <b>Number of Users: </b><span id="num_users">{{ modalVm.users.length }}</span><br>
             <br>
-            <table ng-init="modalVm.get_all_users()">
+            <table ng-init="modalVm.getAllUsers()">
               <thead>
               <tr>
                 <th>First Name</th>
@@ -146,7 +146,7 @@
               </thead>
               <tbody>
               <tr ng-repeat="user in modalVm.users">
-                <td><a ng-click="modalVm.edit_user(user.first_name)">{{ user.first_name }}</a></td>
+                <td><a ng-click="modalVm.editUser(user.first_name)">{{ user.first_name }}</a></td>
                 <td class="small-width-limit-75">{{ user.email }}</td>
                 <td>{{ user.color }}</td>
                 <td>{{ user.is_cool }}</td>
