@@ -11,18 +11,18 @@
       as the ngRoutes page but using ui-router instead. Lots more can be done with ui-router than what you see here.
     </div>
   </div>
-  <div class="row" ng-controller="uirouterCtrl as uirouterCtrl">
+  <div class="row" ng-controller="uirouterCtrl as vm">
     <div class="small-12 columns">
       <div class="example">
         <div class="row">
           <div class="small-12 columns">
             <dl class="sub-nav">
-              <dd class="sub-nav-link"><a ng-class="{active: state.current.data.name == 'home'}" ui-sref="home">Home</a></dd>
-              <dd class="sub-nav-link"><a ng-class="{active: state.current.data.name == 'about'}" ui-sref="about">About</a></dd>
-              <dd class="sub-nav-link"><a ng-class="{active: state.current.data.name == 'contact'}" ui-sref="contact">Contact</a></dd>
-              <dd class="sub-nav-link"><a ng-class="{active: state.current.data.name == 'contact_complain'}" ui-sref="contact_complain">Contact-Complain</a></dd>
-              <dd class="sub-nav-link"><a ng-class="{active: state.current.data.name == 'nested'}" ui-sref="nested">Nested</a></dd>
-              <dd class="small-clear-both sub-nav-link"><a ng-class="{active: state.current.data.name == 'multiple'}" ui-sref="multiple">Multiple</a></dd>
+              <dd class="sub-nav-link"><a ng-class="{active: vm.state.current.data.name == 'home'}" ui-sref="home">Home</a></dd>
+              <dd class="sub-nav-link"><a ng-class="{active: vm.state.current.data.name == 'about'}" ui-sref="about">About</a></dd>
+              <dd class="sub-nav-link"><a ng-class="{active: vm.state.current.data.name == 'contact'}" ui-sref="contact">Contact</a></dd>
+              <dd class="sub-nav-link"><a ng-class="{active: vm.state.current.data.name == 'contact_complain'}" ui-sref="contact_complain">Contact-Complain</a></dd>
+              <dd class="sub-nav-link"><a ng-class="{active: vm.state.current.data.name == 'nested'}" ui-sref="nested">Nested</a></dd>
+              <dd class="small-clear-both sub-nav-link"><a ng-class="{active: vm.state.current.data.name == 'multiple'}" ui-sref="multiple">Multiple</a></dd>
             </dl>
           </div>
         </div>

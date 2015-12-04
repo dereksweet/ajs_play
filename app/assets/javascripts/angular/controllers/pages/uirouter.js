@@ -2,45 +2,56 @@ var moduleName = "uiRouterApp";
 
 angular.module(moduleName, ['ui.router']);
 
-var uirouterCtrl = function($scope, $state) {
-  $scope.state = $state;
+var uirouterCtrl = function($state) {
+  var vm = this;
+
+  vm.state = $state;
 };
-uirouterCtrl.$inject = ['$scope', '$state'];
+uirouterCtrl.$inject = ['$state'];
 angular.module(moduleName).controller('uirouterCtrl', uirouterCtrl);
 
 
-var homeCtrl = function ($scope) {
+var homeCtrl = function () {
 
 };
-homeCtrl.$inject = ['$scope'];
+homeCtrl.$inject = [];
 angular.module(moduleName).controller('homeCtrl', homeCtrl);
 
 
-var aboutCtrl = function ($scope) {
+var aboutCtrl = function () {
 
 };
-aboutCtrl.$inject = ['$scope'];
+aboutCtrl.$inject = [];
 angular.module(moduleName).controller('aboutCtrl', aboutCtrl);
 
 
-var contactCtrl = function ($scope, $state) {
+var contactCtrl = function ($state) {
+  var vm = this;
+
   if ($state.current.data.subject == 'complain') {
-    $scope.showComplain = true;
+    vm.showComplain = true;
   }
 };
-contactCtrl.$inject = ['$scope', '$state'];
+contactCtrl.$inject = ['$state'];
 angular.module(moduleName).controller('contactCtrl', contactCtrl);
 
-var nestedCtrl = function ($scope, $state) {
+var nestedCtrl = function ($state) {
 
 };
-nestedCtrl.$inject = ['$scope', '$state'];
+nestedCtrl.$inject = ['$state'];
 angular.module(moduleName).controller('nestedCtrl', nestedCtrl);
 
-var multipleCtrl = function ($scope, $state) {
+var nestedListCtrl = function() {
+  var vm = this;
+
+  vm.items = ["A", "List", "Of", "Items"];
+};
+angular.module(moduleName).controller('nestedListCtrl', nestedListCtrl);
+
+var multipleCtrl = function ($state) {
 
 };
-multipleCtrl.$inject = ['$scope', '$state'];
+multipleCtrl.$inject = ['$state'];
 angular.module(moduleName).controller('multipleCtrl', multipleCtrl);
 
 
@@ -71,7 +82,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('contact', {
         url: "/contact",
         templateUrl: asset_paths['pages/routes/contact.html'],
-        controller: contactCtrl,
+        controller: "contactCtrl as vm",
         data: {
           subject: '',
           name: 'contact'
@@ -80,7 +91,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('contact_complain', {
         url: "/contact/complain",
         templateUrl: asset_paths['pages/routes/contact.html'],
-        controller: contactCtrl,
+        controller: "contactCtrl as vm",
         data: {
           subject: 'complain',
           name: 'contact_complain'
@@ -88,7 +99,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       })
       .state('nested', {
         url: "/nested",
-        controller: nestedCtrl,
+        controller: "nestedCtrl as vm",
         templateUrl: asset_paths['pages/uirouter/nested.html'],
         data: {
           name: 'nested'
@@ -97,9 +108,7 @@ var stateConfig = function($stateProvider, $urlRouterProvider) {
       .state('nested.list', {
         url: "/list",
         templateUrl: asset_paths['pages/uirouter/nested.list.html'],
-        controller: function($scope) {
-          $scope.items = ["A", "List", "Of", "Items"];
-        },
+        controller: "nestedListCtrl as vm",
         data: {
           name: 'nested'
         }

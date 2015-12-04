@@ -66,19 +66,17 @@ describe('uirouterApp', function () {
 
   describe('uirouterCtrl', function () {
 
-    mockController = function ($controller, $rootScope, $state) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller, $state) {
       mockState = $state;
       controller = $controller("uirouterCtrl", {
-        $scope: mockScope,
         $state: mockState
       });
     };
 
     beforeEach(angular.mock.inject(mockController));
 
-    it('should set the $scope.state object to $state', function() {
-      expect(mockScope.state).to.equal(mockState);
+    it('should set the controller.state object to $state', function() {
+      expect(controller.state).to.equal(mockState);
     });
   });
 
@@ -87,10 +85,9 @@ describe('uirouterApp', function () {
   // homeCtrl has no functionality so x it out for now
   xdescribe('homeCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       controller = $controller("homeCtrl", {
-        $scope: mockScope
+
       });
     };
 
@@ -102,10 +99,9 @@ describe('uirouterApp', function () {
   // aboutCtrl has no functionality so x it out for now
   xdescribe('aboutCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       controller = $controller("aboutCtrl", {
-        $scope: mockScope
+
       });
     };
 
@@ -116,11 +112,9 @@ describe('uirouterApp', function () {
 
   describe('contactCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       mockState = { current: { data: { subject: subject }}};
       controller = $controller("contactCtrl", {
-        $scope: mockScope,
         $state: mockState
       });
     };
@@ -133,7 +127,7 @@ describe('uirouterApp', function () {
       beforeEach(angular.mock.inject(mockController));
 
       it('should set showComplain to true', function() {
-        expect(mockScope.showComplain).to.equal(true);
+        expect(controller.showComplain).to.equal(true);
       });
     });
   });
@@ -143,10 +137,9 @@ describe('uirouterApp', function () {
   // nestedCtrl has no functionality so x it out for now
   xdescribe('nestedCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       controller = $controller("nestedCtrl", {
-        $scope: mockScope
+
       });
     };
 
@@ -157,10 +150,9 @@ describe('uirouterApp', function () {
   // multipleCtrl has no functionality so x it out for now
   xdescribe('mulitpleCtrl', function () {
 
-    mockController = function ($controller, $rootScope) {
-      mockScope = $rootScope.$new();
+    mockController = function ($controller) {
       controller = $controller("multipleCtrl", {
-        $scope: mockScope
+
       });
     };
 
