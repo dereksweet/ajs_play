@@ -50,7 +50,7 @@ describe('directives', function () {
   });
 
   describe('Custom Directives', function () {
-    describe('ngShowHide directive', function () {
+    describe('sweetShowHide directive', function () {
       it('should toggle the first message when the first toggle button is clicked', function () {
         expect(element.all(by.id('myMessage')).get(0).getText()).toEqual('');
         element.all(by.id('show_hide_toggle')).get(0).click();
@@ -82,7 +82,7 @@ describe('directives', function () {
       });
     });
 
-    describe('ngCurrentTime directive', function () {
+    describe('sweetCurrentTime directive', function () {
       it('have the current time displayed', function () {
         // Test against the previous 5 seconds to account for any delay. 5 is overkill
         var testDate = new Date();
@@ -98,7 +98,7 @@ describe('directives', function () {
       });
     });
 
-    describe('ngMakeBlue', function () {
+    describe('sweetMakeBlue', function () {
       it('should color text text blue', function () {
         expect(element(by.id('make-blue')).all(by.tagName('span')).first().getCssValue('color')).toEqual('rgba(0, 0, 255, 1)');
       });

@@ -1,8 +1,8 @@
-angular.module(moduleName).directive('ngCurrentTime', ngCurrentTime);
+angular.module(moduleName).directive('sweetCurrentTime', sweetCurrentTime);
 
 
 
-function ngCurrentTime ($compile, $timeout) {
+function sweetCurrentTime ($timeout) {
   return {
     scope: {},
     restrict: 'AE',
@@ -19,4 +19,4 @@ function ngCurrentTime ($compile, $timeout) {
     }
   };
 }
-ngCurrentTime.$inject = ['$compile', '$timeout'];
+sweetCurrentTime.$inject = ['$timeout'];

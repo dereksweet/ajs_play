@@ -1,8 +1,8 @@
-angular.module(moduleName).directive('ngMakeBlue', ngMakeBlue);
+angular.module(moduleName).directive('sweetMakeBlue', sweetMakeBlue);
 
 
 
-function ngMakeBlue () {
+function sweetMakeBlue () {
   return {
     scope: {},
     restrict: 'AE',

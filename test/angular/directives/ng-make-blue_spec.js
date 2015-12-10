@@ -1,9 +1,9 @@
 require('test/test_helper.js');
-require('app/assets/javascripts/angular/directives/ng-make-blue');
+require('app/assets/javascripts/angular/directives/sweet-make-blue');
 
 var $compile, $scope, $directiveElem;
 
-describe('ng-make-blue directive', function () {
+describe('sweet-make-blue directive', function () {
   beforeEach(function(){
     angular.mock.module(moduleName);
 
@@ -12,7 +12,7 @@ describe('ng-make-blue directive', function () {
       $scope = $rootScope.$new();
     });
 
-    var element = angular.element('<ng-make-blue>This is blue</ng-make-blue>');
+    var element = angular.element('<sweet-make-blue>This is blue</sweet-make-blue>');
     var compiledElement = $compile(element)($scope);
     $scope.$digest();
     $directiveElem = compiledElement;

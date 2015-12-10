@@ -1,5 +1,5 @@
 require('test/test_helper.js');
-require('app/assets/javascripts/angular/directives/ng-current-time');
+require('app/assets/javascripts/angular/directives/sweet-current-time');
 
 // Use timekeeper to freeze the Date so we can test it is being set properly
 var tk = require('timekeeper');
@@ -7,7 +7,7 @@ var currentDate = new Date();
 
 var $compile, $scope, $filter, $directiveElem;
 
-describe('ng-current-time directive', function () {
+describe('sweet-current-time directive', function () {
   beforeEach(function(){
     // Freeze Date() to the current Date
     tk.freeze(currentDate);
@@ -20,7 +20,7 @@ describe('ng-current-time directive', function () {
       $scope = $rootScope.$new();
     });
 
-    var element = angular.element('<ng-current-time />');
+    var element = angular.element('<sweet-current-time />');
     var compiledElement = $compile(element)($scope);
     $scope.$digest();
     $directiveElem = compiledElement;

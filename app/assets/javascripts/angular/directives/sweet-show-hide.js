@@ -1,8 +1,8 @@
-angular.module(moduleName).directive('ngShowHide', ngShowHide);
+angular.module(moduleName).directive('sweetShowHide', sweetShowHide);
 
 
 
-function ngShowHide () {
+function sweetShowHide () {
   return {
     scope: {},
     restrict: 'AE',
@@ -24,4 +24,4 @@ function ngShowHide () {
     }
   };
 }
-ngShowHide.$inject = [];
+sweetShowHide.$inject = [];

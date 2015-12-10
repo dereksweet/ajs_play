@@ -35,9 +35,9 @@ module AjsPlay
                                     angular/controllers/pages/pagination.js )
 
     # Angular Directives
-    config.assets.precompile += %w( angular/directives/ng-current-time.js
-                                    angular/directives/ng-show-hide.js
-                                    angular/directives/ng-make-blue.js )
+    config.assets.precompile += %w( angular/directives/sweet-current-time.js
+                                    angular/directives/sweet-show-hide.js
+                                    angular/directives/sweet-make-blue.js )
 
     # Angular Filters
     config.assets.precompile += %w( angular/filters/strip-dashes.js

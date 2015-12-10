@@ -2,9 +2,9 @@
 <%= javascript_include_tag asset_path('angular/controllers/pages/directives.js') %>
 
 <!-- Reference any directives to be employed -->
-<%= javascript_include_tag asset_path('angular/directives/ng-show-hide.js') %>
-<%= javascript_include_tag asset_path('angular/directives/ng-current-time.js') %>
-<%= javascript_include_tag asset_path('angular/directives/ng-make-blue.js') %>
+<%= javascript_include_tag asset_path('angular/directives/sweet-show-hide.js') %>
+<%= javascript_include_tag asset_path('angular/directives/sweet-current-time.js') %>
+<%= javascript_include_tag asset_path('angular/directives/sweet-make-blue.js') %>
 
 <% content_for :title do %>AngularJS Playground - Directives<% end %>
 
@@ -121,23 +121,23 @@
     <div class="small-12 columns">
       <div class="example">
         <div class="example-header">
-          <span class="example-title">ngShowHide</span><br>
+          <span class="example-title">sweetShowHide</span><br>
           <span class="example-description">
-            A custom directive, ngShowHide, has been defined in the controller script. It can be included as it's own tag like &lt;ng-showHide&gt; or as an attributes like &lt;div ng-showHide&gt;.
+            A custom directive, sweetShowHide, has been defined in the controller script. It can be included as it's own tag like &lt;ng-showHide&gt; or as an attributes like &lt;div ng-showHide&gt;.
             A 'scope: {}' param has been added as well to make all scope variables local per the instance.
           </span>
         </div>
         <div class="example-body">
           <div class="row">
-            <div class="small-12 medium-3 columns left">Attribute (<b>&lt;div ng-show-hide&gt;</b>):</div>
+            <div class="small-12 medium-3 columns left">Attribute (<b>&lt;div sweet-show-hide&gt;</b>):</div>
             <div class="small-12 medium-9 columns left">
-              <div ng-show-hide></div>
+              <div sweet-show-hide></div>
             </div>
           </div>
           <div class="row">
-            <div class="small-12 medium-3 columns left">Tag (<b>&lt;ng-show-hide&gt;</b>):</div>
+            <div class="small-12 medium-3 columns left">Tag (<b>&lt;sweet-show-hide&gt;</b>):</div>
             <div class="small-12 medium-9 columns left">
-              <ng-show-hide />
+              <sweet-show-hide />
             </div>
           </div>
         </div>
@@ -148,15 +148,15 @@
     <div class="small-12 columns">
       <div class="example">
         <div class="example-header">
-          <span class="example-title">ngCurrentTime</span><br>
+          <span class="example-title">sweetCurrentTime</span><br>
           <span class="example-description">
-            Another custom directive, ngCurrentTime, has been defined that simply shows the current time and keeps it updated.
+            Another custom directive, sweetCurrentTime, has been defined that simply shows the current time and keeps it updated.
           </span>
         </div>
         <div class="example-body">
           <div class="row">
             <div class="small-12 columns left">
-              <b>CurrentTime</b>: &nbsp; <span id="current_time"><ng-current-time /></span>
+              <b>CurrentTime</b>: &nbsp; <span id="current_time"><sweet-current-time /></span>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@
     <div class="small-12 columns">
       <div class="example">
         <div class="example-header">
-          <span class="example-title">ngMakeBlue</span><br>
+          <span class="example-title">sweetMakeBlue</span><br>
           <span class="example-description">
            A transclusion directive example, makes whatever text is wrapped in the tag blue
           </span>
@@ -175,7 +175,7 @@
         <div class="example-body">
           <div class="row">
             <div class="small-12 columns left">
-              <ng-make-blue id="make-blue">This is not red..</ng-make-blue>
+              <sweet-make-blue id="make-blue">This is not red..</sweet-make-blue>
             </div>
           </div>
         </div>

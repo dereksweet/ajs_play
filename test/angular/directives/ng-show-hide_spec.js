@@ -1,9 +1,9 @@
 require('test/test_helper.js');
-require('app/assets/javascripts/angular/directives/ng-show-hide');
+require('app/assets/javascripts/angular/directives/sweet-show-hide');
 
 var $compile, $scope, $directiveElem, $directiveScope;
 
-describe('ng-show-hide directive', function () {
+describe('sweet-show-hide directive', function () {
   beforeEach(function(){
     angular.mock.module(moduleName);
 
@@ -14,7 +14,7 @@ describe('ng-show-hide directive', function () {
       $templateCache.put('angular/directives/showHide.html', templateHtml);
     });
 
-    var element = angular.element('<ng-show-hide />');
+    var element = angular.element('<sweet-show-hide />');
     var compiledElement = $compile(element)($scope);
     $scope.$digest();
     $directiveElem = compiledElement;
