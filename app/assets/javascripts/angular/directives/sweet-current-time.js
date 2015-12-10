@@ -5,7 +5,7 @@ angular.module(moduleName).directive('sweetCurrentTime', sweetCurrentTime);
 function sweetCurrentTime ($timeout) {
   return {
     scope: {},
-    restrict: 'AE',
+    restrict: 'E',
     template: "{{ myCurrentTime | date: 'medium'}}",
     link: function ($scope, $element) {
       $scope.myCurrentTime = new Date();
