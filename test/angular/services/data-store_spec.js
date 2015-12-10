@@ -1,5 +1,5 @@
 require('test/test_helper');
-require('app/assets/javascripts/angular/services/data-store');
+require('app/assets/javascripts/angular/services/data-store.service');
 
 var service;
 

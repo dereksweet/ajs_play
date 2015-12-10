@@ -1,6 +1,6 @@
 require('test/test_helper');
 require('angular-resource');
-require('app/assets/javascripts/angular/controllers/pages/forms.js');
+require('app/assets/javascripts/angular/controllers/pages/forms.controller.js');
 
 describe('formsApp', function () {
 

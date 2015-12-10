@@ -1,5 +1,5 @@
 require('test/test_helper.js');
-require('app/assets/javascripts/angular/directives/sweet-show-hide');
+require('app/assets/javascripts/angular/directives/sweet-show-hide.directive');
 
 var $compile, $scope, $directiveElem, $directiveScope;
 

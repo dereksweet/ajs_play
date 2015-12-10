@@ -26,26 +26,26 @@ module AjsPlay
     config.assets.precompile += %w( vendor/modernizr )
 
     # Angular Controllers
-    config.assets.precompile += %w( angular/controllers/pages/directives.js
-                                    angular/controllers/pages/filters.js
-                                    angular/controllers/pages/forms.js
-                                    angular/controllers/pages/routes.js
-                                    angular/controllers/pages/uirouter.js
-                                    angular/controllers/pages/animate.js
-                                    angular/controllers/pages/pagination.js )
+    config.assets.precompile += %w( angular/controllers/pages/directives.controller.js
+                                    angular/controllers/pages/filters.controller.js
+                                    angular/controllers/pages/forms.controller.js
+                                    angular/controllers/pages/routes.controller.js
+                                    angular/controllers/pages/uirouter.controller.js
+                                    angular/controllers/pages/animate.controller.js
+                                    angular/controllers/pages/pagination.controller.js )
 
     # Angular Directives
-    config.assets.precompile += %w( angular/directives/sweet-current-time.js
-                                    angular/directives/sweet-show-hide.js
-                                    angular/directives/sweet-make-blue.js )
+    config.assets.precompile += %w( angular/directives/sweet-current-time.directive.js
+                                    angular/directives/sweet-show-hide.directive.js
+                                    angular/directives/sweet-make-blue.directive.js )
 
     # Angular Filters
-    config.assets.precompile += %w( angular/filters/strip-dashes.js
-                                    angular/filters/title-case.js )
+    config.assets.precompile += %w( angular/filters/strip-dashes.filter.js
+                                    angular/filters/title-case.filter.js )
 
     # Angular Services
-    config.assets.precompile += %w( angular/services/data-share.js
-                                    angular/services/data-store.js )
+    config.assets.precompile += %w( angular/services/data-share.service.js
+                                    angular/services/data-store.service.js )
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true

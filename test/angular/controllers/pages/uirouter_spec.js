@@ -1,6 +1,6 @@
 require('test/test_helper');
 require('ui-router');
-require('app/assets/javascripts/angular/controllers/pages/uirouter.js');
+require('app/assets/javascripts/angular/controllers/pages/uirouter.controller.js');
 
 describe('uirouterApp', function () {
 

@@ -1,4 +1,4 @@
-require('app/assets/javascripts/angular/filters/title-case.js');
+require('app/assets/javascripts/angular/filters/title-case.filter.js');
 
 var $filter;
 

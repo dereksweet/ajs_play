@@ -1,5 +1,5 @@
 require('test/test_helper');
-require('app/assets/javascripts/angular/controllers/pages/directives.js');
+require('app/assets/javascripts/angular/controllers/pages/directives.controller.js');
 
 describe('directivesApp', function () {
 

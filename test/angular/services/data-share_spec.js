@@ -1,5 +1,5 @@
 require('test/test_helper');
-require('app/assets/javascripts/angular/services/data-share');
+require('app/assets/javascripts/angular/services/data-share.service');
 
 var service, $rootScope;
 

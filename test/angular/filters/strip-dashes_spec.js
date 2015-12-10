@@ -1,5 +1,5 @@
 require('test/test_helper.js');
-require('app/assets/javascripts/angular/filters/strip-dashes.js');
+require('app/assets/javascripts/angular/filters/strip-dashes.filter.js');
 
 var $filter;
 

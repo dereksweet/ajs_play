@@ -1,9 +1,9 @@
 <!-- Reference controller for this page --->
-<%= javascript_include_tag asset_path('angular/controllers/pages/filters.js') %>
+<%= javascript_include_tag asset_path('angular/controllers/pages/filters.controller.js') %>
 
 <!-- Reference any filters to be employed -->
-<%= javascript_include_tag asset_path('angular/filters/strip-dashes.js') %>
-<%= javascript_include_tag asset_path('angular/filters/title-case.js') %>
+<%= javascript_include_tag asset_path('angular/filters/strip-dashes.filter.js') %>
+<%= javascript_include_tag asset_path('angular/filters/title-case.filter.js') %>
 
 <% content_for :title do %>AngularJS Playground - Filters<% end %>
 

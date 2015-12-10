@@ -1,5 +1,5 @@
 require('test/test_helper.js');
-require('app/assets/javascripts/angular/directives/sweet-make-blue');
+require('app/assets/javascripts/angular/directives/sweet-make-blue.directive');
 
 var $compile, $scope, $directiveElem;
 

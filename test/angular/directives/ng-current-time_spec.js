@@ -1,5 +1,5 @@
 require('test/test_helper.js');
-require('app/assets/javascripts/angular/directives/sweet-current-time');
+require('app/assets/javascripts/angular/directives/sweet-current-time.directive');
 
 // Use timekeeper to freeze the Date so we can test it is being set properly
 var tk = require('timekeeper');
