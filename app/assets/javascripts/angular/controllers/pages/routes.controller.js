@@ -2,12 +2,12 @@ var moduleName = "routesApp";
 
 angular.module(moduleName, ['ngRoute']);
 angular.module(moduleName).config(routesConfig);
-angular.module(moduleName).controller('routesCtrl', routesCtrl);
-angular.module(moduleName).controller('homeCtrl', homeCtrl);
-angular.module(moduleName).controller('aboutCtrl', aboutCtrl);
-angular.module(moduleName).controller('contactCtrl', contactCtrl);
-angular.module(moduleName).controller('eagerCtrl', eagerCtrl);
-angular.module(moduleName).controller('notFoundCtrl', notFoundCtrl);
+angular.module(moduleName).controller('RoutesController', RoutesController);
+angular.module(moduleName).controller('HomeController', HomeController);
+angular.module(moduleName).controller('AboutController', AboutController);
+angular.module(moduleName).controller('ContactController', ContactController);
+angular.module(moduleName).controller('EagerController', EagerController);
+angular.module(moduleName).controller('NotFoundController', NotFoundController);
 
 
 
@@ -16,32 +16,32 @@ function routesConfig ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: asset_paths['pages/routes/home.html'],
-      controller: 'homeCtrl as vm'
+      controller: 'HomeController as vm'
     })
 
     .when('/about', {
       templateUrl: asset_paths['pages/routes/about.html'],
-      controller: 'aboutCtrl as vm'
+      controller: 'AboutController as vm'
     })
 
     .when('/contact', {
       templateUrl: asset_paths['pages/routes/contact.html'],
-      controller: 'contactCtrl as vm'
+      controller: 'ContactController as vm'
     })
 
     .when('/contact/:subject', {
       templateUrl: asset_paths['pages/routes/contact.html'],
-      controller: 'contactCtrl as vm'
+      controller: 'ContactController as vm'
     })
 
     .when('/eager/:extra*', {
       templateUrl: asset_paths['pages/routes/eager.html'],
-      controller: 'eagerCtrl as vm'
+      controller: 'EagerController as vm'
     })
 
     .otherwise({
       templateUrl: asset_paths['pages/routes/routeNotFound.html'],
-      controller: 'notFoundCtrl as vm'
+      controller: 'NotFoundController as vm'
     });
 }
 routesConfig.$inject = ['$routeProvider'];
@@ -49,7 +49,7 @@ routesConfig.$inject = ['$routeProvider'];
 
 
 
-function routesCtrl () {
+function RoutesController () {
   var vm = this;
 
   vm.active = 'home';
@@ -65,23 +65,23 @@ function routesCtrl () {
 
 
 
-function homeCtrl () {
+function HomeController () {
 
 }
-homeCtrl.$inject = [];
+HomeController.$inject = [];
 
 
 
 
-function aboutCtrl () {
+function AboutController () {
 
 }
-aboutCtrl.$inject = [];
+AboutController.$inject = [];
 
 
 
 
-function contactCtrl ($routeParams) {
+function ContactController ($routeParams) {
   var vm = this;
 
   vm.showLearn = false;
@@ -95,24 +95,24 @@ function contactCtrl ($routeParams) {
     vm.showComplain = true;
   }
 }
-contactCtrl.$inject = ['$routeParams'];
+ContactController.$inject = ['$routeParams'];
 
 
 
 
-function eagerCtrl ($routeParams) {
+function EagerController ($routeParams) {
   var vm = this;
 
   vm.extra = $routeParams['extra'];
 }
-eagerCtrl.$inject = ['$routeParams'];
+EagerController.$inject = ['$routeParams'];
 
 
 
 
-function notFoundCtrl ($location) {
+function NotFoundController ($location) {
   var vm = this;
 
   vm.attemptedLocation = $location.path();
 }
-notFoundCtrl.$inject = ['$location'];
+NotFoundController.$inject = ['$location'];

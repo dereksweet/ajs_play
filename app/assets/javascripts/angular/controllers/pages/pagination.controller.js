@@ -1,13 +1,13 @@
 var moduleName = "paginationApp";
-var controllerName = "paginationCtrl";
+var controllerName = "PaginationController";
 
 angular.module(moduleName, ['angularUtils.directives.dirPagination', 'ngResource']);
-angular.module(moduleName).controller(controllerName, paginationCtrl);
+angular.module(moduleName).controller(controllerName, PaginationController);
 
 
 
 
-function paginationCtrl (dataStore) {
+function PaginationController (dataStore) {
   var vm = this;
 
   vm.currentPage = 1;
@@ -21,4 +21,4 @@ function paginationCtrl (dataStore) {
     vm.countries = dataStore.Country.query({ page: newPageNumber });
   }
 }
-paginationCtrl.$inject = ['dataStore'];
+PaginationController.$inject = ['dataStore'];

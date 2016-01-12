@@ -3,12 +3,12 @@ var moduleName = "uiRouterApp";
 angular.module(moduleName, ['ui.router']);
 angular.module(moduleName).config(stateConfig);
 angular.module(moduleName).controller('uirouterCtrl', uirouterCtrl);
-angular.module(moduleName).controller('homeCtrl', homeCtrl);
-angular.module(moduleName).controller('aboutCtrl', aboutCtrl);
-angular.module(moduleName).controller('contactCtrl', contactCtrl);
-angular.module(moduleName).controller('nestedCtrl', nestedCtrl);
-angular.module(moduleName).controller('nestedListCtrl', nestedListCtrl);
-angular.module(moduleName).controller('multipleCtrl', multipleCtrl);
+angular.module(moduleName).controller('HomeController', HomeController);
+angular.module(moduleName).controller('AboutController', AboutController);
+angular.module(moduleName).controller('ContactController', ContactController);
+angular.module(moduleName).controller('NestedController', NestedController);
+angular.module(moduleName).controller('NestedListController', NestedListController);
+angular.module(moduleName).controller('MultipleController', MultipleController);
 
 
 
@@ -23,7 +23,7 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: "/",
       templateUrl: asset_paths['pages/routes/home.html'],
-      controller: "homeCtrl as vm",
+      controller: "HomeController as vm",
       data: {
         name: 'home'
       }
@@ -31,7 +31,7 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     .state('about', {
       url: "/about",
       templateUrl: asset_paths['pages/routes/about.html'],
-      controller: "aboutCtrl as vm",
+      controller: "AboutController as vm",
       data: {
         name: 'about'
       }
@@ -39,7 +39,7 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     .state('contact', {
       url: "/contact",
       templateUrl: asset_paths['pages/routes/contact.html'],
-      controller: "contactCtrl as vm",
+      controller: "ContactController as vm",
       data: {
         subject: '',
         name: 'contact'
@@ -48,7 +48,7 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     .state('contact_complain', {
       url: "/contact/complain",
       templateUrl: asset_paths['pages/routes/contact.html'],
-      controller: "contactCtrl as vm",
+      controller: "ContactController as vm",
       data: {
         subject: 'complain',
         name: 'contact_complain'
@@ -56,7 +56,7 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     })
     .state('nested', {
       url: "/nested",
-      controller: "nestedCtrl as vm",
+      controller: "NestedController as vm",
       templateUrl: asset_paths['pages/uirouter/nested.html'],
       data: {
         name: 'nested'
@@ -65,14 +65,14 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     .state('nested.list', {
       url: "/list",
       templateUrl: asset_paths['pages/uirouter/nested.list.html'],
-      controller: "nestedListCtrl as vm",
+      controller: "NestedListController as vm",
       data: {
         name: 'nested'
       }
     })
     .state('multiple', {
       url: "/multiple",
-      controller: "multipleCtrl as vm",
+      controller: "MultipleController as vm",
       templateUrl: asset_paths['pages/uirouter/multiple.html'],
       data: {
         name: 'multiple'
@@ -111,23 +111,23 @@ uirouterCtrl.$inject = ['$state'];
 
 
 
-function homeCtrl () {
+function HomeController () {
 
 }
-homeCtrl.$inject = [];
+HomeController.$inject = [];
 
 
 
 
-function aboutCtrl () {
+function AboutController () {
 
 }
-aboutCtrl.$inject = [];
+AboutController.$inject = [];
 
 
 
 
-function contactCtrl ($state) {
+function ContactController ($state) {
   var vm = this;
 
   vm.showComplain = false;
@@ -138,20 +138,20 @@ function contactCtrl ($state) {
     vm.showComplain = true;
   }
 }
-contactCtrl.$inject = ['$state'];
+ContactController.$inject = ['$state'];
 
 
 
 
-function nestedCtrl ($state) {
+function NestedController ($state) {
 
 }
-nestedCtrl.$inject = ['$state'];
+NestedController.$inject = ['$state'];
 
 
 
 
-function nestedListCtrl () {
+function NestedListController () {
   var vm = this;
 
   vm.items = ["A", "List", "Of", "Items"];
@@ -160,7 +160,7 @@ function nestedListCtrl () {
 
 
 
-function multipleCtrl ($state) {
+function MultipleController ($state) {
 
 }
-multipleCtrl.$inject = ['$state'];
+MultipleController.$inject = ['$state'];

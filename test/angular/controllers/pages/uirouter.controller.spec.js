@@ -82,11 +82,11 @@ describe('uirouterApp', function () {
 
 
 
-  // homeCtrl has no functionality so x it out for now
-  xdescribe('homeCtrl', function () {
+  // HomeController has no functionality so x it out for now
+  xdescribe('HomeController', function () {
 
     mockController = function ($controller) {
-      controller = $controller("homeCtrl", {
+      controller = $controller("HomeController", {
 
       });
     };
@@ -96,11 +96,11 @@ describe('uirouterApp', function () {
 
 
 
-  // aboutCtrl has no functionality so x it out for now
-  xdescribe('aboutCtrl', function () {
+  // AboutController has no functionality so x it out for now
+  xdescribe('AboutController', function () {
 
     mockController = function ($controller) {
-      controller = $controller("aboutCtrl", {
+      controller = $controller("AboutController", {
 
       });
     };
@@ -110,11 +110,11 @@ describe('uirouterApp', function () {
 
 
 
-  describe('contactCtrl', function () {
+  describe('ContactController', function () {
 
     mockController = function ($controller) {
       mockState = { current: { data: { subject: subject }}};
-      controller = $controller("contactCtrl", {
+      controller = $controller("ContactController", {
         $state: mockState
       });
     };
@@ -134,11 +134,11 @@ describe('uirouterApp', function () {
 
 
 
-  // nestedCtrl has no functionality so x it out for now
-  xdescribe('nestedCtrl', function () {
+  // NestedController has no functionality so x it out for now
+  xdescribe('NestedController', function () {
 
     mockController = function ($controller) {
-      controller = $controller("nestedCtrl", {
+      controller = $controller("NestedController", {
 
       });
     };
@@ -147,11 +147,11 @@ describe('uirouterApp', function () {
   });
 
 
-  // multipleCtrl has no functionality so x it out for now
+  // MultipleController has no functionality so x it out for now
   xdescribe('mulitpleCtrl', function () {
 
     mockController = function ($controller) {
-      controller = $controller("multipleCtrl", {
+      controller = $controller("MultipleController", {
 
       });
     };

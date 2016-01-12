@@ -1,13 +1,13 @@
 var moduleName = "animateApp";
-var controllerName = "animateCtrl";
+var controllerName = "AnimateController";
 
 angular.module(moduleName, ['ngAnimate']);
-angular.module(moduleName).controller(controllerName, animateCtrl);
+angular.module(moduleName).controller(controllerName, AnimateController);
 
 
 
 
-function animateCtrl () {
+function AnimateController () {
   var vm = this;
 
   vm.animate_on = false;
@@ -17,4 +17,4 @@ function animateCtrl () {
     { name: 'Kelsey Sweet', url: asset_paths['pages/animate/kelsey-sweet.html'] }
   ];
 }
-animateCtrl.$inject = [];
+AnimateController.$inject = [];

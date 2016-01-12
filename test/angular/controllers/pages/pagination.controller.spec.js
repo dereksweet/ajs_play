@@ -7,7 +7,7 @@ describe('paginationApp', function () {
 
   beforeEach(angular.mock.module("paginationApp"));
 
-  describe('paginationCtrl', function () {
+  describe('PaginationController', function () {
 
     mockController = function ($controller) {
       mockQuery = sinon.stub();
@@ -20,7 +20,7 @@ describe('paginationApp', function () {
       mock_$.withArgs('body').returns({ width: mockWidth });
       global.$ = mock_$;
 
-      controller = $controller("paginationCtrl", {
+      controller = $controller("PaginationController", {
         dataStore: mockDataStore
       });
     };

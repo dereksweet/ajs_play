@@ -5,11 +5,11 @@ describe('directivesApp', function () {
 
   beforeEach(angular.mock.module("directivesApp"));
 
-  describe('directivesCtrl', function () {
+  describe('DirectivesController', function () {
 
     mockController = function ($controller, $rootScope) {
       mockScope = $rootScope.$new();
-      controller = $controller("directivesCtrl", {
+      controller = $controller("DirectivesController", {
         $scope: mockScope
       });
     };

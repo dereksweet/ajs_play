@@ -6,7 +6,7 @@ describe('formsApp', function () {
 
   beforeEach(angular.mock.module("formsApp"));
 
-  describe('mySimpleFormsCtrl', function () {
+  describe('SimpleFormsController', function () {
 
     mockController = function ($controller) {
       mockUser = sinon.spy();
@@ -19,7 +19,7 @@ describe('formsApp', function () {
       mockDataShareService = { colors: ['blue', 'red', 'green'],
                                getAllUsers: sinon.spy() };
 
-      controller = $controller("mySimpleFormsCtrl", {
+      controller = $controller("SimpleFormsController", {
         $scope: mockScope,
         dataStore: mockDataStore,
         dataShareService: mockDataShareService
@@ -118,7 +118,7 @@ describe('formsApp', function () {
       })
     });
 
-    describe('myModalFormsCtrl', function () {
+    describe('ModalFormsController', function () {
 
       mockController = function ($controller, $rootScope) {
         rootScope = $rootScope;
@@ -144,7 +144,7 @@ describe('formsApp', function () {
         mock_$.withArgs('#modal__form').returns(mockModal);
         global.$ = mock_$;
 
-        controller = $controller("myModalFormsCtrl", {
+        controller = $controller("ModalFormsController", {
           $scope: mockScope,
           dataStore: mockDataStore,
           dataShareService: mockDataShareService

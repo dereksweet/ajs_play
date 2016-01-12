@@ -6,10 +6,10 @@ describe('animateApp', function () {
 
   beforeEach(angular.mock.module("animateApp"));
 
-  describe('animateCtrl', function () {
+  describe('AnimateController', function () {
 
     mockController = function ($controller) {
-      controller = $controller("animateCtrl", {
+      controller = $controller("AnimateController", {
 
       });
     };

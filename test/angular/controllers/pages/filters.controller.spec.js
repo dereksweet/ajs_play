@@ -9,14 +9,14 @@ describe('filtersApp', function () {
 
   beforeEach(angular.mock.module("filtersApp"));
 
-  describe('filtersCtrl', function () {
+  describe('FiltersController', function () {
 
     mockController = function ($controller) {
       // Freeze Date() to the current Date
       tk.freeze(currentDate);
 
       mockTimeout = sinon.spy();
-      controller = $controller("filtersCtrl", {
+      controller = $controller("FiltersController", {
         $timeout: mockTimeout
       });
     };

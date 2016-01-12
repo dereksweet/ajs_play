@@ -1,13 +1,13 @@
 var moduleName = "filtersApp";
-var controllerName = "filtersCtrl";
+var controllerName = "FiltersController";
 
 angular.module(moduleName, []);
-angular.module(moduleName).controller(controllerName, filtersCtrl);
+angular.module(moduleName).controller(controllerName, FiltersController);
 
 
 
 
-function filtersCtrl ($timeout) {
+function FiltersController ($timeout) {
   var vm = this;
 
   vm.currentDate = new Date();
@@ -27,4 +27,4 @@ function filtersCtrl ($timeout) {
 
   $timeout(this.updateTime, 1000);
 }
-filtersCtrl.$inject = ['$timeout'];
+FiltersController.$inject = ['$timeout'];
