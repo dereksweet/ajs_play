@@ -16,13 +16,13 @@ describe('formsApp', function () {
                                       $save: sinon.spy() });
       mockDataStore = { User: mockUser };
 
-      mockDataShareService = { colors: ['blue', 'red', 'green'],
+      mockdataShare = { colors: ['blue', 'red', 'green'],
                                getAllUsers: sinon.spy() };
 
       controller = $controller("SimpleFormsController", {
         $scope: mockScope,
         dataStore: mockDataStore,
-        dataShareService: mockDataShareService
+        dataShare: mockdataShare
       });
 
       controller.sampleForm = { first_name: { $setDirty: sinon.spy() },
@@ -42,7 +42,7 @@ describe('formsApp', function () {
     });
 
     it('should set $scope.colors param to the dataShare services colors', function () {
-      expect(controller.colors).to.include.members(mockDataShareService.colors);
+      expect(controller.colors).to.include.members(mockdataShare.colors);
     });
 
     describe('$scope.getUser()', function () {
@@ -134,7 +134,7 @@ describe('formsApp', function () {
                                         $save: sinon.spy() }]);
         mockDataStore = { User: mockUser };
 
-        mockDataShareService = {
+        mockdataShare = {
           colors: ['blue', 'red', 'green'],
           getAllUsers: sinon.spy()
         };
@@ -147,7 +147,7 @@ describe('formsApp', function () {
         controller = $controller("ModalFormsController", {
           $scope: mockScope,
           dataStore: mockDataStore,
-          dataShareService: mockDataShareService
+          dataShare: mockdataShare
         });
       };
 
@@ -158,7 +158,7 @@ describe('formsApp', function () {
       });
 
       it('should set $scope.colors param to the dataShare services colors', function () {
-        expect(controller.colors).to.include.members(mockDataShareService.colors);
+        expect(controller.colors).to.include.members(mockdataShare.colors);
       });
 
       it('should set the modal object through jQuery', function() {

@@ -7,12 +7,12 @@ angular.module(moduleName).controller('ModalFormsController', ModalFormsControll
 
 
 
-function SimpleFormsController (dataStore, dataShareService) {
+function SimpleFormsController (dataStore, dataShare) {
   var vm = this;
 
   vm.user = new dataStore.User;
   vm.user.is_cool = false;
-  vm.colors = dataShareService.colors;
+  vm.colors = dataShare.colors;
   vm.resetMessages = resetMessages;
   vm.getUser = getUser;
   vm.submitForm = submitForm;
@@ -60,19 +60,19 @@ function SimpleFormsController (dataStore, dataShareService) {
     if (vm.sampleForm.$valid) {
       vm.user.$save().then(function() {
         vm.showSubmitSuccessMessage = true;
-        dataShareService.getAllUsers();
+        dataShare.getAllUsers();
       });
     }
   }
 }
-SimpleFormsController.$inject = ['dataStore', 'dataShareService'];
+SimpleFormsController.$inject = ['dataStore', 'dataShare'];
 
 
-function ModalFormsController ($scope, dataStore, dataShareService) {
+function ModalFormsController ($scope, dataStore, dataShare) {
   var vm = this;
 
   vm.form_template = asset_paths['pages/forms/form.html'];
-  vm.colors = dataShareService.colors;
+  vm.colors = dataShare.colors;
   vm.getAllUsers = getAllUsers;
   vm.openModal = openModal;
   vm.closeModal = closeModal;
@@ -119,4 +119,4 @@ function ModalFormsController ($scope, dataStore, dataShareService) {
     });
   }
 }
-ModalFormsController.$inject = ['$scope', 'dataStore', 'dataShareService'];
+ModalFormsController.$inject = ['$scope', 'dataStore', 'dataShare'];

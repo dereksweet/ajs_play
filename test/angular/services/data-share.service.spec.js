@@ -7,9 +7,9 @@ describe('data-share service', function () {
   beforeEach(function () {
     angular.mock.module(moduleName);
 
-    inject(function (dataShareService, _$rootScope_) {
+    inject(function (dataShare, _$rootScope_) {
       $rootScope = _$rootScope_;
-      service = dataShareService;
+      service = dataShare;
 
       $rootScope.$broadcast = sinon.spy();
     });

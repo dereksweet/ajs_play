@@ -1,8 +1,8 @@
-angular.module(moduleName).factory('dataShareService', dataShareService);
+angular.module(moduleName).factory('dataShare', dataShare);
 
 
 
-function dataShareService ($rootScope) {
+function dataShare ($rootScope) {
   var sharedService = {
     colors: [
       {value: "red", label: "Red"},
@@ -20,4 +20,4 @@ function dataShareService ($rootScope) {
     $rootScope.$broadcast('getAllUsers');
   }
 }
-dataShareService.$inject = ['$rootScope'];
+dataShare.$inject = ['$rootScope'];
