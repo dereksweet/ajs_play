@@ -17,9 +17,13 @@ selenium: node_modules
 	@webdriver-manager update
 	@webdriver-manager start >log/selenium_webdriver.log 2>&1
 
-.PHONT: test.integration
+.PHONY: test.integration
 test.integration:
 	@protractor integration/conf.js
 
+.PHONY: test.spec
+test.spec:
+	@rspec spec
+
 .PHONY: test
-test: test.unit test.integration
+test: test.unit test.integration test.spec
