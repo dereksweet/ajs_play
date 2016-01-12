@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   root 'pages#directives'
 
   namespace :api do
-    resources 'countries', only: [:index]
-    resources 'users' do
-     post :update, on: :member, as: nil
+    namespace :v1 do
+      resources 'countries', only: [:index]
+      resources 'users' do
+        post :update, on: :member, as: nil
+      end
     end
   end
 

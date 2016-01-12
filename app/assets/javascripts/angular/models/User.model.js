@@ -1,5 +1,5 @@
 var User = {
-  url: '/api/users/:id',
+  url: '/api/v1/users/:id',
   paramDefaults: { id:'@id' },
   actions: {},
   options: {}
