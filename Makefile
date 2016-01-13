@@ -23,7 +23,7 @@ test.integration:
 
 .PHONY: test.spec
 test.spec:
-	@rspec spec
+	@bundle exec rspec spec
 
 .PHONY: test
 test: test.unit test.integration test.spec
