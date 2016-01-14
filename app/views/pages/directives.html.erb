@@ -5,6 +5,7 @@
 <%= javascript_include_tag asset_path('angular/directives/sweet-show-hide.directive.js') %>
 <%= javascript_include_tag asset_path('angular/directives/sweet-current-time.directive.js') %>
 <%= javascript_include_tag asset_path('angular/directives/sweet-make-blue.directive.js') %>
+<%= javascript_include_tag asset_path('angular/directives/sweet-list.directive.js') %>
 
 <% content_for :title do %>AngularJS Playground - Directives<% end %>
 
@@ -176,6 +177,27 @@
           <div class="row">
             <div class="small-12 columns left">
               <sweet-make-blue id="make-blue">This is not red..</sweet-make-blue>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="example">
+        <div class="example-header">
+          <span class="example-title">sweetList</span><br>
+          <span class="example-description">
+            A watcher function example that takes a list and a parameter of that list's objects to display. Uses Imediately
+            Invoked functions to ensure that the watchers work when the price changes.
+          </span>
+        </div>
+        <div class="example-body">
+          <div class="row">
+            <div class="small-12 columns left">
+              <button class="tiny radius" ng-click="vm.incrementPrices()">Increment Prices</button>
+              <div sweet-list="products" list-property="price | currency"></div>
             </div>
           </div>
         </div>

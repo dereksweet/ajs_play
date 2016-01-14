@@ -14,7 +14,13 @@ function DirectivesController ($scope) {
   vm.my_count = 3;
   vm.my_array = ['1','2','3'];
   vm.do_eval = false;
+  vm.products = [
+    { name: "Apples", price: 1.20 },
+    { name: "Bananas", price: 2.42 },
+    { name: "Pears", price: 2.03 }
+  ];
   vm.evalExpression = evalExpression;
+  vm.incrementPrices = incrementPrices;
 
   /////////////////////
 
@@ -31,6 +37,12 @@ function DirectivesController ($scope) {
     }
 
     return myResult;
+  }
+
+  function incrementPrices() {
+    for (var i = 0; i < vm.products.length; i++) {
+      vm.products[i].price++;
+    }
   }
 }
 DirectivesController.$inject = ['$scope'];
