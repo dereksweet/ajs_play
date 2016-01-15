@@ -18,8 +18,8 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "angular": "*",
-    "angular-mocks": "^1.4.7",
+    "angular": "1.4.8",
+    "angular-mocks": "1.4.8",
     "angular-animate": "*",
     "angular-resource": "*",
     "angular-route": "*",

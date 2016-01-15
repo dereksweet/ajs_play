@@ -170,7 +170,7 @@ PLATFORMS
 
 DEPENDENCIES
   angular-ui-router-rails
-  angularjs-rails
+  angularjs-rails (= 1.4.8)
   arel
   byebug
   coffee-rails

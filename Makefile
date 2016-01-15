@@ -10,7 +10,7 @@ Gemfile.lock: Gemfile
 
 .PHONY: test.unit
 test.unit:
-	@node_modules/mocha/bin/mocha --require test/modify_path --require test/mock_asset_paths --recursive
+	@node_modules/mocha/bin/mocha --require test/modify_path --require test/mock_asset_paths --require test/config --recursive
 
 .PHONY: selenium
 selenium: node_modules

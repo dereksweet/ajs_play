@@ -15,7 +15,7 @@ gem 'jbuilder'
 gem 'sdoc', group: :doc
 
 gem 'foundation-rails'
-gem 'angularjs-rails'
+gem 'angularjs-rails', '1.4.8'
 
 gem 'angular-ui-router-rails'
 
