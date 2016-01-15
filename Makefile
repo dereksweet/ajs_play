@@ -19,7 +19,9 @@ selenium: node_modules
 
 .PHONY: test.integration
 test.integration:
+	@rails server -p 8100 -d
 	@protractor integration/conf.js
+	@kill -9 `cat ./tmp/pids/server.pid`
 
 .PHONY: test.spec
 test.spec:

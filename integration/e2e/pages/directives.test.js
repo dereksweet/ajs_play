@@ -3,7 +3,7 @@ describe('directives', function () {
 
   beforeEach(function () {
     browser.ignoreSynchronization = true;
-    browser.get('http://ajs_play.dev/directives');
+    browser.get('/directives');
   });
 
   describe('Simple Directives', function () {

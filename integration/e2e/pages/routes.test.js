@@ -2,7 +2,7 @@ var dateFormat = require('dateformat');
 
 describe('routes', function () {
   beforeEach(function () {
-    browser.get('http://ajs_play.dev/routes');
+    browser.get('/routes');
   });
 
   describe('ngRoute', function () {

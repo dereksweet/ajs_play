@@ -1,6 +1,6 @@
 describe('routes', function () {
   beforeEach(function () {
-    browser.get('http://ajs_play.dev/forms');
+    browser.get('/forms');
   });
 
   describe('Simple and Modal Forms', function () {
