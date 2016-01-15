@@ -5,6 +5,9 @@
 <%= javascript_include_tag asset_path('angular/filters/strip-dashes.filter.js') %>
 <%= javascript_include_tag asset_path('angular/filters/title-case.filter.js') %>
 
+<!-- Add Custom Exception Handler Decorator --->
+<%= javascript_include_tag asset_path('angular/decorators/exception-handler.decorator.js') %>
+
 <% content_for :title do %>AngularJS Playground - Filters<% end %>
 
 <div ng-app="filtersApp" ng-controller="FiltersController as vm" ng-cloak>

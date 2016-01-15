@@ -13,6 +13,9 @@ module AjsPlay
     # For Foundation 5
     config.assets.precompile += %w( vendor/modernizr )
 
+    # Angular Decorators
+    config.assets.precompile += %w( angular/decorators/exception-handler.decorator.js )
+
     # Angular Controllers
     config.assets.precompile += %w( angular/controllers/pages/directives.controller.js
                                     angular/controllers/pages/filters.controller.js

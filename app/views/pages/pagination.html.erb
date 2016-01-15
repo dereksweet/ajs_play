@@ -4,6 +4,9 @@
 <!-- Reference services for this page --->
 <%= javascript_include_tag asset_path('angular/services/data-store.service.js') %>
 
+<!-- Add Custom Exception Handler Decorator --->
+<%= javascript_include_tag asset_path('angular/decorators/exception-handler.decorator.js') %>
+
 <% content_for :title do %>AngularJS Playground - Pagination<% end %>
 
 <div ng-app="paginationApp" ng-cloak>

@@ -7,6 +7,9 @@
 <%= javascript_include_tag asset_path('angular/directives/sweet-make-blue.directive.js') %>
 <%= javascript_include_tag asset_path('angular/directives/sweet-list.directive.js') %>
 
+<!-- Add Custom Exception Handler Decorator --->
+<%= javascript_include_tag asset_path('angular/decorators/exception-handler.decorator.js') %>
+
 <% content_for :title do %>AngularJS Playground - Directives<% end %>
 
 <div ng-app="directivesApp" ng-controller="DirectivesController as vm" ng-cloak>

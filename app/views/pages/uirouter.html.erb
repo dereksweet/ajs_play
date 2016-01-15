@@ -1,6 +1,9 @@
 <!-- Reference controller for this page --->
 <%= javascript_include_tag asset_path('angular/controllers/pages/uirouter.controller.js') %>
 
+<!-- Add Custom Exception Handler Decorator --->
+<%= javascript_include_tag asset_path('angular/decorators/exception-handler.decorator.js') %>
+
 <% content_for :title do %>AngularJS Playground - ui-router<% end %>
 
 <div ng-app="uiRouterApp" ng-cloak>
