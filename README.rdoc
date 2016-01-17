@@ -1,14 +1,24 @@
-== AngularJS Playground
+== TheSweet Angular 1.X Playground
 
-A simple set of AngularJS demonstrations that will be updated and added to over time, please feel free to
-add your own demonstrations and submit a pull request. Also intended to serve as a template for how to structure 
-and integrate AngularJS with Ruby on Rails, so any comments or modifications in that regard are welcome! 
+* Versions Presented: _Angular_: *1.4.8*, _Rails_: *4.2.5*, _Ruby_: *2.3.0*, _Node_: *5.0.0*
+
+The purpose of this project is two-fold:
+1. Present a series of demonstrations that beginners can use to learn the basics of Angular 1.X
+2. Propose a theory on the optimum way to combine traditional Rails applications with one or more complex Angular applications.  
+
+If you are new to Angular and would like to see examples of some of its core features, and a few popular third party tools, written in adherence to most of the stylistic standards recommended by the community then I hope this project can help you out! 
+
+Furthermore, if you are thinking of starting a Rails project that employs Angular and are wondering how best to structure your application I hope this project can be of use to you. Ideally I would like it to serve as a discussion on the best way to combine traditional rails applications with Angular. The idea is to allow flat pages to be served up by Rails alongside any number of complex Angular applications. Also, if you want to add Angular to an existing Rails application I believe this project could serve as a guide on how best to do that since each page served up by the Rails application is its own little Angular application.
+
+Please feel free to report any issues or ways that the ideas presented could be improved. If you have any interesting Angular directives, filters, or other code you'd like to add then please feel free to submit a pull request as well. All comments and additions are welcome!
 
 === Installation Instructions
 
+These installation instructions are aimed at _OSX_ users. They also presume a general familiarty with Rails 4 and testing methodologies. If you need to get started with Rails on OSX here is a guide: https://gorails.com/setup/osx/10.11-el-capitan. NPM is also used to setup some packages so ensure you have it and Node installed and running: http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/.
+
 To install simply download the repository into a folder on your machine, then from console type: 
 
-    bundle install
+    make install
 
 That will install all the gems needed for the application. Then type the following: 
 
@@ -16,17 +26,43 @@ That will install all the gems needed for the application. Then type the followi
 
 That will migrate your local sqlite database and populate it with the tables necessary to run. 
 
-Then run a rails console by simply typing:
+Finally test that things are setup by running a rails server:
 
     rails server
   
 and visit your local copy of the application by opening a browser and visiting http://localhost:3000. 
 
-(or you could not be a noob and use .pow [http://pow.cx/])
+In order to run the integration tests you will need to install protractor globally:
 
-=== NOTES FOR FUTURE
-In order to run the integration tests you will need to install protractor
     npm install -g protractor
     
 It may be required to update your Java Development Kit as well to JDK7
     http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+    
+=== Testing    
+    
+Once you've followed all the steps above you should be able to run the test suite by opening two terminal tabs. If you intend on running the integration tests, in the first tab you need to ensure selenium webdriver is running by typing
+
+    make selenium
+    
+In the next tab you can run any of the following commands to run different parts of the test suite
+
+    make test # run the entire test suite
+    
+    make test.unit # run just the mocha angular unit tests
+    make test.integration # run just the protractor integration tests
+    make test.spec # run just the rspec rails unit tests
+
+=== References
+
+"*Beginning* *AngularJS*" by Andrew Grant - http://www.amazon.ca/Beginning-AngularJS-Andrew-Grant-ebook/dp/B00M4FC72S/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=8-1&qid=1425747905
+
+"*Pro* *AngularJS*" by Adam Freeman - http://www.amazon.com/Pro-AngularJS-Experts-Voice-Development/dp/1430264489/ref=sr_1_1?ie=UTF8&qid=1425829692&sr=8-1&keywords=angularjs
+
+"*Angular* *Style* *Guide*" by John Papa - https://github.com/johnpapa/angular-styleguide
+
+=== Tools
+
+"*dirPagination*" by Michael Bromley - Part of the angularUtils package - https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination
+
+"*Countries*" by Hexorx - Used to obtain countries data - https://github.com/hexorx/countries
