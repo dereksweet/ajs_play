@@ -1,6 +1,7 @@
 .PHONY: install
 install:
 	@npm install
+	@gem install bundle
 	@bundle install
 
 .PHONY: test.unit
