@@ -16,6 +16,8 @@ Please feel free to report any issues or ways that the ideas presented could be 
 
 These installation instructions are aimed at _OSX_ users. They also presume a general familiarty with Rails 4 and testing methodologies. If you need to get started with Rails on OSX here is a guide: https://gorails.com/setup/osx/10.11-el-capitan. NPM is also used to setup some packages so ensure you have it and Node installed and running: http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/.
 
+You will also need to ensure that you have the correct version of ruby installed in whatever manager you use (RVM, rbenv, etc..) or many of the commands below will fail. The version you need as of the writing of this document is *2.3.0*.
+
 To install simply download the repository into a folder on your machine, then from console type: 
 
     make install
