@@ -20,7 +20,7 @@ If you need to get started with Rails on OSX here is a guide: {Rails Setup}[http
 
 NPM is also used to setup some packages so ensure you have it and Node installed and running: {Node JS/NPM Setup}[http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/].
 
-You will also need to ensure that you have the correct version of ruby installed in whatever manager you use (RVM, rbenv, etc..) or many of the commands below will fail. The version you need as of the writing of this document is *2.3.0*.
+<b>You will also need to ensure that you have the correct version of ruby installed in whatever manager you use (RVM, rbenv, etc..) or many of the commands below will fail. The version you need as of the writing of this document is _2.3.0_.</b>
 
 To install simply download the repository into a folder on your machine, then from console type: 
 
