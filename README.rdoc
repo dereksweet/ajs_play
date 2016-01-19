@@ -42,8 +42,7 @@ In order to run the integration tests you will need to install protractor global
 
     npm install -g protractor
     
-It may be required to update your Java Development Kit as well to JDK7
-    http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+It may be required to update your Java Development Kit as well to JDK7: {Oracle Link}[http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html]
     
 === Testing    
     
