@@ -1,11 +1,13 @@
 var asset_paths = { };
 
 <%
-  templates = Dir.glob('app/assets/templates/**/*').select { |f| File.file?(f) }
-  templates.each do |template|
-    relative_template = template.gsub('app/assets/templates/', '').gsub('.erb', '')
+  asset_folders = %w(fonts images templates)
+  asset_folders.each do |asset_folder|
+    Dir.glob("app/assets/#{asset_folder}/**/*").select { |f| File.file?(f) }.each do |asset|
+      relative_asset = asset.gsub("app/assets/#{asset_folder}/", '').gsub('.erb', '')
 %>
-    asset_paths['<%= relative_template %>'] = '<%= asset_path(relative_template) %>';
+      asset_paths['<%= relative_asset %>'] = '<%= asset_path(relative_asset) %>';
 <%
+    end
   end
 %>
