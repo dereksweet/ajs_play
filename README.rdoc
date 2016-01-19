@@ -14,7 +14,11 @@ Please feel free to report any issues or ways that the ideas presented could be 
 
 === Installation Instructions
 
-These installation instructions are aimed at _OSX_ users. They also presume a general familiarty with Rails 4 and testing methodologies. If you need to get started with Rails on OSX here is a guide: https://gorails.com/setup/osx/10.11-el-capitan. NPM is also used to setup some packages so ensure you have it and Node installed and running: http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/.
+These installation instructions are aimed at _OSX_ users. They also presume a general familiarty with Rails 4 and testing methodologies. 
+
+If you need to get started with Rails on OSX here is a guide: {Rails Setup}[https://gorails.com/setup/osx/10.11-el-capitan]. 
+
+NPM is also used to setup some packages so ensure you have it and Node installed and running: {Node JS/NPM Setup}[http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/].
 
 You will also need to ensure that you have the correct version of ruby installed in whatever manager you use (RVM, rbenv, etc..) or many of the commands below will fail. The version you need as of the writing of this document is *2.3.0*.
 
@@ -57,14 +61,14 @@ In the next tab you can run any of the following commands to run different parts
 
 === References
 
-"*Beginning* *AngularJS*" by Andrew Grant - http://www.amazon.ca/Beginning-AngularJS-Andrew-Grant-ebook/dp/B00M4FC72S/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=8-1&qid=1425747905
+"<b>Beginning AngularJS</b>" by Andrew Grant - {Amazon Link}[http://www.amazon.ca/Beginning-AngularJS-Andrew-Grant-ebook/dp/B00M4FC72S/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=8-1&qid=1425747905]
 
-"*Pro* *AngularJS*" by Adam Freeman - http://www.amazon.com/Pro-AngularJS-Experts-Voice-Development/dp/1430264489/ref=sr_1_1?ie=UTF8&qid=1425829692&sr=8-1&keywords=angularjs
+"<b>Pro AngularJS</b>" by Adam Freeman - {Amazon Link}[http://www.amazon.com/Pro-AngularJS-Experts-Voice-Development/dp/1430264489/ref=sr_1_1?ie=UTF8&qid=1425829692&sr=8-1&keywords=angularjs]
 
-"*Angular* *Style* *Guide*" by John Papa - https://github.com/johnpapa/angular-styleguide
+"<b>Angular Style Guide</b>" by John Papa - {Github Link}[https://github.com/johnpapa/angular-styleguide]
 
 === Tools
 
-"*dirPagination*" by Michael Bromley - Part of the angularUtils package - https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination
+"<b>dirPagination</b>" by Michael Bromley - Part of the angularUtils package - {Github Link}[https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination]
 
-"*Countries*" by Hexorx - Used to obtain countries data - https://github.com/hexorx/countries
+"<b>Countries</b>" by Hexorx - Used to obtain countries data - {Github Link}[https://github.com/hexorx/countries]
