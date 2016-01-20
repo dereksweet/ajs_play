@@ -126,7 +126,7 @@ To delete a user, simply type:
 
 To see the API side of things that actually persists the data changes check out <code>app/controllers/api/v1/users_controller.rb</code>. It is a pretty standard RESTful API controller except it identifies records by first name, not ID. 
     
-As one final note, I would like to mention that you will need to manually wire your API <code>update</code> methods within your rails routes file to the POST action rather than the PUT action which it will be by default. I am not sure why, but the angular <code>$resource</code> factory sends <code>$save</code> commands for existing objects as POST and not PUT which would be correct by REST standards. I assume this is because there is no distinction between newly create objects and ones loaded from a <code>get</code> command so Angular doesn't know whether it should be issuing a <code>create</code> or an <code>update</code>, so it defaults to <code>create</code>. 
+As one final note, I would like to mention that you will need to manually wire your API <code>update</code> methods within your rails routes file to the POST action rather than the PUT action which it will be by default. The angular <code>$resource</code> factory sends <code>$save</code> commands for existing objects as POST and not PUT which would be correct by REST standards. I assume this is because there is no distinction between newly create objects and ones loaded from a <code>get</code> command so Angular doesn't know whether it should be issuing a <code>create</code> or an <code>update</code>, so it defaults to <code>create</code>. 
 
 == References
 
