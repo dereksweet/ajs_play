@@ -1,4 +1,4 @@
-== TheSweet Angular 1.X Playground
+= TheSweet Angular 1.X Playground
 
 * Versions Presented: _Angular_: *1.4.8*, _Rails_: *4.2.5*, _Ruby_: *2.3.0*, _Node_: *5.0.0*
 
@@ -12,7 +12,7 @@ Furthermore, if you are thinking of starting a Rails project that employs Angula
 
 Please feel free to report any issues or ways that the ideas presented could be improved. If you have any interesting Angular directives, filters, or other code you'd like to add then please feel free to submit a pull request as well. All comments and additions are welcome!
 
-=== Installation Instructions
+== Installation Instructions
 
 These installation instructions are aimed at _OSX_ users. They also presume a general familiarty with Rails 4 and testing methodologies. 
 
@@ -42,9 +42,11 @@ In order to run the integration tests you will need to install protractor global
 
     npm install -g protractor
     
-It may be required to update your Java Development Kit as well to JDK7: {Oracle Link}[http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html]
+It may also be required to update your Java Development Kit JDK7: {Oracle Link}[http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html]
     
-=== Testing    
+If you have any problems getting the app installed or the test suite running please do not hesitate to write up a github issue or send me an email at dereksweet@gmail.com. I would very much like to know if you have any problems getting this up and running and how I can make it easier for people, and if I can help you do so I am glad to spend the time.     
+    
+== Testing    
     
 Once you've followed all the steps above you should be able to run the test suite by opening two terminal tabs. If you intend on running the integration tests, in the first tab you need to ensure selenium webdriver is running by typing
 
@@ -58,7 +60,73 @@ In the next tab you can run any of the following commands to run different parts
     make test.integration # run just the protractor integration tests
     make test.spec # run just the rspec rails unit tests
 
-=== References
+== Points of Interest
+
+So now that you have things (hopefully) up and running let me get into the theories presented on how best to structure Angular with Ruby on Rails. Before getting to the overall structure and architecture of the application I would like to point out some of the things I've done that I feel are interesting and unique. 
+
+=== Asset Paths
+
+One of the things I wanted to accomplish with this project was to ensure that all the Angular code was written in javascript with no ruby decoration to ensure that it could be easily reused with little to no modifications. This is why none of the Angular related files have a `.js.erb` extension. Of course problems arise there if you want to use any of the assets in the asset pipeline within your Angular code, especially when those assets have been compiled with a unique random fingerprint. To get around this I created a script called `asset_paths.js.erb` that is included within `application.js` whose purpose is to create a javascript array called `asset_paths` that stores the results of calling the rails method `asset_path` on every asset in the specified folders (currently `fonts`, `images`, and `templates`). The code for this is quite compact so here it is in its entirety: 
+
+    var asset_paths = { };
+
+    <%
+      asset_folders = %w(fonts images templates)
+      asset_folders.each do |asset_folder|
+        Dir.glob("app/assets/#{asset_folder}/**/*").select { |f| File.file?(f) }.each do |asset|
+          relative_asset = asset.gsub("app/assets/#{asset_folder}/", '').gsub('.erb', '')
+    %>
+          asset_paths['<%= relative_asset %>'] = '<%= asset_path(relative_asset) %>';
+    <%
+        end
+      end
+    %>
+
+So, if you want to use one of the assets from the pipeline within your javascript you can simply by referencing the relative asset path as a key within the `asset_paths` array. For example here is a chunk of code from `animate.controller.js` file accessing templates assets: 
+
+    vm.people = [
+        { name: 'Derek Sweet', url: asset_paths['pages/animate/derek-sweet.html'] },
+        ...
+    ];
+
+=== Models
+
+Another interesting achievement of this project is to (within reason) give you access to your Rails models from javascript. This is achieved by defining an internal rails API in RESTful fashion and using the Angular `$resource` factory to create corresponding javascript objects for your models. This is exactly how `$resource` was intended to be used so this is by no means innovative, but I hope that anyone struggling to connect the two may see a pattern here they can employ. 
+
+Within the `angular/models` folder there are a series of files that are all included within `application.js` by default. As an example please take a look at the `User.model.js` file. Within you can see a hash defining a number of settings that directly relate to the parameters of the `$resource` factory. Here is the contents of that file: 
+
+    var User = {
+      url: '/api/v1/users/:id',
+      paramDefaults: { id:'@id' },
+      actions: {},
+      options: {}
+    };
+
+These are useless on their own, of course, so now take a look at the `data-store.service.js` file that defines a service that creates objects for each model. Here is the relevent part of that file:
+
+    var dataStore = {
+      User: $resource(User.url, User.paramDefaults, User.actions, User.options),
+      ...
+    };
+
+Any Angular applications that you want to be able to access your Rails models need to simply include the data-store service, and they can. For example if you want to load a javascript version of a record stored in the `users` table simply type: 
+
+    my_user = dataStore.User.get( { id: 'Joe' } );
+
+This will create a javascript object that holds all the data for the user with the first name 'Joe'. Note: The users are identified by their first names in this application, not IDs. See the Rails API implementation for the corresponding endpoint. 
+
+If you want to change a property and save the user, simply type: 
+
+    my_user.email = 'joe.blower@gmail.com';
+    my_user.$save();
+    
+To delete a user, simply type: 
+
+    my_user.$remove();
+    
+As one final note, I would like to mention that you will need to manually wire your API `update` methods within your rails routes file to the POST action rather than the PUT action which it will be by default. I am not sure why, but the angular `$resource` factory sends `$save` commands for existing objects as POST and not PUT which would be correct by REST standards. I assume this is because there is no distinction between newly create objects and ones loaded from a `get` command so Angular doesn't know whether it should be issuing a `create` or an `update`. 
+
+== References
 
 "<b>Beginning AngularJS</b>" by Andrew Grant - {Amazon Link}[http://www.amazon.ca/Beginning-AngularJS-Andrew-Grant-ebook/dp/B00M4FC72S/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=8-1&qid=1425747905]
 
@@ -66,7 +134,7 @@ In the next tab you can run any of the following commands to run different parts
 
 "<b>Angular Style Guide</b>" by John Papa - {Github Link}[https://github.com/johnpapa/angular-styleguide]
 
-=== Tools
+== Tools
 
 "<b>dirPagination</b>" by Michael Bromley - Part of the angularUtils package - {Github Link}[https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination]
 
