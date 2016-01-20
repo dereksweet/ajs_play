@@ -66,7 +66,7 @@ So now that you have things (hopefully) up and running let me get into the theor
 
 === Asset Paths
 
-One of the things I wanted to accomplish with this project was to ensure that all the Angular code was written in javascript with no ruby decoration to ensure that it could be easily reused with little to no modifications. This is why none of the Angular related files have a `.js.erb` extension. Of course problems arise there if you want to use any of the assets in the asset pipeline within your Angular code, especially when those assets have been compiled with a unique random fingerprint. To get around this I created a script called `asset_paths.js.erb` that is included within `application.js` whose purpose is to create a javascript array called `asset_paths` that stores the results of calling the rails method `asset_path` on every asset in the specified folders (currently `fonts`, `images`, and `templates`). The code for this is quite compact so here it is in its entirety: 
+One of the things I wanted to accomplish with this project was to ensure that all the Angular code was written in javascript with no ruby decoration to ensure that it could be easily reused with little to no modifications. This is why none of the Angular related files have a <code>.js.erb</code> extension. Of course problems arise there if you want to use any of the assets in the asset pipeline within your Angular code, especially when those assets have been compiled with a unique random fingerprint. To get around this I created a script called <code>asset_paths.js.erb</code> that is included within <code>application.js</code> whose purpose is to create a javascript array called <code>asset_paths</code> that stores the results of calling the rails method <code>asset_path</code> on every asset in the specified folders (currently <code>fonts</code>, <code>images</code>, and <code>templates</code>). The code for this is quite compact so here it is in its entirety: 
 
     var asset_paths = { };
 
@@ -82,7 +82,7 @@ One of the things I wanted to accomplish with this project was to ensure that al
       end
     %>
 
-So, if you want to use one of the assets from the pipeline within your javascript you can simply by referencing the relative asset path as a key within the `asset_paths` array. For example here is a chunk of code from `animate.controller.js` file accessing templates assets: 
+So, if you want to use one of the assets from the pipeline within your javascript you can simply by referencing the relative asset path as a key within the <code>asset_paths</code> array. For example here is a chunk of code from <code>animate.controller.js</code> file accessing templates assets: 
 
     vm.people = [
         { name: 'Derek Sweet', url: asset_paths['pages/animate/derek-sweet.html'] },
@@ -91,9 +91,9 @@ So, if you want to use one of the assets from the pipeline within your javascrip
 
 === Models
 
-Another interesting achievement of this project is to (within reason) give you access to your Rails models from javascript. This is achieved by defining an internal rails API in RESTful fashion and using the Angular `$resource` factory to create corresponding javascript objects for your models. This is exactly how `$resource` was intended to be used so this is by no means innovative, but I hope that anyone struggling to connect the two may see a pattern here they can employ. 
+Another interesting achievement of this project is to (within reason) give you access to your Rails models from javascript. This is achieved by defining an internal rails API in RESTful fashion and using the Angular <code>$resource</code> factory to create corresponding javascript objects for your models. This is exactly how <code>$resource</code> was intended to be used so this is by no means innovative, but I hope that anyone struggling to connect the two may see a pattern here they can employ. 
 
-Within the `angular/models` folder there are a series of files that are all included within `application.js` by default. As an example please take a look at the `User.model.js` file. Within you can see a hash defining a number of settings that directly relate to the parameters of the `$resource` factory. Here is the contents of that file: 
+Within the <code>angular/models</code> folder there are a series of files that are all included within <code>application.js</code> by default. As an example please take a look at the <code>User.model.js</code> file. Within you can see a hash defining a number of settings that directly relate to the parameters of the <code>$resource</code> factory. Here is the contents of that file: 
 
     var User = {
       url: '/api/v1/users/:id',
@@ -102,14 +102,14 @@ Within the `angular/models` folder there are a series of files that are all incl
       options: {}
     };
 
-These are useless on their own, of course, so now take a look at the `data-store.service.js` file that defines a service that creates objects for each model. Here is the relevent part of that file:
+These are useless on their own, of course, so now take a look at the <code>data-store.service.js</code> file that defines a service that creates objects for each model. Here is the relevent part of that file:
 
     var dataStore = {
       User: $resource(User.url, User.paramDefaults, User.actions, User.options),
       ...
     };
 
-Any Angular applications that you want to be able to access your Rails models need to simply include the data-store service, and they can. For example if you want to load a javascript version of a record stored in the `users` table simply type: 
+Any Angular applications that you want to be able to access your Rails models need to simply include the data-store service, and they can. For example if you want to load a javascript version of a record stored in the <code>users</code> table simply type: 
 
     my_user = dataStore.User.get( { id: 'Joe' } );
 
@@ -124,7 +124,7 @@ To delete a user, simply type:
 
     my_user.$remove();
     
-As one final note, I would like to mention that you will need to manually wire your API `update` methods within your rails routes file to the POST action rather than the PUT action which it will be by default. I am not sure why, but the angular `$resource` factory sends `$save` commands for existing objects as POST and not PUT which would be correct by REST standards. I assume this is because there is no distinction between newly create objects and ones loaded from a `get` command so Angular doesn't know whether it should be issuing a `create` or an `update`. 
+As one final note, I would like to mention that you will need to manually wire your API <code>update</code> methods within your rails routes file to the POST action rather than the PUT action which it will be by default. I am not sure why, but the angular <code>$resource</code> factory sends <code>$save</code> commands for existing objects as POST and not PUT which would be correct by REST standards. I assume this is because there is no distinction between newly create objects and ones loaded from a <code>get</code> command so Angular doesn't know whether it should be issuing a <code>create</code> or an <code>update</code>. 
 
 == References
 
