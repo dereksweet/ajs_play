@@ -22,7 +22,7 @@ gem 'angular-ui-router-rails', '0.2.15'
 gem 'countries', '1.1.0', :require => 'global'
 
 group :development, :test do
-  gem 'byebug', '6.0.2'
+  gem 'byebug', '8.2.1'
   gem 'web-console', '2.2.1'
   gem 'spring', '1.4.0'
 
