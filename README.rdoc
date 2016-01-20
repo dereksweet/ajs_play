@@ -1,6 +1,6 @@
 = TheSweet Angular 1.X Playground
 
-* Versions Presented: _Angular_: *1.4.8*, _Rails_: *4.2.5*, _Ruby_: *2.3.0*, _Node_: *5.0.0*
+* Versions Presented: _Angular_: *1.4.8*, _Rails_: *4.2.5*, _Ruby_: *2.3.0*, _Node_: *5.4.1*
 
 The purpose of this project is two-fold:
 1. Present a series of demonstrations that beginners can use to learn the basics of Angular 1.X
@@ -18,7 +18,7 @@ These installation instructions are aimed at _OSX_ users. They also presume a ge
 
 If you need to get started with Rails on OSX here is a guide: {Rails Setup}[https://gorails.com/setup/osx/10.11-el-capitan]. 
 
-NPM is also used to setup some packages so ensure you have it and Node installed and running: {Node JS/NPM Setup}[http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/].
+NPM is also used to setup some packages for the test suite so ensure you have it and Node installed and running: {Node JS/NPM Setup}[http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/].
 
 <b>You will also need to ensure that you have the correct version of ruby installed in whatever manager you use (RVM, rbenv, etc..) or many of the commands below will fail. The version you need as of the writing of this document is _2.3.0_.</b>
 
