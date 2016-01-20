@@ -1,4 +1,4 @@
-angular.module(moduleName).factory('dataStore', dataStore);
+angular.module(moduleName).service('dataStore', dataStore);
 
 
 

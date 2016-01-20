@@ -1,4 +1,4 @@
-angular.module(moduleName).factory('dataShare', dataShare);
+angular.module(moduleName).service('dataShare', dataShare);
 
 
 
