@@ -25,5 +25,5 @@ group :development, :test do
   gem 'web-console', '2.2.1'
   gem 'spring', '1.4.0'
 
-  gem 'rspec-rails', '3.3.3'
+  gem 'rspec-rails', '3.4.0'
 end
