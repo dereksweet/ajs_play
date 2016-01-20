@@ -8,7 +8,7 @@ gem 'uglifier', '2.7.2'
 
 gem 'arel', '6.0.3'
 
-gem 'jquery-rails', '4.0.5'
+gem 'jquery-rails', '4.1.0'
 gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '2.4.0'
 gem 'sdoc', '0.4.1', group: :doc
