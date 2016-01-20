@@ -5,7 +5,6 @@ gem 'rails', '4.2.5'
 gem 'sqlite3', '1.3.11'
 gem 'sass-rails', '5.0.4'
 gem 'uglifier', '2.7.2'
-gem 'coffee-rails', '4.1.0'
 
 gem 'arel', '6.0.3'
 
