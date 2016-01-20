@@ -1,4 +1,4 @@
-== TheSweet Angular 1.X Playground
+= TheSweet Angular 1.X Playground
 
 * Versions Presented: _Angular_: *1.4.8*, _Rails_: *4.2.5*, _Ruby_: *2.3.0*, _Node_: *5.0.0*
 
@@ -12,17 +12,21 @@ Furthermore, if you are thinking of starting a Rails project that employs Angula
 
 Please feel free to report any issues or ways that the ideas presented could be improved. If you have any interesting Angular directives, filters, or other code you'd like to add then please feel free to submit a pull request as well. All comments and additions are welcome!
 
-=== Installation Instructions
+== Installation Instructions
 
-These installation instructions are aimed at _OSX_ users. They also presume a general familiarty with Rails 4 and testing methodologies. If you need to get started with Rails on OSX here is a guide: https://gorails.com/setup/osx/10.11-el-capitan. NPM is also used to setup some packages so ensure you have it and Node installed and running: http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/.
+These installation instructions are aimed at _OSX_ users. They also presume a general familiarty with Rails 4 and testing methodologies. 
 
-You will also need to ensure that you have the correct version of ruby installed in whatever manager you use (RVM, rbenv, etc..) or many of the commands below will fail. The version you need as of the writing of this document is *2.3.0*.
+If you need to get started with Rails on OSX here is a guide: {Rails Setup}[https://gorails.com/setup/osx/10.11-el-capitan]. 
+
+NPM is also used to setup some packages so ensure you have it and Node installed and running: {Node JS/NPM Setup}[http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/].
+
+<b>You will also need to ensure that you have the correct version of ruby installed in whatever manager you use (RVM, rbenv, etc..) or many of the commands below will fail. The version you need as of the writing of this document is _2.3.0_.</b>
 
 To install simply download the repository into a folder on your machine, then from console type: 
 
     make install
 
-That will install all the gems needed for the application. Then type the following: 
+That will install all the gems and packages needed for the application. Then type the following: 
 
     rake db:migrate
 
@@ -38,10 +42,11 @@ In order to run the integration tests you will need to install protractor global
 
     npm install -g protractor
     
-It may be required to update your Java Development Kit as well to JDK7
-    http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+It may also be required to update your Java Development Kit JDK7: {Oracle Link}[http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html]
     
-=== Testing    
+If you have any problems getting the app installed or the test suite running please do not hesitate to write up a github issue or send me an email at dereksweet@gmail.com. I would very much like to know if you have any problems getting this up and running and how I can make it easier for people, and if I can help you do so I am glad to spend the time.     
+    
+== Testing    
     
 Once you've followed all the steps above you should be able to run the test suite by opening two terminal tabs. If you intend on running the integration tests, in the first tab you need to ensure selenium webdriver is running by typing
 
@@ -55,16 +60,84 @@ In the next tab you can run any of the following commands to run different parts
     make test.integration # run just the protractor integration tests
     make test.spec # run just the rspec rails unit tests
 
-=== References
+== Points of Interest
 
-"*Beginning* *AngularJS*" by Andrew Grant - http://www.amazon.ca/Beginning-AngularJS-Andrew-Grant-ebook/dp/B00M4FC72S/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=8-1&qid=1425747905
+So now that you have things (hopefully) up and running let me get into the theories presented on how best to structure Angular with Ruby on Rails. Before getting to the overall structure and architecture of the application I would like to point out some of the things I've done that I feel are interesting and unique. 
 
-"*Pro* *AngularJS*" by Adam Freeman - http://www.amazon.com/Pro-AngularJS-Experts-Voice-Development/dp/1430264489/ref=sr_1_1?ie=UTF8&qid=1425829692&sr=8-1&keywords=angularjs
+=== Asset Paths
 
-"*Angular* *Style* *Guide*" by John Papa - https://github.com/johnpapa/angular-styleguide
+One of the things I wanted to accomplish with this project was to ensure that all the Angular code was written in javascript with no ruby decoration to ensure that it could be easily reused with little to no modifications. This is why none of the Angular related files have a <code>.js.erb</code> extension. Of course problems arise there if you want to use any of the assets in the asset pipeline within your Angular code, especially when those assets have been compiled with a unique random fingerprint. To get around this I created a script called <code>asset_paths.js.erb</code> that is included within <code>application.js</code> whose purpose is to create a javascript array called <code>asset_paths</code> that stores the results of calling the rails method <code>asset_path</code> on every asset in the specified folders (currently <code>fonts</code>, <code>images</code>, and <code>templates</code>). The code for this is quite compact so here it is in its entirety: 
 
-=== Tools
+    var asset_paths = { };
 
-"*dirPagination*" by Michael Bromley - Part of the angularUtils package - https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination
+    <%
+      asset_folders = %w(fonts images templates)
+      asset_folders.each do |asset_folder|
+        Dir.glob("app/assets/#{asset_folder}/**/*").select { |f| File.file?(f) }.each do |asset|
+          relative_asset = asset.gsub("app/assets/#{asset_folder}/", '').gsub('.erb', '')
+    %>
+          asset_paths['<%= relative_asset %>'] = '<%= asset_path(relative_asset) %>';
+    <%
+        end
+      end
+    %>
 
-"*Countries*" by Hexorx - Used to obtain countries data - https://github.com/hexorx/countries
+So, if you want to use one of the assets from the pipeline within your javascript you can simply by referencing the relative asset path as a key within the <code>asset_paths</code> array. For example here is a chunk of code from <code>animate.controller.js</code> file accessing templates assets: 
+
+    vm.people = [
+        { name: 'Derek Sweet', url: asset_paths['pages/animate/derek-sweet.html'] },
+        ...
+    ];
+
+=== Models
+
+Another interesting achievement of this project is to (within reason) give you access to your Rails models from javascript. This is achieved by defining an internal rails API in RESTful fashion and using the Angular <code>$resource</code> factory to create corresponding javascript objects for your models. This is exactly how <code>$resource</code> was intended to be used so this is by no means innovative, but I hope that anyone struggling to connect the two may see a pattern here they can employ. 
+
+Within the <code>angular/models</code> folder there are a series of files that are all included within <code>application.js</code> by default. As an example please take a look at the <code>User.model.js</code> file. Within you can see a hash defining a number of settings that directly relate to the parameters of the <code>$resource</code> factory. Here is the contents of that file: 
+
+    var User = {
+      url: '/api/v1/users/:id',
+      paramDefaults: { id:'@id' },
+      actions: {},
+      options: {}
+    };
+
+These are useless on their own, of course, so now take a look at the <code>data-store.service.js</code> file that defines a service that creates objects for each model. Here is the relevent part of that file:
+
+    var dataStore = {
+      User: $resource(User.url, User.paramDefaults, User.actions, User.options),
+      ...
+    };
+
+Any Angular applications that you want to be able to access your Rails models need to simply include the data-store service, and they can. For example if you want to load a javascript version of a record stored in the <code>users</code> table simply type: 
+
+    my_user = dataStore.User.get( { id: 'Joe' } );
+
+This will create a javascript object that holds all the data for the user with the first name 'Joe'. Note: The users are identified by their first names in this application, not IDs. See the Rails API implementation for the corresponding endpoint. 
+
+If you want to change a property and save the user, simply type: 
+
+    my_user.email = 'joe.blower@gmail.com';
+    my_user.$save();
+    
+To delete a user, simply type: 
+
+    my_user.$remove();
+
+To see the API side of things that actually persists the data changes check out <code>app/controllers/api/v1/users_controller.rb</code>. It is a pretty standard RESTful API controller except in the <code>show</code> and <code>update</code> actions it identifies records by first name, not ID. 
+    
+As one final note, I would like to mention that you will need to manually wire your API <code>update</code> methods within your rails routes file to the POST action rather than the PUT action which it will be by default. The angular <code>$resource</code> factory sends <code>$save</code> commands for existing objects as POST and not PUT which would be correct by REST standards. I assume this is because there is no distinction between newly create objects and ones loaded from a <code>get</code> command so Angular doesn't know whether it should be issuing a <code>create</code> or an <code>update</code>, so it defaults to <code>create</code>. 
+
+== References
+
+"<b>Beginning AngularJS</b>" by Andrew Grant - {Amazon Link}[http://www.amazon.ca/Beginning-AngularJS-Andrew-Grant-ebook/dp/B00M4FC72S/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=8-1&qid=1425747905]
+
+"<b>Pro AngularJS</b>" by Adam Freeman - {Amazon Link}[http://www.amazon.com/Pro-AngularJS-Experts-Voice-Development/dp/1430264489/ref=sr_1_1?ie=UTF8&qid=1425829692&sr=8-1&keywords=angularjs]
+
+"<b>Angular Style Guide</b>" by John Papa - {Github Link}[https://github.com/johnpapa/angular-styleguide]
+
+== Tools
+
+"<b>dirPagination</b>" by Michael Bromley - Part of the angularUtils package - {Github Link}[https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination]
+
+"<b>Countries</b>" by Hexorx - Used to obtain countries data - {Github Link}[https://github.com/hexorx/countries]
