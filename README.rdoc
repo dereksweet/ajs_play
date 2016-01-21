@@ -63,6 +63,8 @@ In the next tab you can run any of the following commands to run different parts
 If your tests fail, or the process crashes for whatever reason, it's possible you will have an errant rails server running in the background, or some users with the name 'Test' on your Forms page. If this happens simply run the following command to clean things up: 
 
     make test.clean
+    
+If you see a <code>No such process</code> error, don't worry. That just means you didn't have a rails server running in the background and all is good.    
 
 == Points of Interest
 
@@ -129,6 +131,32 @@ To delete a user, simply type:
     my_user.$remove();
 
 To see the API side of things that actually persists the data changes check out <code>app/controllers/api/v1/users_controller.rb</code>. It is a pretty standard RESTful API controller except in the <code>show</code> and <code>update</code> actions it identifies records by first name, not ID. 
+
+== Site Architecture
+
+The Rails side of things in this application has been kept as thin as possible. It is pretty much a blank rails project with a very simple API added, a User model, and a controller and some views for serving up the various pages. Most of those pages are individual Angular applications that we will get into shortly, and one of those pages is a standard Rails page of references.
+
+If you take a look at <code>pages_controller</code> you'll see that each page couldn't be more simple on the rails side. All the work is done by the views in this application. Each of the pages serving up the Angular applications (<code>directives</code>, <code>filters</code>, <code>forms</code>, <code>routes</code>, <code>animate</code>, <code>references</code>) have a nearly identical structure. Let's analyze one of them, the <code>directives</code> page, and I will point out differences in the other pages after that.
+
+Take a look at the <code>app/views/pages/directives.html.erb</code> page. You'll notice that the very first thing it does is include a bunch of angular javascript files. Each of the Angular applications load only the objects it needs to work, so any controllers, decorators, directives, filters, models, or services. I am not a fan of just loading up all the angular resources available in <code>application.js</code>, I much prefer specifying exactly what is needed for each Angular application.  
+
+If you take a look at the <code>app/assets/javascripts/angular/</code> folder you'll notice it has a structure a little similar to a rails <code>app</code> folder. Within the <code>controllers/pages/</code> folder you'll notice there is a <code>.controller.js</code> file for each page in <code>pages_controller</code> that we want to be an Angular application. Let's take a look at <code>directives.controller.js</code>
+
+You'll notice that the very first thing each controller file does is specify a module name in a variable called <code>moduleName</code>. This is necessary so that every other component that comes after it knows the name of the module being created and what it should attach itself to. Take a look at any of the controllers, decorators, directives, filters, models, or services and they will all reference <code>moduleName</code> at some point. It is the glue that brings everything together no matter what you choose to include. Many of the controller files also specify a controller name which is mostly for convenience. 
+
+If you start having very complex modules with <code>config</code> and <code>run</code> commands then you may want to seperate them out into a <code>modules</code> folder. Just be sure to define the <code>moduleName</code> variable there and always include them first in your views. This is why the controllers are always the very first file included in each view because they set up the module and define the <code>moduleName</code> variable that each of the other files depend on existing. 
+
+After the Rails view <code>directives.html.erb</code> loads the <code>directives.controller.js</code> file, it then loads the <code>sweet-show-hide</code>, <code>sweet-current-time</code>, <code>sweet-make-blue</code>, and <code>sweet-list</code> directive files because all of those directives are used on this page. Finally it includes the <code>exception-handler</code> decorator as every page does to ensure that any Angular errors are displayed annoyingly in an alert box instead of just being printed to the console. 
+
+If you're familiar with how Angular applications work the rest of the <code>directives.html.erb</code> view should make complete sense. You'll see that each of the directives loaded at the top of the page are eventually used, as well as some nice demonstrations of a few directives that come pre-built with Angular. 
+
+Any pages that need to read or write data to the database through the Rails API, like the "Forms" page, must include the <code>data-store</code> service.
+
+Finally, any templates that need to be used by your custom directives, like the <code>showHide.html</code> template employed by the <code>sweet-show-hide</code> custom directive, should be placed within <code>app/assets/templates/angular/directives</code>. Any templates that need to be loaded by routers, modals, or animations should be placed within <code>app/assets/templates/{controller_name}/{action_name}</code>
+
+== Thank you
+
+Thanks for reading! I really hope this project is of some help to people. Once again if you have any tips or modifications you'd like to suggest please feel free to report an issue, fire me an email at dereksweet@gmail.com, or submit a pull request. All comments and additions are welcome!
     
 == References
 
@@ -143,3 +171,7 @@ To see the API side of things that actually persists the data changes check out 
 "<b>dirPagination</b>" by Michael Bromley - Part of the angularUtils package - {Github Link}[https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination]
 
 "<b>Countries</b>" by Hexorx - Used to obtain countries data - {Github Link}[https://github.com/hexorx/countries]
+
+== Podcasts
+
+"<b>Adventures in Angular</b>" - {DevChat Link}[https://devchat.tv/adventures-in-angular]
