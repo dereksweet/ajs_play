@@ -115,7 +115,7 @@ These are useless on their own, of course, so now take a look at the <code>data-
       ...
     };
 
-Any Angular applications that you want to be able to access your Rails models need to simply include the data-store service, and they can. For example if you want to load a javascript version of a record stored in the <code>users</code> table simply type: 
+Any Angular applications that you want to be able to access your Rails models need to simply include the <code>data-store</code> service. For example if you want to load a javascript version of a record stored in the <code>users</code> table simply type: 
 
     my_user = dataStore.User.get( { id: 'Joe' } );
 
