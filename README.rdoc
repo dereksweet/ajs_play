@@ -59,6 +59,10 @@ In the next tab you can run any of the following commands to run different parts
     make test.unit # run just the mocha angular unit tests
     make test.integration # run just the protractor integration tests
     make test.spec # run just the rspec rails unit tests
+    
+If your tests fail, or the process crashes for whatever reason, it's possible you will have an errant rails server running in the background, or some users with the name 'Test' on your Forms page. If this happens simply run the following command to clean things up: 
+
+    make test.clean
 
 == Points of Interest
 
