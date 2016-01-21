@@ -10,8 +10,6 @@ gem 'arel', '6.0.3'
 
 gem 'jquery-rails', '4.1.0'
 gem 'turbolinks', '2.5.3'
-gem 'jbuilder', '2.4.0'
-gem 'sdoc', '0.4.1', group: :doc
 
 gem 'foundation-rails', '5.5.3.2'
 gem 'angularjs-rails', '1.4.8'
