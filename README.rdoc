@@ -4,7 +4,7 @@
 
 The purpose of this project is two-fold:
 1. Present a series of demonstrations that beginners can use to learn the basics of Angular 1.X
-2. Propose a theory on the optimum way to combine traditional Rails applications with one or more complex Angular applications.  
+2. Propose a theory on the optimum way to combine traditional Ruby on Rails applications with one or more complex Angular applications.  
 
 If you are new to Angular and would like to see examples of some of its core features, and a few popular third party tools, written in adherence to most of the stylistic standards recommended by the community then I hope this project can help you out! 
 
@@ -130,8 +130,6 @@ To delete a user, simply type:
 
 To see the API side of things that actually persists the data changes check out <code>app/controllers/api/v1/users_controller.rb</code>. It is a pretty standard RESTful API controller except in the <code>show</code> and <code>update</code> actions it identifies records by first name, not ID. 
     
-As one final note, I would like to mention that you will need to manually wire your API <code>update</code> methods within your rails routes file to the POST action rather than the PUT action which it will be by default. The angular <code>$resource</code> factory sends <code>$save</code> commands for existing objects as POST and not PUT which would be correct by REST standards. I assume this is because there is no distinction between newly create objects and ones loaded from a <code>get</code> command so Angular doesn't know whether it should be issuing a <code>create</code> or an <code>update</code>, so it defaults to <code>create</code>. For this reason you will also need to handle <code>create</code> within update by checking if the model being updated exists and create it if it doesn't.
-
 == References
 
 "<b>Beginning AngularJS</b>" by Andrew Grant - {Amazon Link}[http://www.amazon.ca/Beginning-AngularJS-Andrew-Grant-ebook/dp/B00M4FC72S/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=8-1&qid=1425747905]
