@@ -21,8 +21,8 @@ test.integration:
 
 .PHONY: test.clean
 test.clean:
-	@kill -9 `cat ./tmp/pids/server.pid`
 	@rake tests:clean
+	@kill -9 `cat ./tmp/pids/server.pid`
 
 .PHONY: test.spec
 test.spec:
