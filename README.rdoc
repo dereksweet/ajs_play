@@ -14,7 +14,7 @@ Please feel free to report any issues or ways that the ideas presented could be 
 
 == Installation Instructions
 
-These installation instructions are aimed at _OSX_ users. They also presume a general familiarty with Rails 4 and testing methodologies. 
+These installation instructions are aimed at _OSX_ users, but they should work as a satisfactory guide for anyone familiar enough with their Rails setup. They also presume a general familiarty with Rails 4 and testing methodologies. 
 
 If you need to get started with Rails on OSX here is a guide: {Rails Setup}[https://gorails.com/setup/osx/10.11-el-capitan]. 
 
