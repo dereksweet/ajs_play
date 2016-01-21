@@ -14,7 +14,7 @@ Please feel free to report any issues or ways that the ideas presented could be 
 
 == Installation Instructions
 
-These installation instructions are aimed at _OSX_ users. They also presume a general familiarty with Rails 4 and testing methodologies. 
+These installation instructions are aimed at _OSX_ users, but they should work as a satisfactory guide for anyone familiar enough with their Rails setup. They also presume a general familiarity with Rails 4 and testing methodologies. 
 
 If you need to get started with Rails on OSX here is a guide: {Rails Setup}[https://gorails.com/setup/osx/10.11-el-capitan]. 
 
@@ -88,7 +88,7 @@ One of the things I wanted to accomplish with this project was to ensure that al
       end
     %>
 
-So, if you want to use one of the assets from the pipeline within your javascript you can simply by referencing the relative asset path as a key within the <code>asset_paths</code> array. For example here is a chunk of code from <code>animate.controller.js</code> file accessing templates assets: 
+So, if you want to use one of the assets from the pipeline within your javascript you can simply by referencing the relative asset path as a key within the <code>asset_paths</code> object. For example here is a chunk of code from <code>animate.controller.js</code> file accessing the templates assets for the "Slide Animation" demo: 
 
     vm.people = [
         { name: 'Derek Sweet', url: asset_paths['pages/animate/derek-sweet.html'] },
@@ -115,7 +115,7 @@ These are useless on their own, of course, so now take a look at the <code>data-
       ...
     };
 
-Any Angular applications that you want to be able to access your Rails models need to simply include the data-store service, and they can. For example if you want to load a javascript version of a record stored in the <code>users</code> table simply type: 
+Any Angular applications that you want to be able to access your Rails models need to simply include the <code>data-store</code> service. For example if you want to load a javascript version of a record stored in the <code>users</code> table simply type: 
 
     my_user = dataStore.User.get( { id: 'Joe' } );
 
@@ -142,7 +142,7 @@ Take a look at the <code>app/views/pages/directives.html.erb</code> page. You'll
 
 If you take a look at the <code>app/assets/javascripts/angular/</code> folder you'll notice it has a structure a little similar to a rails <code>app</code> folder. Within the <code>controllers/pages/</code> folder you'll notice there is a <code>.controller.js</code> file for each page in <code>pages_controller</code> that we want to be an Angular application. Let's take a look at <code>directives.controller.js</code>
 
-You'll notice that the very first thing each controller file does is specify a module name in a variable called <code>moduleName</code>. This is necessary so that every other component that comes after it knows the name of the module being created and what it should attach itself to. Take a look at any of the controllers, decorators, directives, filters, models, or services and they will all reference <code>moduleName</code> at some point. It is the glue that brings everything together no matter what you choose to include. Many of the controller files also specify a controller name which is mostly for convenience. 
+You'll notice that the very first thing each controller file does is specify a module name in a variable called <code>moduleName</code>. This is necessary so that every other component that comes after it knows the name of the module being created and what it should attach itself to. Take a look at any of the controllers, decorators, directives, filters, models, or services and they will all reference <code>moduleName</code> at some point. It is the glue that brings everything together no matter what you choose to include on a given page. Many of the controller files also specify a controller name which is mostly for convenience. 
 
 If you start having very complex modules with <code>config</code> and <code>run</code> commands then you may want to seperate them out into a <code>modules</code> folder. Just be sure to define the <code>moduleName</code> variable there and always include them first in your views. This is why the controllers are always the very first file included in each view because they set up the module and define the <code>moduleName</code> variable that each of the other files depend on existing. 
 
