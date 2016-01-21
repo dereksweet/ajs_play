@@ -18,7 +18,7 @@ gem 'angularjs-rails', '1.4.8'
 
 gem 'angular-ui-router-rails', '0.2.15'
 
-gem 'countries', '1.1.0', :require => 'global'
+gem 'countries', '1.2.2', :require => 'countries/global'
 
 group :development do
   gem 'web-console', '3.0.0'
