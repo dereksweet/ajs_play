@@ -19,6 +19,10 @@ test.integration:
 	@protractor integration/conf.js
 	@kill -9 `cat ./tmp/pids/server.pid`
 
+.PHONY: test.clean
+test.clean:
+	@kill -9 `cat ./tmp/pids/server.pid`
+
 .PHONY: test.spec
 test.spec:
 	@bundle exec rspec spec
