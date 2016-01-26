@@ -88,7 +88,7 @@ One of the things I wanted to accomplish with this project was to ensure that al
       end
     %>
 
-So, if you want to use one of the assets from the pipeline within your javascript you can simply by referencing the relative asset path as a key within the <code>asset_paths</code> object. For example here is a chunk of code from <code>animate.controller.js</code> file accessing the templates assets for the "Slide Animation" demo: 
+So, if you want to use one of the assets from the pipeline within your javascript you can simply reference the relative asset path as a key within the <code>asset_paths</code> object. For example here is a chunk of code from <code>animate.controller.js</code> file accessing the templates assets for the "Slide Animation" demo:
 
     vm.people = [
         { name: 'Derek Sweet', url: asset_paths['pages/animate/derek-sweet.html'] },
