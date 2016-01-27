@@ -1,6 +1,6 @@
 = TheSweet Angular 1.X Playground
 
-* Versions Presented: _Angular_: *1.4.8*, _Rails_: *4.2.5*, _Ruby_: *2.3.0*, _Node_: *5.4.1*
+* Versions Presented: _Angular_: *1.4.8*, _Rails_: *4.2.5.1*, _Ruby_: *2.3.0*, _Node_: *5.4.1*
 
 The purpose of this project is two-fold:
 1. Present a series of demonstrations that beginners can use to learn the basics of Angular 1.X
