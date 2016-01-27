@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 gem 'sqlite3', '1.3.11'
 gem 'sass-rails', '5.0.4'
 gem 'uglifier', '2.7.2'
@@ -16,7 +16,7 @@ gem 'angularjs-rails', '1.4.8'
 
 gem 'angular-ui-router-rails', '0.2.15'
 
-gem 'countries', '1.2.2', :require => 'countries/global'
+gem 'countries', '1.2.5', :require => 'countries/global'
 
 group :development do
   gem 'web-console', '3.0.0'
