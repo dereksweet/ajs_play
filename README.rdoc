@@ -130,7 +130,20 @@ To delete a user, simply type:
 
     my_user.$remove();
 
-To see the API side of things that actually persists the data changes check out <code>app/controllers/api/v1/users_controller.rb</code>. It is a pretty standard RESTful API controller except in the <code>show</code> and <code>update</code> actions it identifies records by first name, not ID. 
+To see the API side of things that actually persists the data changes check out <code>app/controllers/api/v1/users_controller.rb</code>. It is a pretty standard RESTful API controller except in the <code>show</code> and <code>update</code> actions it identifies records by first name, not ID.
+
+Also, feel free to write any javascript class methods within the hash that you feel relates to the model you are defining them on. For example:
+
+    var User = {
+      url: '/api/v1/users/:id',
+      paramDefaults: { id:'@id' },
+      actions: {},
+      options: {},
+      myClassMethod: function(param1, param2) {
+        // Place javascript code here
+      }
+
+You can then access your class method by simply typing <code>dataStore.User.myClassMethod('param1','param2');</code>. It is important to realize, however, that this is just an organizational pattern and not really a true class method. It is just a nice place to put all your class related methods and you can even pass in instances of the class as arguments if you like.
 
 == Site Architecture
 
