@@ -12,7 +12,7 @@ gem 'jquery-rails', '4.1.0'
 gem 'turbolinks', '2.5.3'
 
 gem 'foundation-rails', '5.5.3.2'
-gem 'angularjs-rails', '1.4.8'
+gem 'angularjs-rails', '1.5.0'
 
 gem 'angular-ui-router-rails', '0.2.15'
 
