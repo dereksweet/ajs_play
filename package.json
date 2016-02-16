@@ -33,7 +33,7 @@
     "sinon-as-promised": "4.0.0",
     "timekeeper": "0.0.5",
     "glob-fs": "0.1.6",
-    "protractor": "3.0.0",
+    "protractor": "3.1.1",
     "dateformat": "1.0.12"
   },
   "preferGlobal": true,
