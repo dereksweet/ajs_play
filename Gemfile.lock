@@ -161,7 +161,6 @@ PLATFORMS
 DEPENDENCIES
   angular-ui-router-rails (= 0.2.15)
   angularjs-rails (= 1.5.0)
-  arel (= 6.0.3)
   byebug (= 8.2.2)
   countries (= 1.2.5)
   foundation-rails (= 5.5.3.2)

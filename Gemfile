@@ -6,8 +6,6 @@ gem 'sqlite3', '1.3.11'
 gem 'sass-rails', '5.0.4'
 gem 'uglifier', '3.0.0'
 
-gem 'arel', '6.0.3'
-
 gem 'jquery-rails', '4.1.0'
 gem 'turbolinks', '2.5.3'
 
