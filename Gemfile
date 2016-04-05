@@ -24,7 +24,7 @@ end
 
 group :development, :test do
   gem 'byebug', '8.2.2'
-  gem 'spring', '1.6.3'
+  gem 'spring', '1.6.4'
 
   gem 'rspec-rails', '3.4.2'
 end
